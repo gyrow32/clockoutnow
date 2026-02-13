@@ -114,9 +114,11 @@
     color: white;
   }
 
-  /* Protect white text inside primary buttons */
+  /* Protect white text inside primary/warm buttons */
   :root:not(.dark) .btn-primary,
-  :root:not(.dark) .btn-primary * {
+  :root:not(.dark) .btn-primary *,
+  :root:not(.dark) .btn-warm,
+  :root:not(.dark) .btn-warm * {
     color: white;
   }
 
@@ -187,6 +189,36 @@
 
   .btn-primary {
     @apply inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg transition-all duration-300 hover:from-primary-400 hover:to-primary-500 hover:shadow-lg hover:shadow-primary-500/25 active:scale-[0.98];
+  }
+
+  .btn-warm {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl transition-all duration-300 hover:from-orange-400 hover:to-orange-500 hover:shadow-lg hover:shadow-orange-500/25 active:scale-[0.98];
+  }
+
+  .card-warm {
+    @apply bg-dark-900/50 border border-dark-700/30 rounded-2xl;
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  :root:not(.dark) .card-warm {
+    background: white;
+    border-color: rgb(226 232 240);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  }
+
+  .card-warm:hover {
+    @apply border-primary-500/30;
+    box-shadow: 0 8px 30px -8px rgb(6 182 212 / 0.1);
+  }
+
+  /* Image placeholder for lifestyle sections */
+  .img-placeholder {
+    @apply rounded-2xl overflow-hidden relative;
+    background: linear-gradient(135deg, rgb(var(--surface-800)), rgb(var(--surface-700)));
+  }
+
+  .img-placeholder img {
+    @apply w-full h-full object-cover;
   }
 
   .btn-secondary {
