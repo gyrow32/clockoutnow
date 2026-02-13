@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/*
+ * Theme CSS Variables
+ * The dark-* Tailwind palette resolves to these variables,
+ * so all existing bg-dark-*, text-dark-*, border-dark-* classes auto-adapt.
+ * Numbering: 950 = deepest background, 50 = lightest foreground.
+ */
+
+/* ── Light Mode (default when .dark is absent) ── */
+:root {
+  --surface-950: 255 255 255;    /* page bg: white */
+  --surface-900: 248 250 252;    /* card bg */
+  --surface-800: 241 245 249;    /* input bg, subtle surfaces */
+  --surface-700: 226 232 240;    /* borders */
+  --surface-600: 203 213 225;    /* muted borders */
+  --surface-500: 148 163 184;    /* placeholder text */
+  --surface-400: 100 116 139;    /* secondary text */
+  --surface-300: 71 85 105;      /* body text */
+  --surface-200: 51 65 85;       /* strong body text */
+  --surface-100: 30 41 59;       /* emphasized text */
+  --surface-50: 15 23 42;        /* heading text */
+
+  --heading-color: 15 23 42;
+  --dot-opacity: 0.12;
+  --grid-opacity: 0.06;
+  --glow-opacity: 0.15;
+
+  color-scheme: light;
+}
+
+/* ── Dark Mode ── */
+:root.dark {
+  --surface-950: 2 6 23;         /* page bg */
+  --surface-900: 15 23 42;       /* card bg */
+  --surface-800: 30 41 59;       /* input bg */
+  --surface-700: 51 65 85;       /* borders */
+  --surface-600: 71 85 105;      /* muted borders */
+  --surface-500: 100 116 139;    /* placeholder text */
+  --surface-400: 148 163 184;    /* secondary text */
+  --surface-300: 203 213 225;    /* body text */
+  --surface-200: 226 232 240;    /* strong body text */
+  --surface-100: 241 245 249;    /* emphasized text */
+  --surface-50: 248 250 252;     /* heading text */
+
+  --heading-color: 255 255 255;
+  --dot-opacity: 0.07;
+  --grid-opacity: 0.03;
+  --glow-opacity: 0.3;
+
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    @apply border-dark-700;
+  }
+
+  html {
+    @apply scroll-smooth;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-dark-950 text-dark-200 font-sans antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    @apply bg-primary-500/30;
+    color: rgb(var(--heading-color));
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-950;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-dark-600;
+  }
+
+  /* ── Heading color override ── */
+  /*
+   * In dark mode, text-white = white. In light mode, headings
+   * and strong text that use text-white should become dark.
+   * This targets text-white on most content elements.
+   * Buttons, icons on gradient backgrounds are protected below.
+   */
+  :root:not(.dark) .text-white {
+    color: rgb(var(--heading-color));
+  }
+
+  /* Also handle text-white with opacity variants (e.g. text-white/80) */
+  :root:not(.dark) [class*="text-white\\/"] {
+    color: rgb(var(--heading-color));
+  }
+
+  /* Protect white on SVGs (icons on gradient backgrounds) */
+  :root:not(.dark) svg.text-white,
+  :root:not(.dark) svg[class*="text-white"] {
+    color: white;
+  }
+
+  /* Protect white text inside primary buttons */
+  :root:not(.dark) .btn-primary,
+  :root:not(.dark) .btn-primary * {
+    color: white;
+  }
+
+  /* Manual preserve-white override */
+  :root:not(.dark) .preserve-white {
+    color: white !important;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-primary-300 to-emerald-400;
+  }
+
+  .gradient-border {
+    @apply relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-xl p-[1px];
+    background: linear-gradient(135deg, #06b6d4, #10b981, #06b6d4);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .glass-card {
+    @apply bg-dark-900/50 backdrop-blur-xl border border-dark-700/50 rounded-xl;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  /* Light mode: solid card bg instead of transparent */
+  :root:not(.dark) .glass-card {
+    background-color: rgb(var(--surface-900) / 0.8);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-500 hover:border-primary-500/30 hover:bg-dark-800/50 hover:shadow-lg hover:shadow-primary-500/5;
+  }
+
+  :root:not(.dark) .glass-card-hover:hover {
+    background-color: rgb(var(--surface-900));
+    box-shadow: 0 10px 25px -5px rgb(6 182 212 / 0.07), 0 4px 10px -6px rgb(6 182 212 / 0.05);
+  }
+
+  .dot-pattern {
+    background-image: radial-gradient(circle, rgba(6, 182, 212, var(--dot-opacity)) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(rgba(6, 182, 212, var(--grid-opacity)) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(6, 182, 212, var(--grid-opacity)) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .glow {
+    box-shadow: 0 0 60px -15px rgba(6, 182, 212, var(--glow-opacity));
+  }
+
+  .glow-sm {
+    box-shadow: 0 0 30px -10px rgba(6, 182, 212, calc(var(--glow-opacity) * 0.66));
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg transition-all duration-300 hover:from-primary-400 hover:to-primary-500 hover:shadow-lg hover:shadow-primary-500/25 active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-dark-800 font-semibold rounded-lg border border-dark-600 transition-all duration-300 hover:border-primary-500/50 hover:bg-dark-700 active:scale-[0.98];
+    color: rgb(var(--surface-200));
+  }
+
+  .btn-secondary:hover {
+    color: rgb(var(--heading-color));
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-label {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm font-medium mb-4;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight;
+    color: rgb(var(--heading-color));
+  }
+
+  .section-subtitle {
+    @apply text-lg text-dark-400 max-w-2xl mt-4;
+  }
+
+  /* ── Light mode CTA section adjustments ── */
+  :root:not(.dark) .cta-section {
+    background: linear-gradient(135deg, rgb(236 254 255), rgb(240 253 244), rgb(236 254 255));
+  }
+
+  :root:not(.dark) .cta-bg {
+    display: none;
+  }
+
+  /* ── Light mode: alternate section backgrounds ── */
+  :root:not(.dark) .bg-dark-900\/30 {
+    background-color: rgb(var(--surface-900) / 0.5);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
