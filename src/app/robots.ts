@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://nexusai.vercel.app/sitemap.xml',
+    sitemap: 'https://getyourtimeback.com/sitemap.xml',
   }
 }

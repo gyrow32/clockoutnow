@@ -2,236 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
-/*
- * Theme CSS Variables
- * The dark-* Tailwind palette resolves to these variables,
- * so all existing bg-dark-*, text-dark-*, border-dark-* classes auto-adapt.
- * Numbering: 950 = deepest background, 50 = lightest foreground.
- */
-
-/* ── Light Mode (default when .dark is absent) ── */
-:root {
-  --surface-950: 255 255 255;    /* page bg: white */
-  --surface-900: 248 250 252;    /* card bg */
-  --surface-800: 241 245 249;    /* input bg, subtle surfaces */
-  --surface-700: 226 232 240;    /* borders */
-  --surface-600: 203 213 225;    /* muted borders */
-  --surface-500: 148 163 184;    /* placeholder text */
-  --surface-400: 100 116 139;    /* secondary text */
-  --surface-300: 71 85 105;      /* body text */
-  --surface-200: 51 65 85;       /* strong body text */
-  --surface-100: 30 41 59;       /* emphasized text */
-  --surface-50: 15 23 42;        /* heading text */
-
-  --heading-color: 15 23 42;
-  --dot-opacity: 0.12;
-  --grid-opacity: 0.06;
-  --glow-opacity: 0.15;
-
-  color-scheme: light;
-}
-
-/* ── Dark Mode ── */
-:root.dark {
-  --surface-950: 2 6 23;         /* page bg */
-  --surface-900: 15 23 42;       /* card bg */
-  --surface-800: 30 41 59;       /* input bg */
-  --surface-700: 51 65 85;       /* borders */
-  --surface-600: 71 85 105;      /* muted borders */
-  --surface-500: 100 116 139;    /* placeholder text */
-  --surface-400: 148 163 184;    /* secondary text */
-  --surface-300: 203 213 225;    /* body text */
-  --surface-200: 226 232 240;    /* strong body text */
-  --surface-100: 241 245 249;    /* emphasized text */
-  --surface-50: 248 250 252;     /* heading text */
-
-  --heading-color: 255 255 255;
-  --dot-opacity: 0.07;
-  --grid-opacity: 0.03;
-  --glow-opacity: 0.3;
-
-  color-scheme: dark;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @layer base {
-  * {
-    @apply border-dark-700;
-  }
-
   html {
-    @apply scroll-smooth;
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-dark-950 text-dark-200 font-sans antialiased;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    @apply bg-cream-200 text-charcoal-800 font-sans antialiased;
   }
 
   ::selection {
-    @apply bg-primary-500/30;
-    color: rgb(var(--heading-color));
-  }
-
-  /* ── Scrollbar ── */
-  ::-webkit-scrollbar {
-    @apply w-2;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-dark-950;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-dark-700 rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-dark-600;
-  }
-
-  /* ── Heading color override ── */
-  /*
-   * In dark mode, text-white = white. In light mode, headings
-   * and strong text that use text-white should become dark.
-   * This targets text-white on most content elements.
-   * Buttons, icons on gradient backgrounds are protected below.
-   */
-  :root:not(.dark) .text-white {
-    color: rgb(var(--heading-color));
-  }
-
-  /* Also handle text-white with opacity variants (e.g. text-white/80) */
-  :root:not(.dark) [class*="text-white\\/"] {
-    color: rgb(var(--heading-color));
-  }
-
-  /* Protect white on SVGs (icons on gradient backgrounds) */
-  :root:not(.dark) svg.text-white,
-  :root:not(.dark) svg[class*="text-white"] {
-    color: white;
-  }
-
-  /* Protect white text inside primary/warm buttons */
-  :root:not(.dark) .btn-primary,
-  :root:not(.dark) .btn-primary *,
-  :root:not(.dark) .btn-warm,
-  :root:not(.dark) .btn-warm * {
-    color: white;
-  }
-
-  /* Manual preserve-white override */
-  :root:not(.dark) .preserve-white {
-    color: white !important;
+    @apply bg-green-600/20 text-green-800;
   }
 }
 
 @layer components {
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 via-primary-300 to-emerald-400;
-  }
-
-  .gradient-border {
-    @apply relative;
-  }
-
-  .gradient-border::before {
-    content: '';
-    @apply absolute inset-0 rounded-xl p-[1px];
-    background: linear-gradient(135deg, #06b6d4, #10b981, #06b6d4);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-  }
-
-  .glass-card {
-    @apply bg-dark-900/50 backdrop-blur-xl border border-dark-700/50 rounded-xl;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-
-  /* Light mode: solid card bg instead of transparent */
-  :root:not(.dark) .glass-card {
-    background-color: rgb(var(--surface-900) / 0.8);
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
-  }
-
-  .glass-card-hover {
-    @apply glass-card transition-all duration-500 hover:border-primary-500/30 hover:bg-dark-800/50 hover:shadow-lg hover:shadow-primary-500/5;
-  }
-
-  :root:not(.dark) .glass-card-hover:hover {
-    background-color: rgb(var(--surface-900));
-    box-shadow: 0 10px 25px -5px rgb(6 182 212 / 0.07), 0 4px 10px -6px rgb(6 182 212 / 0.05);
-  }
-
-  .dot-pattern {
-    background-image: radial-gradient(circle, rgba(6, 182, 212, var(--dot-opacity)) 1px, transparent 1px);
-    background-size: 30px 30px;
-  }
-
-  .grid-pattern {
-    background-image:
-      linear-gradient(rgba(6, 182, 212, var(--grid-opacity)) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(6, 182, 212, var(--grid-opacity)) 1px, transparent 1px);
-    background-size: 60px 60px;
-  }
-
-  .glow {
-    box-shadow: 0 0 60px -15px rgba(6, 182, 212, var(--glow-opacity));
-  }
-
-  .glow-sm {
-    box-shadow: 0 0 30px -10px rgba(6, 182, 212, calc(var(--glow-opacity) * 0.66));
-  }
-
-  .btn-primary {
-    @apply inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg transition-all duration-300 hover:from-primary-400 hover:to-primary-500 hover:shadow-lg hover:shadow-primary-500/25 active:scale-[0.98];
-  }
-
-  .btn-warm {
-    @apply inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl transition-all duration-300 hover:from-orange-400 hover:to-orange-500 hover:shadow-lg hover:shadow-orange-500/25 active:scale-[0.98];
-  }
-
-  .card-warm {
-    @apply bg-dark-900/50 border border-dark-700/30 rounded-2xl;
-    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  :root:not(.dark) .card-warm {
-    background: white;
-    border-color: rgb(226 232 240);
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
-  }
-
-  .card-warm:hover {
-    @apply border-primary-500/30;
-    box-shadow: 0 8px 30px -8px rgb(6 182 212 / 0.1);
-  }
-
-  /* Image placeholder for lifestyle sections */
-  .img-placeholder {
-    @apply rounded-2xl overflow-hidden relative;
-    background: linear-gradient(135deg, rgb(var(--surface-800)), rgb(var(--surface-700)));
-  }
-
-  .img-placeholder img {
-    @apply w-full h-full object-cover;
-  }
-
-  .btn-secondary {
-    @apply inline-flex items-center gap-2 px-6 py-3 bg-dark-800 font-semibold rounded-lg border border-dark-600 transition-all duration-300 hover:border-primary-500/50 hover:bg-dark-700 active:scale-[0.98];
-    color: rgb(var(--surface-200));
-  }
-
-  .btn-secondary:hover {
-    color: rgb(var(--heading-color));
-  }
-
   .section-padding {
-    @apply py-20 md:py-28 lg:py-32;
+    @apply py-20 md:py-28;
   }
 
   .container-custom {
@@ -239,35 +28,101 @@
   }
 
   .section-label {
-    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm font-medium mb-4;
+    @apply text-sm font-semibold tracking-widest uppercase text-green-600 mb-3;
   }
 
   .section-title {
-    @apply text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight;
-    color: rgb(var(--heading-color));
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-charcoal-800 mb-4;
   }
 
   .section-subtitle {
-    @apply text-lg text-dark-400 max-w-2xl mt-4;
+    @apply text-lg md:text-xl text-charcoal-400 max-w-2xl;
   }
 
-  /* ── Light mode CTA section adjustments ── */
-  :root:not(.dark) .cta-section {
-    background: linear-gradient(135deg, rgb(236 254 255), rgb(240 253 244), rgb(236 254 255));
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full
+           bg-green-600 text-white font-semibold
+           hover:bg-green-700 transition-all duration-300
+           shadow-lg shadow-green-600/25 hover:shadow-xl hover:shadow-green-600/30
+           hover:-translate-y-0.5;
   }
 
-  :root:not(.dark) .cta-bg {
-    display: none;
+  .btn-coral {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full
+           bg-coral-500 text-white font-semibold
+           hover:bg-coral-600 transition-all duration-300
+           shadow-lg shadow-coral-500/25 hover:shadow-xl hover:shadow-coral-500/30
+           hover:-translate-y-0.5;
   }
 
-  /* ── Light mode: alternate section backgrounds ── */
-  :root:not(.dark) .bg-dark-900\/30 {
-    background-color: rgb(var(--surface-900) / 0.5);
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 rounded-full
+           border-2 border-green-600 text-green-600 font-semibold
+           hover:bg-green-600 hover:text-white transition-all duration-300
+           hover:-translate-y-0.5;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl p-8 shadow-sm
+           border border-cream-300/50
+           transition-all duration-300
+           hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .card-accent {
+    @apply bg-white rounded-2xl p-8
+           border-2 border-green-600/10
+           shadow-sm transition-all duration-300
+           hover:shadow-lg hover:border-green-600/20 hover:-translate-y-1;
+  }
+
+  /* Sub-page dark-theme components */
+  .glass-card {
+    @apply bg-charcoal-800/80 backdrop-blur-md rounded-2xl border border-charcoal-700/50
+           shadow-lg;
+  }
+
+  .glass-card-hover {
+    @apply bg-charcoal-800/80 backdrop-blur-md rounded-2xl border border-charcoal-700/50
+           shadow-lg transition-all duration-300
+           hover:border-green-600/30 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Background patterns for sub-pages */
+.dot-pattern {
+  background-image: radial-gradient(circle, rgba(45, 106, 79, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.cta-section .cta-bg {
+  background: linear-gradient(135deg, #1B4030 0%, #2D2D2D 50%, #122B20 100%);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cream-300;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-charcoal-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-charcoal-400;
 }

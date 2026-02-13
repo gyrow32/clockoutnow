@@ -1,41 +1,27 @@
-import Link from 'next/link'
+'use client'
 
-const footerLinks = {
-  services: [
-    { label: 'AI Chatbots', href: '/services#ai-chatbots' },
-    { label: 'AI Agents', href: '/services#ai-agents' },
-    { label: 'Automation', href: '/services#automation' },
-    { label: 'API Integration', href: '/services#api-integration' },
-    { label: 'Web Development', href: '/services#web-development' },
-    { label: 'Web Scraping', href: '/services#web-scraping' },
-  ],
-  company: [
-    { label: 'About Us', href: '/about' },
-    { label: 'Portfolio', href: '/portfolio' },
-    { label: 'Services', href: '/services' },
-    { label: 'Contact', href: '/contact' },
-  ],
-  connect: [
-    { label: 'GitHub', href: 'https://github.com/abuzar355' },
-    { label: 'Freelancer', href: 'https://www.freelancer.com/u/Abuzar00' },
-    { label: 'abuzarmirza918@gmail.com', href: 'mailto:abuzarmirza918@gmail.com' },
-    { label: 'gyrow32@gmail.com', href: 'mailto:gyrow32@gmail.com' },
-  ],
-}
+import { useState } from 'react'
 
 export default function Footer() {
+  const [email, setEmail] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    window.location.href = `mailto:gyrow32@gmail.com?subject=Free Consultation Request&body=Hi, I'm interested in learning more about your automation services. My email is ${email}.`
+    setSubmitted(true)
+  }
+
   return (
-    <footer className="relative border-t border-dark-800/50">
-      <div className="absolute inset-0 dot-pattern opacity-30" />
-      <div className="relative container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="relative w-8 h-8 flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-emerald-500 rounded-lg opacity-80" />
+    <footer id="contact" className="relative bg-charcoal-800">
+      <div className="container-custom py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Left — Brand + Links */}
+          <div>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-9 h-9 flex items-center justify-center bg-green-600 rounded-lg">
                 <svg
-                  className="relative w-4 h-4 text-white preserve-white"
+                  className="w-5 h-5 text-white"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -43,99 +29,113 @@ export default function Footer() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                  <path d="M2 17l10 5 10-5" />
-                  <path d="M2 12l10 5 10-5" />
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
                 </svg>
               </div>
-              <span className="text-lg font-bold text-white">
-                Nexus<span className="text-primary-400">AI</span>
-              </span>
-            </Link>
-            <p className="text-dark-400 text-sm leading-relaxed mb-6">
-              Building intelligent solutions with AI, automation, and modern
-              web technologies. From concept to deployment, we bring your ideas to life.
+              <div>
+                <span className="text-lg font-bold text-white leading-tight block">
+                  Get Your Time Back
+                </span>
+                <span className="text-sm text-charcoal-300">
+                  Small Business Automation
+                </span>
+              </div>
+            </div>
+
+            <p className="text-charcoal-300 text-sm leading-relaxed mb-8 max-w-md">
+              We build custom AI tools to automate your busywork. Serving Buffalo, Rochester,
+              Syracuse, and the surrounding areas. Stop grinding, start growing.
             </p>
-            <div className="flex items-center gap-3">
+
+            <div className="grid grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Navigate</h3>
+                <ul className="space-y-2">
+                  <li><a href="#how-it-works" className="text-charcoal-300 hover:text-coral-400 text-sm transition-colors">How It Works</a></li>
+                  <li><a href="#services" className="text-charcoal-300 hover:text-coral-400 text-sm transition-colors">Services</a></li>
+                  <li><a href="#about" className="text-charcoal-300 hover:text-coral-400 text-sm transition-colors">About Us</a></li>
+                  <li><a href="#contact" className="text-charcoal-300 hover:text-coral-400 text-sm transition-colors">Contact</a></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Services</h3>
+                <ul className="space-y-2">
+                  <li><a href="#services" className="text-charcoal-300 hover:text-coral-400 text-sm transition-colors">AI Chatbots</a></li>
+                  <li><a href="#services" className="text-charcoal-300 hover:text-coral-400 text-sm transition-colors">Automation</a></li>
+                  <li><a href="#services" className="text-charcoal-300 hover:text-coral-400 text-sm transition-colors">Web Development</a></li>
+                  <li><a href="#services" className="text-charcoal-300 hover:text-coral-400 text-sm transition-colors">Web Scraping</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Right — Contact Form */}
+          <div>
+            <h3 className="text-2xl font-bold text-white mb-2">
+              Ready to Get Started?
+            </h3>
+            <p className="text-charcoal-300 mb-6">
+              Drop your email and we&apos;ll reach out within 24 hours for a free consultation.
+            </p>
+
+            {!submitted ? (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your@email.com"
+                    required
+                    className="w-full px-5 py-3.5 rounded-xl bg-charcoal-700 border border-charcoal-600 text-white placeholder:text-charcoal-400 focus:outline-none focus:border-coral-500 focus:ring-1 focus:ring-coral-500 transition-colors"
+                  />
+                </div>
+                <button type="submit" className="btn-coral w-full justify-center text-base">
+                  Get My Free Consultation
+                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                  </svg>
+                </button>
+                <p className="text-charcoal-400 text-xs text-center">
+                  Free consultation &middot; No commitment &middot; We speak plain English
+                </p>
+              </form>
+            ) : (
+              <div className="bg-green-600/20 border border-green-600/30 rounded-xl p-6 text-center">
+                <div className="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <p className="text-white font-semibold mb-1">We&apos;ll be in touch!</p>
+                <p className="text-charcoal-300 text-sm">Check your inbox within 24 hours.</p>
+              </div>
+            )}
+
+            <div className="mt-8 pt-6 border-t border-charcoal-700 flex items-center gap-6">
               <a
-                href="https://github.com/abuzar355"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-lg bg-dark-800 text-dark-400 hover:text-white hover:bg-dark-700 transition-colors"
-                aria-label="GitHub"
-              >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-              </a>
-              <a
-                href="mailto:abuzarmirza918@gmail.com"
-                className="w-9 h-9 flex items-center justify-center rounded-lg bg-dark-800 text-dark-400 hover:text-white hover:bg-dark-700 transition-colors"
-                aria-label="Email"
+                href="mailto:gyrow32@gmail.com"
+                className="flex items-center gap-2 text-charcoal-300 hover:text-coral-400 text-sm transition-colors"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect width="20" height="16" x="2" y="4" rx="2" />
                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
+                gyrow32@gmail.com
               </a>
+              <span className="text-charcoal-300 text-sm">Buffalo, NY</span>
             </div>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Services</h3>
-            <ul className="space-y-2.5">
-              {footerLinks.services.map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className="text-dark-400 hover:text-primary-400 text-sm transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Company</h3>
-            <ul className="space-y-2.5">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className="text-dark-400 hover:text-primary-400 text-sm transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Connect */}
-          <div>
-            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Connect</h3>
-            <ul className="space-y-2.5">
-              {footerLinks.connect.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target={link.href.startsWith('http') ? '_blank' : undefined}
-                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="text-dark-400 hover:text-primary-400 text-sm transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-dark-800/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-dark-500 text-sm">
-            &copy; {new Date().getFullYear()} NexusAI. All rights reserved.
+        <div className="mt-12 pt-6 border-t border-charcoal-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-charcoal-400 text-sm">
+            &copy; {new Date().getFullYear()} Get Your Time Back. All rights reserved.
           </p>
-          <p className="text-dark-600 text-xs">
-            Built with Next.js, Tailwind CSS & AI
+          <p className="text-charcoal-500 text-xs">
+            Buffalo, NY &middot; Serving Western New York
           </p>
         </div>
       </div>

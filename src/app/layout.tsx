@@ -2,102 +2,74 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import ThemeProvider from '@/components/ThemeProvider'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://nexusai.vercel.app'),
+  metadataBase: new URL('https://getyourtimeback.com'),
   title: {
-    default: 'NexusAI | AI Chatbots, Automation & Web Development Agency',
-    template: '%s | NexusAI',
+    default: 'Get Your Time Back | AI Automation for Small Businesses',
+    template: '%s | Get Your Time Back',
   },
   description:
-    'Expert AI solutions agency specializing in custom chatbots, intelligent automation, API integrations, web scraping, Chrome extensions, and full-stack web development. Transform your business with cutting-edge AI technology.',
+    'Custom AI chatbots, workflow automation, and web solutions for Buffalo-area small businesses. Stop grinding, start growing. Free consultation.',
   keywords: [
-    'AI chatbot development',
-    'AI automation agency',
-    'custom chatbot builder',
-    'n8n workflow automation',
-    'API integration services',
-    'web scraping services',
-    'Chrome extension development',
-    'full stack web development',
-    'AI agent development',
-    'RAG chatbot',
-    'OpenAI integration',
-    'Shopify automation',
-    'business process automation',
-    'AI consulting',
-    'bot development',
-    'MCP integration',
-    'Next.js development',
-    'Python development',
-    'Node.js development',
-    'freelance AI developer',
+    'AI automation Buffalo',
+    'small business automation',
+    'AI chatbot for contractors',
+    'workflow automation Buffalo NY',
+    'small business AI tools',
+    'HVAC automation',
+    'contractor website',
+    'local business AI',
   ],
-  authors: [
-    { name: 'NexusAI', url: 'https://nexusai.vercel.app' },
-  ],
-  creator: 'NexusAI',
+  authors: [{ name: 'Get Your Time Back' }],
+  creator: 'Get Your Time Back',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://nexusai.vercel.app',
-    siteName: 'NexusAI',
-    title: 'NexusAI | AI Chatbots, Automation & Web Development Agency',
+    url: 'https://getyourtimeback.com',
+    siteName: 'Get Your Time Back',
+    title: 'Get Your Time Back | AI Automation for Small Businesses',
     description:
-      'Expert AI solutions agency specializing in custom chatbots, intelligent automation, API integrations, and full-stack web development.',
+      'Custom AI chatbots, workflow automation, and web solutions for Buffalo-area small businesses. Stop grinding, start growing.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'NexusAI - AI Solutions Agency',
+        alt: 'Get Your Time Back - Small Business Automation',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NexusAI | AI Chatbots, Automation & Web Development Agency',
+    title: 'Get Your Time Back | AI Automation for Small Businesses',
     description:
-      'Expert AI solutions agency specializing in custom chatbots, intelligent automation, and full-stack web development.',
+      'Custom AI chatbots, workflow automation, and web solutions for Buffalo-area small businesses.',
     images: ['/og-image.png'],
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
 }
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
-  name: 'NexusAI',
-  description: 'AI solutions agency specializing in chatbots, automation, API integration, and web development.',
-  url: 'https://nexusai.vercel.app',
-  email: ['abuzarmirza918@gmail.com', 'gyrow32@gmail.com'],
-  sameAs: [
-    'https://github.com/abuzar355',
-    'https://www.freelancer.com/u/Abuzar00',
-  ],
+  name: 'Get Your Time Back',
+  description:
+    'AI automation agency helping Buffalo-area small businesses save time with custom chatbots, workflow automation, and web development.',
+  url: 'https://getyourtimeback.com',
+  areaServed: {
+    '@type': 'GeoCircle',
+    geoMidpoint: { '@type': 'GeoCoordinates', latitude: 42.8864, longitude: -78.8784 },
+    geoRadius: '150',
+  },
   serviceType: [
     'AI Chatbot Development',
     'Workflow Automation',
-    'API Integration',
-    'Web Development',
+    'Website Development',
     'Web Scraping',
-    'Chrome Extension Development',
-  ],
-  areaServed: 'Worldwide',
-  founder: [
-    { '@type': 'Person', name: 'Abuzar Mirza' },
-    { '@type': 'Person', name: 'Mike' },
   ],
 }
 
@@ -107,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth dark" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -116,28 +88,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Prevent flash of wrong theme on load */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('nexusai-theme');
-                  if (theme === 'light') {
-                    document.documentElement.classList.remove('dark');
-                  }
-                } catch(e) {}
-              })();
-            `,
-          }}
-        />
       </head>
       <body className="min-h-screen flex flex-col">
-        <ThemeProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   )

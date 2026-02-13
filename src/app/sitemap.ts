@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://nexusai.vercel.app'
+  const baseUrl = 'https://getyourtimeback.com'
 
   return [
     {

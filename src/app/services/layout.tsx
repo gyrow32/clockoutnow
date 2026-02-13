@@ -3,11 +3,11 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'AI Chatbot Development, Workflow Automation, API Integration, Web Scraping, Chrome Extensions, Full-Stack Web Development, and E-Commerce Solutions. Expert AI and development services.',
+    'AI Chatbots, Workflow Automation, Website + AI Combos, Web Scraping, and Custom Development for Buffalo-area small businesses.',
   openGraph: {
-    title: 'Services | NexusAI',
+    title: 'Services | Get Your Time Back',
     description:
-      'Full-spectrum AI and development services including chatbots, automation, API integration, and web development.',
+      'AI automation services for small businesses — chatbots, workflow automation, web development, and more.',
   },
 }
 

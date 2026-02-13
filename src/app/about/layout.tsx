@@ -3,11 +3,11 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Meet the NexusAI team. Two builders passionate about AI, automation, and modern web development. Learn about our mission, values, and expertise.',
+    'Meet the Get Your Time Back team. Two builders passionate about AI, automation, and helping Buffalo-area small businesses save time.',
   openGraph: {
-    title: 'About Us | NexusAI',
+    title: 'About Us | Get Your Time Back',
     description:
-      'Meet the team behind NexusAI. AI specialists and full-stack developers building intelligent solutions.',
+      'Meet the team behind Get Your Time Back. AI and automation specialists helping small businesses save time.',
   },
 }
 
