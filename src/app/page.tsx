@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import AnimatedSection from '@/components/AnimatedSection'
 import ServiceIcon from '@/components/ServiceIcon'
 import { testimonials } from '@/data/testimonials'
@@ -140,44 +139,25 @@ export default function HomePage() {
         <div className="relative container-custom pt-28 pb-16 md:pt-36 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left — Copy */}
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
+            <div className="animate-fade-in">
+              <div>
                 <span className="section-label">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   AI Solutions That Speak Plain English
                 </span>
-              </motion.div>
+              </div>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mt-6"
-              >
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mt-6">
                 Navigate Today&apos;s Business World{' '}
                 <span className="gradient-text">Without the Burnout.</span>
-              </motion.h1>
+              </h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg md:text-xl text-dark-400 mt-6 max-w-lg leading-relaxed"
-              >
+              <p className="text-lg md:text-xl text-dark-400 mt-6 max-w-lg leading-relaxed">
                 We build custom AI tools to automate your repetitive tasks.
                 Stop grinding, start growing. We&apos;re here to help.
-              </motion.p>
+              </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex flex-wrap gap-4 mt-10"
-              >
+              <div className="flex flex-wrap gap-4 mt-10">
                 <Link href="/contact" className="btn-warm text-base px-8 py-4">
                   Tell Us Your Biggest Headache
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -187,25 +167,15 @@ export default function HomePage() {
                 <Link href="/portfolio" className="btn-secondary text-base px-8 py-4">
                   See Our Work
                 </Link>
-              </motion.div>
+              </div>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="text-dark-500 text-sm mt-6"
-              >
+              <p className="text-dark-500 text-sm mt-6">
                 Free consultation &middot; No tech jargon &middot; We speak plain English
-              </motion.p>
+              </p>
             </div>
 
             {/* Right — Hero Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative"
-            >
+            <div className="relative animate-fade-in">
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
@@ -230,7 +200,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
