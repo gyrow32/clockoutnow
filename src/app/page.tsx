@@ -179,7 +179,7 @@ export default function HomePage() {
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="text-charcoal-400 text-sm mt-6"
               >
-                Free consultation &middot; No contracts &middot; Built for contractors
+                Serving Buffalo &amp; Western NY &middot; Free consultation &middot; No contracts
               </motion.p>
             </div>
 
