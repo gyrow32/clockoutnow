@@ -34,7 +34,7 @@ export default function ContactPage() {
       const body = encodeURIComponent(
         `Name: ${formData.name}\nBusiness: ${formData.business}\nPhone: ${formData.phone}\n\nWhat's eating their time:\n${formData.message}`
       )
-      window.open(`mailto:gyrow32@gmail.com?subject=${subject}&body=${body}`)
+      window.open(`mailto:hello@clockoutnow.com?subject=${subject}&body=${body}`)
       setFormStatus('success')
       setFormData({ name: '', business: '', phone: '', message: '' })
     }
@@ -187,7 +187,7 @@ export default function ContactPage() {
                   <h3 className="text-charcoal-800 font-semibold mb-4">Prefer to Talk?</h3>
                   <div className="space-y-4">
                     <a
-                      href="mailto:gyrow32@gmail.com"
+                      href="mailto:hello@clockoutnow.com"
                       className="flex items-center gap-3 text-charcoal-500 hover:text-green-600 transition-colors group"
                     >
                       <div className="w-10 h-10 rounded-lg bg-cream-100 flex items-center justify-center group-hover:bg-green-600/10 transition-colors">
@@ -198,7 +198,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <div className="text-sm font-medium text-charcoal-700">Email</div>
-                        <div className="text-sm">gyrow32@gmail.com</div>
+                        <div className="text-sm">hello@clockoutnow.com</div>
                       </div>
                     </a>
                   </div>

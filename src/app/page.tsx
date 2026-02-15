@@ -416,7 +416,7 @@ export default function HomePage() {
                   <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
                 </svg>
               </a>
-              <a href="mailto:gyrow32@gmail.com" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-white/30 text-white font-semibold hover:bg-white/10 transition-all duration-300 hover:-translate-y-0.5">
+              <a href="mailto:hello@clockoutnow.com" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-white/30 text-white font-semibold hover:bg-white/10 transition-all duration-300 hover:-translate-y-0.5">
                 Email Us Directly
               </a>
             </div>
