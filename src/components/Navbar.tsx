@@ -1,12 +1,14 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
-  { href: '#how-it-works', label: 'How It Works' },
-  { href: '#services', label: 'Services' },
-  { href: '#about', label: 'About Us' },
+  { href: '/#how-it-works', label: 'How It Works' },
+  { href: '/#services', label: 'Services' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
@@ -34,7 +36,7 @@ export default function Navbar() {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-9 h-9 flex items-center justify-center">
               <div className="absolute inset-0 bg-green-600 rounded-lg group-hover:bg-green-700 transition-colors" />
               <svg
@@ -52,35 +54,35 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-bold text-charcoal-800 leading-tight">
-                Get Your Time Back
+                ClockOutNow
               </span>
               <span className="text-xs text-charcoal-400 hidden sm:block">
-                Small Business Automation
+                AI automation for businesses that work with their hands
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="px-4 py-2 text-sm font-medium rounded-lg text-charcoal-500 hover:text-green-600 transition-colors duration-200"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           {/* CTA */}
           <div className="hidden md:flex items-center">
-            <a href="#contact" className="btn-coral text-sm">
+            <Link href="/contact" className="btn-coral text-sm">
               Free Consultation
               <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
               </svg>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Hamburger */}
@@ -111,18 +113,18 @@ export default function Navbar() {
           >
             <div className="container-custom py-4 flex flex-col gap-1">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={handleNavClick}
                   className="px-4 py-3 rounded-lg text-sm font-medium text-charcoal-500 hover:text-green-600 hover:bg-cream-300/50 transition-colors"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <a href="#contact" onClick={handleNavClick} className="btn-coral text-sm mt-2 justify-center">
+              <Link href="/contact" onClick={handleNavClick} className="btn-coral text-sm mt-2 justify-center">
                 Free Consultation
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

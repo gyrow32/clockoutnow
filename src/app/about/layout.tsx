@@ -3,11 +3,11 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Meet the Get Your Time Back team. Two builders passionate about AI, automation, and helping Buffalo-area small businesses save time.',
+    'Meet the ClockOutNow team. We build AI tools for contractors and service businesses in Western New York.',
   openGraph: {
-    title: 'About Us | Get Your Time Back',
+    title: 'About Us | ClockOutNow',
     description:
-      'Meet the team behind Get Your Time Back. AI and automation specialists helping small businesses save time.',
+      'We build AI chatbots, websites, and booking systems for contractors and service businesses.',
   },
 }
 

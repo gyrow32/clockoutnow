@@ -1,13 +1,13 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Contact & Book a Call',
+  title: 'Contact Us',
   description:
-    'Book a free consultation with Get Your Time Back. Tell us about your biggest business headache and we\'ll propose a solution.',
+    'Get a free consultation with ClockOutNow. Tell us about your business and we\'ll show you how AI can help.',
   openGraph: {
-    title: 'Contact | Get Your Time Back',
+    title: 'Contact | ClockOutNow',
     description:
-      'Book a free consultation. We respond within 24 hours. No tech jargon, we speak plain English.',
+      'Free consultation for contractors and service businesses. We respond within 24 hours.',
   },
 }
 

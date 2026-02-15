@@ -3,12 +3,23 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import AnimatedSection from '@/components/AnimatedSection'
+import { scenarios } from '@/data/testimonials'
 
 const benefits = [
   {
-    title: 'Always On, Never Tired',
+    title: 'Never Miss a Lead',
     description:
-      'Your new digital assistant handles tasks 24/7. No coffee breaks, no sick days. It works while you sleep so you can focus on what matters.',
+      'Your phone rings while you\'re on a roof or under a sink. Our AI answers for you, gets the details, and texts you the lead. No more lost jobs.',
+    icon: (
+      <svg className="w-7 h-7 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Save Hours on Scheduling',
+    description:
+      'Stop playing phone tag. Customers book online, get automatic confirmations, and your calendar fills itself. You focus on the work.',
     icon: (
       <svg className="w-7 h-7 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
@@ -16,22 +27,12 @@ const benefits = [
     ),
   },
   {
-    title: 'Precision Accuracy',
+    title: 'Look Professional Online',
     description:
-      'Tired of copy-paste errors throwing off your books? Automation doesn\'t make typos. Your data stays clean, your reports stay accurate.',
+      'Customers Google you before they call. A clean website with real photos of your work and instant AI chat makes you look like the pro you are.',
     icon: (
       <svg className="w-7 h-7 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Affordable & Local',
-    description:
-      'You don\'t need an enterprise budget. We\'re right here in Buffalo, building solutions for businesses like yours. ROI in weeks, not years.',
-    icon: (
-      <svg className="w-7 h-7 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" />
       </svg>
     ),
   },
@@ -42,7 +43,7 @@ const steps = [
     number: '01',
     title: 'We Listen',
     description:
-      'We hop on a quick call. You tell us about the task that eats up most of your week. We listen. No jargon, no sales pressure.',
+      'Quick call. You tell us what\'s eating your time — missed calls, scheduling headaches, no web presence. We listen, no jargon.',
     icon: (
       <svg className="w-10 h-10 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" /><line x1="12" y1="19" x2="12" y2="23" /><line x1="8" y1="23" x2="16" y2="23" />
@@ -53,61 +54,31 @@ const steps = [
     number: '02',
     title: 'We Build',
     description:
-      'We propose a simple, tailored solution with a clear timeline and budget. Then we build custom AI tools to automate your repetitive tasks.',
+      'We set up your AI chatbot, website, or booking system. Usually ready in 1–2 weeks. You approve everything before it goes live.',
     icon: (
       <svg className="w-10 h-10 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /><line x1="14" y1="4" x2="10" y2="20" />
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
       </svg>
     ),
   },
   {
     number: '03',
-    title: 'You Relax',
+    title: 'You Grow',
     description:
-      'We integrate the tool into your workflow. You start getting your time back. Ongoing support included. Stop grinding, start growing.',
+      'Leads come in automatically. Your schedule fills up. You spend less time on the phone and more time doing what you\'re good at.',
     icon: (
       <svg className="w-10 h-10 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" />
       </svg>
     ),
   },
 ]
 
-const stats = [
-  { value: '50+', label: 'Projects Delivered' },
-  { value: '30+', label: 'Happy Businesses' },
-  { value: '1000+', label: 'Hours Saved Monthly' },
-  { value: '99%', label: 'Client Satisfaction' },
-]
-
-const testimonials = [
+const serviceCards = [
   {
-    name: 'James R.',
-    role: 'Owner',
-    company: 'JR Plumbing & Heating',
-    content: 'We used to spend 3 hours a day on scheduling and follow-ups. Now it runs itself. Best money I ever spent on the business.',
-    avatar: 'JR',
-  },
-  {
-    name: 'Maria S.',
-    role: 'Office Manager',
-    company: 'Comfort Zone HVAC',
-    content: 'The chatbot on our website handles 80% of the questions we used to answer by phone. Our customers love it and we actually close more jobs.',
-    avatar: 'MS',
-  },
-  {
-    name: 'Derek L.',
-    role: 'Owner',
-    company: 'Lakeside Cleaning Co.',
-    content: 'I was skeptical about AI, but these guys made it dead simple. I\'m saving about 15 hours a week now. Wish I\'d done it sooner.',
-    avatar: 'DL',
-  },
-]
-
-const services = [
-  {
-    title: 'AI Chatbots',
-    description: 'Customers asking the same questions over and over? We build chatbots that handle inquiries instantly, 24/7.',
+    title: 'AI Chatbot',
+    price: '$500 setup + $99/mo',
+    description: 'Answers customer questions 24/7, captures leads, and texts you. Like having a receptionist who never sleeps.',
     icon: (
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
@@ -115,17 +86,9 @@ const services = [
     ),
   },
   {
-    title: 'Workflow Automation',
-    description: 'Still manually moving data between systems? We connect your tools so information flows automatically.',
-    icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 3 21 3 21 8" /><line x1="4" y1="20" x2="21" y2="3" /><polyline points="21 16 21 21 16 21" /><line x1="15" y1="15" x2="21" y2="21" /><line x1="4" y1="4" x2="9" y2="9" />
-      </svg>
-    ),
-  },
-  {
-    title: 'Website + AI Combos',
-    description: 'Need a website that actually works for you? We build modern sites with built-in AI that captures leads while you sleep.',
+    title: 'Website + AI Combo',
+    price: '$1,200 setup + $99/mo',
+    description: 'Professional website that shows up on Google, plus a built-in AI chatbot. Everything a contractor needs online.',
     icon: (
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
@@ -133,11 +96,22 @@ const services = [
     ),
   },
   {
-    title: 'Data Collection',
-    description: 'Need product data, market prices, or competitor info? We build scrapers that collect and deliver data on autopilot.',
+    title: 'Booking Automation',
+    price: '$800–$2,000 one-time',
+    description: 'Online scheduling, automatic confirmations, follow-up reminders. No more phone tag or no-shows.',
     icon: (
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Custom Solutions',
+    price: 'Custom quote',
+    description: 'Got a bigger challenge? CRM, dispatch, multi-location — we\'ll build exactly what your business needs.',
+    icon: (
+      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
       </svg>
     ),
   },
@@ -146,13 +120,10 @@ const services = [
 export default function HomePage() {
   return (
     <>
-      {/* ═══════════════════════════════════
-          HERO
-         ═══════════════════════════════════ */}
+      {/* HERO */}
       <section className="relative overflow-hidden">
         <div className="container-custom pt-28 pb-16 md:pt-36 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left — Copy */}
             <div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -160,7 +131,7 @@ export default function HomePage() {
                 transition={{ duration: 0.5 }}
               >
                 <span className="section-label">
-                  AI Solutions That Speak Plain English
+                  AI Automation for Contractors &amp; Service Businesses
                 </span>
               </motion.div>
 
@@ -170,8 +141,8 @@ export default function HomePage() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-charcoal-800 leading-[1.15] mt-6"
               >
-                Navigate Today&apos;s Business World{' '}
-                <span className="text-green-600">Without the Burnout.</span>
+                Stop Losing Jobs to{' '}
+                <span className="text-green-600">Missed Calls.</span>
               </motion.h1>
 
               <motion.p
@@ -180,8 +151,9 @@ export default function HomePage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-lg md:text-xl text-charcoal-400 mt-6 max-w-lg leading-relaxed"
               >
-                We build custom AI tools to automate your repetitive tasks.
-                Stop grinding, start growing. We&apos;re here to help.
+                You&apos;re great at your trade. We build AI tools that answer your
+                calls, book your jobs, and make you look professional online &mdash;
+                so you can focus on the work.
               </motion.p>
 
               <motion.div
@@ -191,7 +163,7 @@ export default function HomePage() {
                 className="flex flex-wrap gap-4 mt-10"
               >
                 <a href="#contact" className="btn-coral text-base px-8 py-4">
-                  Tell Us Your Biggest Headache
+                  Get a Free Consultation
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
                   </svg>
@@ -207,11 +179,10 @@ export default function HomePage() {
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="text-charcoal-400 text-sm mt-6"
               >
-                Free consultation &middot; No tech jargon &middot; We speak plain English
+                Free consultation &middot; No contracts &middot; Built for contractors
               </motion.p>
             </div>
 
-            {/* Right — Hero Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -220,24 +191,23 @@ export default function HomePage() {
             >
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
-                  alt="Business professionals collaborating with technology"
+                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80"
+                  alt="Contractor working on a job site"
                   fill
                   className="object-cover"
                   priority
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                {/* Floating stats card */}
                 <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-green-600/10 flex items-center justify-center">
                       <svg className="w-5 h-5 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" />
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                       </svg>
                     </div>
                     <div>
-                      <div className="text-charcoal-800 text-sm font-bold">12 hrs/week saved</div>
-                      <div className="text-charcoal-400 text-xs">Average client result</div>
+                      <div className="text-charcoal-800 text-sm font-bold">New lead captured</div>
+                      <div className="text-charcoal-400 text-xs">While you were on the job</div>
                     </div>
                   </div>
                 </div>
@@ -247,18 +217,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════
-          EMPATHY — "We Understand the Pressure"
-         ═══════════════════════════════════ */}
+      {/* EMPATHY */}
       <section className="section-padding relative bg-cream-100">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Left — Image */}
             <AnimatedSection>
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg">
                 <Image
-                  src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=800&q=80"
-                  alt="Overwhelmed business owner dealing with manual tasks"
+                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
+                  alt="Contractor checking phone between jobs"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -266,27 +233,26 @@ export default function HomePage() {
               </div>
             </AnimatedSection>
 
-            {/* Right — Copy */}
             <AnimatedSection delay={0.1}>
               <h2 className="section-title">
-                We Understand the <span className="text-green-600">Pressure.</span>
+                We Know the <span className="text-green-600">Hustle.</span>
               </h2>
               <div className="mt-6 space-y-4 text-charcoal-500 text-lg leading-relaxed">
                 <p>
-                  If you&apos;re spending hours manually copying data between systems,
-                  chasing invoices, digging through messy spreadsheets, or replying
-                  to the same customer questions over and over...
+                  You&apos;re on a ladder, under a house, or elbow-deep in a job.
+                  Your phone rings. You can&apos;t answer. By the time you call back,
+                  they&apos;ve already hired someone else.
                 </p>
                 <p className="font-semibold text-charcoal-800">
-                  It&apos;s not your fault. But it is holding you back.
+                  You&apos;re losing money every time that happens.
                 </p>
                 <p>
-                  Manual tasks lead to burnout and expensive errors. You need a
-                  system that works as hard as you do &mdash; without the stress.
+                  We build simple AI tools that catch those leads, handle the
+                  back-and-forth, and let you focus on the work that pays.
                 </p>
               </div>
               <a href="#contact" className="btn-coral mt-8 inline-flex">
-                Let Us Handle the Busywork
+                Let&apos;s Fix That
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
                 </svg>
@@ -296,20 +262,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════
-          HOW IT WORKS — 3 Simple Steps
-         ═══════════════════════════════════ */}
+      {/* HOW IT WORKS */}
       <section id="how-it-works" className="section-padding relative">
         <div className="container-custom">
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto mb-16">
               <span className="section-label">How It Works</span>
               <h2 className="section-title mt-4">
-                How We Get <span className="text-green-600">Your Time</span> Back
+                Three Steps to <span className="text-green-600">More Jobs</span>
               </h2>
               <p className="section-subtitle mx-auto">
-                No complicated onboarding. No 6-month timelines.
-                Just three simple steps to freedom.
+                No complicated setup. No 6-month timelines. Just results.
               </p>
             </div>
           </AnimatedSection>
@@ -333,20 +296,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════
-          BENEFITS — "Your New Digital Helper"
-         ═══════════════════════════════════ */}
+      {/* BENEFITS */}
       <section id="about" className="section-padding relative bg-cream-100">
         <div className="container-custom">
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="section-label">Why Automate?</span>
+              <span className="section-label">Why ClockOutNow?</span>
               <h2 className="section-title mt-4">
-                Your New <span className="text-green-600">Digital Helper</span> Never Sleeps
+                Work Smarter, <span className="text-green-600">Not Longer</span>
               </h2>
               <p className="section-subtitle mx-auto">
-                Think of it as hiring a super-reliable assistant who works around the clock,
-                never makes typos, and costs a fraction of a full-time hire.
+                You didn&apos;t start your business to sit at a desk all day.
+                Let AI handle the busywork so you can do what you&apos;re good at.
               </p>
             </div>
           </AnimatedSection>
@@ -367,34 +328,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════
-          SERVICES — What We Offer
-         ═══════════════════════════════════ */}
+      {/* SERVICES */}
       <section id="services" className="section-padding relative">
         <div className="container-custom">
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="section-label">What We Build</span>
+              <span className="section-label">What We Offer</span>
               <h2 className="section-title mt-4">
-                What Can We Take <span className="text-green-600">Off Your Plate</span>?
+                Simple Tools That <span className="text-green-600">Get You Paid</span>
               </h2>
               <p className="section-subtitle mx-auto">
-                Real solutions for real business headaches. No buzzwords, just tools that
-                save you time and money.
+                No fancy tech talk. Just tools that bring in more jobs and save you time.
               </p>
             </div>
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {services.map((svc, i) => (
+            {serviceCards.map((svc, i) => (
               <AnimatedSection key={svc.title} delay={i * 0.1}>
                 <div className="card h-full group">
                   <div className="w-12 h-12 rounded-xl bg-green-600 flex items-center justify-center mb-5 text-white group-hover:scale-110 transition-transform duration-300">
                     {svc.icon}
                   </div>
-                  <h3 className="text-charcoal-800 font-semibold text-lg mb-2">
+                  <h3 className="text-charcoal-800 font-semibold text-lg mb-1">
                     {svc.title}
                   </h3>
+                  <p className="text-green-600 font-medium text-sm mb-3">{svc.price}</p>
                   <p className="text-charcoal-400 text-sm leading-relaxed">
                     {svc.description}
                   </p>
@@ -405,70 +364,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════
-          SOCIAL PROOF — Stats Bar
-         ═══════════════════════════════════ */}
-      <section className="relative bg-green-600">
-        <div className="container-custom py-14">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, i) => (
-              <AnimatedSection key={stat.label} delay={i * 0.1}>
-                <div className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold text-white">{stat.value}</div>
-                  <div className="text-green-100 text-sm mt-1">{stat.label}</div>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════
-          TESTIMONIALS — Client Success Stories
-         ═══════════════════════════════════ */}
+      {/* SCENARIO STORIES */}
       <section className="section-padding relative bg-cream-100">
         <div className="container-custom">
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="section-label">Success Stories</span>
+              <span className="section-label">Real Results</span>
               <h2 className="section-title mt-4">
-                Client <span className="text-green-600">Success Stories</span>
+                Stories From <span className="text-green-600">the Field</span>
               </h2>
               <p className="section-subtitle mx-auto">
-                Don&apos;t take our word for it. Here&apos;s what businesses like yours
-                have to say about working with us.
+                Here&apos;s what happens when contractors stop losing leads and start using AI.
               </p>
             </div>
           </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {testimonials.map((t, i) => (
-              <AnimatedSection key={t.name} delay={i * 0.1}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {scenarios.map((s, i) => (
+              <AnimatedSection key={s.id} delay={i * 0.1}>
                 <div className="card h-full flex flex-col">
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(5)].map((_, j) => (
-                      <svg key={j} className="w-5 h-5 text-coral-500" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
-                    ))}
-                  </div>
-
-                  {/* Quote */}
-                  <p className="text-charcoal-600 leading-relaxed flex-1 mb-5">
-                    &ldquo;{t.content}&rdquo;
+                  <div className="text-3xl mb-3">{s.icon}</div>
+                  <h3 className="text-charcoal-800 font-bold text-lg mb-3">{s.title}</h3>
+                  <p className="text-charcoal-500 text-sm leading-relaxed mb-3">
+                    <span className="font-semibold text-charcoal-700">The problem:</span> {s.problem}
                   </p>
-
-                  {/* Author */}
-                  <div className="flex items-center gap-3 pt-4 border-t border-cream-300">
-                    <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white text-sm font-bold">
-                      {t.avatar}
-                    </div>
-                    <div>
-                      <div className="text-charcoal-800 text-sm font-semibold">{t.name}</div>
-                      <div className="text-charcoal-400 text-xs">{t.role}, {t.company}</div>
-                    </div>
-                  </div>
+                  <p className="text-charcoal-500 text-sm leading-relaxed mt-auto">
+                    <span className="font-semibold text-green-600">The result:</span> {s.result}
+                  </p>
                 </div>
               </AnimatedSection>
             ))}
@@ -476,22 +398,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════
-          CTA — Final conversion
-         ═══════════════════════════════════ */}
+      {/* CTA */}
       <section className="relative py-20 overflow-hidden bg-charcoal-800">
         <div className="container-custom text-center">
           <AnimatedSection>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Ready to Automate the <span className="text-coral-400">Busywork</span>?
+              Ready to Stop <span className="text-coral-400">Missing Calls</span>?
             </h2>
             <p className="text-charcoal-300 text-lg max-w-xl mx-auto mb-10">
-              Don&apos;t let another week go by drowning in manual tasks.
-              Let&apos;s talk about a solution &mdash; it&apos;s free, and we speak plain English, not &ldquo;tech.&rdquo;
+              Let&apos;s talk about your business. 15 minutes, no pressure,
+              no tech jargon. Just a conversation about how to get you more jobs.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="#contact" className="btn-coral text-base px-8 py-4">
-                Schedule Your Free Consultation
+                Get Your Free Consultation
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
                 </svg>

@@ -3,11 +3,11 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'AI Chatbots, Workflow Automation, Website + AI Combos, Web Scraping, and Custom Development for Buffalo-area small businesses.',
+    'AI chatbots, professional websites, and booking automation for contractors and service businesses. Simple tools that get you more jobs.',
   openGraph: {
-    title: 'Services | Get Your Time Back',
+    title: 'Services | ClockOutNow',
     description:
-      'AI automation services for small businesses — chatbots, workflow automation, web development, and more.',
+      'AI chatbots, websites, and booking systems for contractors. Simple, affordable, effective.',
   },
 }
 
