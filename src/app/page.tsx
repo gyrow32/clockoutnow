@@ -369,7 +369,7 @@ export default function HomePage() {
         <div className="container-custom">
           <AnimatedSection>
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <span className="section-label">Real Results</span>
+              <span className="section-label">What This Looks Like</span>
               <h2 className="section-title mt-4">
                 Stories From <span className="text-green-600">the Field</span>
               </h2>
