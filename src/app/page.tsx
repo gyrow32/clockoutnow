@@ -191,8 +191,8 @@ export default function HomePage() {
             >
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80"
-                  alt="Contractor working on a job site"
+                  src="/hero-contractor.png"
+                  alt="Contractor with laptop showing professional website"
                   fill
                   className="object-cover"
                   priority
