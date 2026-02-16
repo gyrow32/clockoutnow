@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Richie Plumbing &amp; Heating | Rochester NY | 45 Years of Trusted Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #0c2340;
+      --blue: #1a5276;
+      --sky: #d4e6f1;
+      --sky-light: #eaf2f8;
+      --orange: #e67e22;
+      --orange-hover: #d35400;
+      --warm-white: #fefcf9;
+      --gray-50: #f8f9fa;
+      --gray-100: #e9ecef;
+      --gray-600: #6c757d;
+      --gray-800: #343a40;
+      --green: #27ae60;
+      --red-soft: #e74c3c;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray-800); background: var(--warm-white); overflow-x: hidden; }
+
+    /* === NAVBAR === */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(12, 35, 64, 0.95); backdrop-filter: blur(10px);
+      padding: 0.8rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .navbar-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none; color: #fff;
+    }
+    .navbar-brand .icon {
+      width: 40px; height: 40px; background: var(--orange);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .navbar-brand span { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.5px; }
+    .navbar-phone {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--orange); color: #fff;
+      padding: 0.6rem 1.2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+    .navbar-phone:hover { background: var(--orange-hover); transform: scale(1.05); }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh; padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, #1a6d8a 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -50%; right: -20%;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(230,126,34,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -10%; left: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(26,82,118,0.4) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      max-width: 1100px; width: 100%; position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center;
+    }
+    .hero-text { color: #fff; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.4rem 1rem; border-radius: 50px;
+      font-size: 0.85rem; color: rgba(255,255,255,0.9);
+      margin-bottom: 1.5rem; backdrop-filter: blur(5px);
+    }
+    .hero-badge .dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 800; line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 .highlight { color: var(--orange); }
+    .hero-sub {
+      font-size: 1.15rem; line-height: 1.7; color: rgba(255,255,255,0.8);
+      margin-bottom: 2rem; max-width: 500px;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--orange); color: #fff; border: none;
+      padding: 1rem 2rem; border-radius: 12px;
+      font-size: 1.05rem; font-weight: 700; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.3s; box-shadow: 0 4px 20px rgba(230,126,34,0.4);
+    }
+    .btn-primary:hover { background: var(--orange-hover); transform: translateY(-2px); box-shadow: 0 6px 25px rgba(230,126,34,0.5); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1); color: #fff;
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 1rem 2rem; border-radius: 12px;
+      font-size: 1.05rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
+
+    /* Hero image */
+    .hero-image-wrapper {
+      position: relative; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .hero-image-wrapper img {
+      width: 100%; height: 420px; object-fit: cover; display: block;
+    }
+    .hero-image-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(12,35,64,0.95), transparent);
+      padding: 2rem 1.5rem 1.5rem;
+    }
+    .hero-overlay-stats { display: flex; flex-direction: column; gap: 0.5rem; }
+    .hero-stat {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.9rem; color: rgba(255,255,255,0.9);
+    }
+    .hero-stat .check {
+      width: 26px; height: 26px; background: rgba(39,174,96,0.25);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; flex-shrink: 0; color: #2ecc71;
+    }
+    .hero-years-badge {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      background: var(--orange); color: #fff;
+      width: 80px; height: 80px; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(230,126,34,0.5);
+    }
+    .hero-years-badge .num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 800; line-height: 1; }
+    .hero-years-badge .lbl { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Section images */
+    .section-img {
+      width: 100%; border-radius: 16px; object-fit: cover;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .nofee-img-wrapper {
+      position: relative; border-radius: 20px; overflow: hidden;
+    }
+    .nofee-img-wrapper img {
+      width: 100%; height: 380px; object-fit: cover; display: block;
+    }
+    .nofee-price-tag {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: #fff; border-radius: 16px; padding: 1.2rem 1.8rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    .nofee-price-tag .big { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 800; color: var(--green); line-height: 1; }
+    .nofee-price-tag .lbl { font-size: 0.85rem; font-weight: 700; color: var(--navy); }
+
+    /* === TRUST BAR === */
+    .trust-bar {
+      background: var(--navy); padding: 1.5rem 2rem;
+      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      color: rgba(255,255,255,0.85); font-size: 0.9rem; font-weight: 500;
+    }
+    .trust-item svg { width: 22px; height: 22px; fill: var(--orange); flex-shrink: 0; }
+
+    /* === SECTIONS === */
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: inline-block; background: var(--sky-light); color: var(--blue);
+      padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.8rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 800; color: var(--navy);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-sub { font-size: 1.1rem; color: var(--gray-600); line-height: 1.7; max-width: 600px; margin-bottom: 3rem; }
+
+    /* === WHY US === */
+    .why-section { background: var(--gray-50); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .why-card {
+      background: #fff; border-radius: 16px; padding: 2rem;
+      border: 1px solid var(--gray-100);
+      transition: all 0.3s;
+    }
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .why-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.2rem;
+    }
+    .why-icon.blue { background: var(--sky-light); }
+    .why-icon.orange { background: #fef0db; }
+    .why-icon.green { background: #e8f8ef; }
+    .why-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--navy); }
+    .why-card p { font-size: 0.92rem; line-height: 1.6; color: var(--gray-600); }
+
+    /* === SERVICES === */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+    .service-card {
+      background: var(--sky-light); border-radius: 14px; padding: 1.5rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: all 0.3s; border: 2px solid transparent;
+    }
+    .service-card:hover { border-color: var(--blue); background: #fff; }
+    .service-icon {
+      width: 44px; height: 44px; background: var(--blue); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.2rem; flex-shrink: 0;
+    }
+    .service-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .service-card p { font-size: 0.82rem; color: var(--gray-600); line-height: 1.5; }
+
+    /* === CTA BANNER === */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      padding: 4rem 2rem; text-align: center; color: #fff;
+    }
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;
+    }
+    .cta-banner p { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-phone-big {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      background: var(--orange); color: #fff;
+      padding: 1.2rem 2.5rem; border-radius: 16px;
+      font-size: 1.5rem; font-weight: 800;
+      text-decoration: none; transition: all 0.3s;
+      box-shadow: 0 4px 30px rgba(230,126,34,0.4);
+    }
+    .cta-phone-big:hover { background: var(--orange-hover); transform: scale(1.05); }
+    .cta-sub { margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+
+    /* === NO-FEE SECTION === */
+    .nofee-section { background: #fff; }
+    .nofee-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .nofee-visual {
+      background: linear-gradient(135deg, var(--sky-light) 0%, #d5f5e3 100%);
+      border-radius: 20px; padding: 3rem; text-align: center;
+    }
+    .nofee-big { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 800; color: var(--navy); }
+    .nofee-label { font-size: 1.3rem; font-weight: 700; color: var(--blue); margin-top: 0.3rem; }
+    .nofee-content h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem; }
+    .nofee-content p { font-size: 1.05rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 1.5rem; }
+    .nofee-list { list-style: none; }
+    .nofee-list li {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.5rem 0; font-size: 1rem; color: var(--gray-800);
+    }
+    .nofee-list li::before { content: '\2713'; color: var(--green); font-weight: 700; font-size: 1.1rem; }
+
+    /* === TESTIMONIALS === */
+    .testimonials-section { background: var(--gray-50); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .testimonial-card {
+      background: #fff; border-radius: 16px; padding: 2rem;
+      border: 1px solid var(--gray-100);
+    }
+    .testimonial-stars { color: var(--orange); font-size: 1.1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .testimonial-text { font-size: 0.95rem; line-height: 1.7; color: var(--gray-600); margin-bottom: 1.2rem; font-style: italic; }
+    .testimonial-author { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+    .testimonial-loc { font-size: 0.8rem; color: var(--gray-600); }
+
+    /* === FOOTER === */
+    .footer {
+      background: var(--navy); color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem; text-align: center;
+    }
+    .footer-brand { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .footer-info { font-size: 0.9rem; line-height: 1.8; }
+    .footer-phone { color: var(--orange); text-decoration: none; font-weight: 700; }
+    .footer-bottom { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .why-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .nofee-grid { grid-template-columns: 1fr; }
+      .trust-bar { gap: 1.5rem; }
+      .navbar-brand span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">
+      <div class="icon">
+        <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 12h.01M6 6h12l-2 6h-8L6 6z"/><path d="M6 12v6a2 2 0 002 2h2m-4-8h12m0 0v6a2 2 0 01-2 2h-2"/></svg>
+      </div>
+      <span>Richie Plumbing &amp; Heating</span>
+    </a>
+    <a href="tel:5857660850" class="navbar-phone">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      (585) 766-0850
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Serving Rochester Since 1981
+        </div>
+        <h1>Rochester's Most Trusted Plumber <span class="highlight">Since 1981.</span> Zero Service Fees.</h1>
+        <p class="hero-sub">From leaky faucets to full heating systems, Richie Plumbing &amp; Heating has been Monroe County's trusted name for nearly half a century. No service charge. No surprises. Just expert work.</p>
+        <div class="hero-ctas">
+          <a href="tel:5857660850" class="btn-primary">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call Now - Free Quote
+          </a>
+          <a href="#services" class="btn-secondary">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            View Services
+          </a>
+        </div>
+      </div>
+      <div class="hero-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=500&fit=crop&crop=center" alt="Professional plumber at work">
+        <div class="hero-years-badge">
+          <span class="num">45</span>
+          <span class="lbl">Years</span>
+        </div>
+        <div class="hero-image-overlay">
+          <div class="hero-overlay-stats">
+            <div class="hero-stat"><span class="check">&#10003;</span> RG&amp;E Certified Technician</div>
+            <div class="hero-stat"><span class="check">&#10003;</span> Fully Insured &bull; No Service Charge</div>
+            <div class="hero-stat"><span class="check">&#10003;</span> Nights &amp; Weekends - No Extra Fee</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+      Fully Insured
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      RG&amp;E Certified
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      $0 Service Charge
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      45 Years Experience
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+      Nights &amp; Weekends
+    </div>
+  </div>
+
+  <!-- WHY RICHIE -->
+  <section class="section why-section">
+    <div class="section-inner">
+      <span class="section-label">Why Choose Richie</span>
+      <h2 class="section-title">Not Your Average Plumber</h2>
+      <p class="section-sub">While big companies charge you just to show up, Richie brings 45 years of hands-on expertise to your door &mdash; with zero service fees.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon blue">
+            <svg width="28" height="28" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1"/></svg>
+          </div>
+          <h3>Zero Service Charge</h3>
+          <p>No trip fees, no diagnostic charges, no hidden costs. You only pay for the work that gets done. Period.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon orange">
+            <svg width="28" height="28" fill="none" stroke="var(--orange)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3>Nights &amp; Weekends</h3>
+          <p>Pipe burst at midnight? Heater quit on Saturday? Richie is available when others aren't &mdash; at no extra charge.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon green">
+            <svg width="28" height="28" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3>RG&amp;E Certified</h3>
+          <p>Factory-trained and certified by Rochester Gas &amp; Electric. Your home's safety is in experienced, trusted hands.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon blue">
+            <svg width="28" height="28" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3>Clean &amp; Respectful</h3>
+          <p>Your home is treated with care. Clean work, no mess left behind, and honest communication from start to finish.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon orange">
+            <svg width="28" height="28" fill="none" stroke="var(--orange)" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <h3>No Overhead, Lower Prices</h3>
+          <p>No big office, no fleet of trucks, no markup to cover it all. Just honest pricing from a one-man expert operation.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon green">
+            <svg width="28" height="28" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3>Decades of Know-How</h3>
+          <p>45 years means Richie has seen it all and fixed it all. No guessing, no callbacks. Just reliable, expert work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-inner">
+      <span class="section-label">What We Fix</span>
+      <h2 class="section-title">Plumbing &amp; Heating Services</h2>
+      <p class="section-sub">From small repairs to full installations, we handle it all with 45 years of expertise behind every job.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem;">
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&h=200&fit=crop" alt="Water heater installation" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=200&fit=crop" alt="Kitchen sink plumbing" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1585128903994-9788298932a4?w=400&h=200&fit=crop" alt="Pipe repair work" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728M12 12v.01"/></svg>
+          </div>
+          <div>
+            <h4>Sinks &amp; Faucets</h4>
+            <p>Repairs, replacements, and new installations for kitchen &amp; bath.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </div>
+          <div>
+            <h4>Hot Water Tanks</h4>
+            <p>Expert installation and repair for all water heater types.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+          </div>
+          <div>
+            <h4>Sump Pumps</h4>
+            <p>Keep your basement dry with professional sump pump service.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          </div>
+          <div>
+            <h4>Disposals</h4>
+            <p>Garbage disposal repairs and new unit installations done right.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6m-6 3h6m-6 3h4"/></svg>
+          </div>
+          <div>
+            <h4>Toilets &amp; Traps</h4>
+            <p>Running, leaking, or clogged? We fix any toilet or trap issue fast.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+          <div>
+            <h4>Laundry Sinks</h4>
+            <p>Full laundry plumbing service including new sink installations.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: var(--orange);">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
+          </div>
+          <div>
+            <h4>Heating Systems</h4>
+            <p>Furnace &amp; boiler service, repair, and installation for cozy winters.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: var(--orange);">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div>
+            <h4>&amp; Much More</h4>
+            <p>If it involves pipes or heat, Richie can handle it. Just call and ask!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NO SERVICE CHARGE -->
+  <section class="section nofee-section">
+    <div class="section-inner">
+      <div class="nofee-grid">
+        <div class="nofee-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600&h=450&fit=crop&crop=center" alt="Plumber fixing sink under cabinet">
+          <div class="nofee-price-tag">
+            <div class="big">$0</div>
+            <div class="lbl">Service Charge</div>
+          </div>
+        </div>
+        <div class="nofee-content">
+          <h2>Why Pay a Service Fee When You Don't Have To?</h2>
+          <p>Big plumbing companies have big overhead &mdash; offices, trucks, dispatchers. That cost gets passed to you as a "service charge." Richie keeps it simple so you save more.</p>
+          <ul class="nofee-list">
+            <li>No trip charges or dispatch fees</li>
+            <li>No extra cost for after-hours calls</li>
+            <li>No weekend or holiday surcharges</li>
+            <li>Honest upfront pricing before work starts</li>
+            <li>You only pay for actual work performed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <h2>Got a Plumbing Emergency?</h2>
+    <p>Don't wait for it to get worse. Richie answers the phone &mdash; nights, weekends, and holidays &mdash; with zero extra fees.</p>
+    <a href="tel:5857660850" class="cta-phone-big">
+      <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      (585) 766-0850
+    </a>
+    <p class="cta-sub">Available 24/7 &bull; No Service Charge &bull; Monroe County &amp; Beyond</p>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials-section">
+    <div class="section-inner">
+      <span class="section-label">What Neighbors Say</span>
+      <h2 class="section-title">Trusted by Rochester Families</h2>
+      <p class="section-sub">After 45 years, word of mouth is our best advertisement.</p>
+      <div style="margin-bottom: 2.5rem; border-radius: 20px; overflow: hidden; max-height: 220px;">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1100&h=300&fit=crop&crop=bottom" alt="Rochester NY neighborhood homes" style="width: 100%; object-fit: cover; display: block;">
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Richie came out the same evening when our hot water tank died. No service fee, fair price, and had us back in hot water by morning. Can't recommend enough!"</p>
+          <div class="testimonial-author">Mike R.</div>
+          <div class="testimonial-loc">Webster, NY</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"We've used Richie for 15 years. He's honest, fast, and his prices are way below the big companies. Plus no charge just for showing up &mdash; that's unheard of."</p>
+          <div class="testimonial-author">Linda &amp; Tom S.</div>
+          <div class="testimonial-loc">Irondequoit, NY</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Our furnace quit on a Saturday night. Richie answered the phone and was here within the hour. No weekend surcharge. This is what real service looks like."</p>
+          <div class="testimonial-author">James D.</div>
+          <div class="testimonial-loc">Penfield, NY</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">Richie Plumbing &amp; Heating</div>
+    <div class="footer-info">
+      Serving Monroe County &amp; Rochester, NY for 45 Years<br>
+      <a href="tel:5857660850" class="footer-phone">(585) 766-0850</a><br>
+      RG&amp;E Certified &bull; Fully Insured &bull; No Service Charge
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Richie Plumbing &amp; Heating. All rights reserved.<br>
+      <span style="color: rgba(255,255,255,0.4); font-size: 0.75rem;">Landing page designed by ClockOutNow.com</span>
+    </div>
+  </footer>
+
+</body>
+</html>
