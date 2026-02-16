@@ -1,0 +1,48 @@
+{
+  "gagan-plumbing": {
+    "businessName": "Gagan's Professional Plumbing & Remodeling",
+    "ownerName": "Gagan",
+    "trade": "plumbing",
+    "location": "Buffalo & Grand Island, NY",
+    "services": [
+      "Toilet Installation",
+      "Faucet Replacement",
+      "Vanity & Countertop Install",
+      "Full Bathroom Remodels",
+      "Same-Day Emergency Service",
+      "Free Estimates"
+    ],
+    "heroTagline": "Licensed & insured bathroom remodeling — done right the first time.",
+    "chatPreview": [
+      { "role": "customer", "text": "Hi, I need a new toilet installed. What do you charge?" },
+      { "role": "bot", "text": "Hey! Thanks for reaching out. Toilet installs typically run $150-250 depending on the setup. Do you already have the toilet, or need help picking one?" },
+      { "role": "customer", "text": "I have it already. It's a standard floor mount." },
+      { "role": "bot", "text": "Perfect — standard installs are straightforward. I can get Gagan out to you as soon as tomorrow. What's your zip code? I'll check availability." },
+      { "role": "customer", "text": "14072, Grand Island" },
+      { "role": "bot", "text": "Great, that's right in our area! I have a morning slot open tomorrow. Can I grab your name and number so Gagan can confirm?" }
+    ]
+  },
+  "matts-cleanouts": {
+    "businessName": "Matt's Cleanouts & Handyman",
+    "ownerName": "Matt",
+    "trade": "handyman",
+    "location": "Lockport & Buffalo, NY",
+    "services": [
+      "Property Cleanouts",
+      "Junk Removal",
+      "Handyman Repairs",
+      "Snow Removal",
+      "Light Demolition",
+      "Same-Day Service"
+    ],
+    "heroTagline": "Fast, reliable cleanouts and handyman work — rain or shine.",
+    "chatPreview": [
+      { "role": "customer", "text": "I need a garage cleaned out ASAP. How much?" },
+      { "role": "bot", "text": "Hey! Garage cleanouts typically run $200-500 depending on how full it is. Single car or double?" },
+      { "role": "customer", "text": "Double. It's pretty packed." },
+      { "role": "bot", "text": "No problem — Matt handles those all the time. We can usually get there within 24-48 hours. Want me to set up a quick estimate? Just need your address and a photo if you have one." },
+      { "role": "customer", "text": "Yeah that works. It's in Lockport." },
+      { "role": "bot", "text": "Perfect, Lockport is right in our zone. Let me grab your name and number and Matt will call you back within the hour to schedule. 👍" }
+    ]
+  }
+}
