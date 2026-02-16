@@ -44,5 +44,110 @@
       { "role": "customer", "text": "Yeah that works. It's in Lockport." },
       { "role": "bot", "text": "Perfect, Lockport is right in our zone. Let me grab your name and number and Matt will call you back within the hour to schedule. 👍" }
     ]
+  },
+  "mr-concrete-inc": {
+    "businessName": "MR. CONCRETE INC.",
+    "ownerName": null,
+    "trade": "concrete",
+    "location": "Avon, OH (All of Ohio)",
+    "services": [
+      "Driveway Replacement",
+      "Garage Floors",
+      "Stamped & Decorative Concrete",
+      "Patios & Walkways",
+      "Commercial Flatwork",
+      "Permit Pulling"
+    ],
+    "heroTagline": "Licensed, bonded, and insured concrete work — we pull permits in every city.",
+    "chatPreview": [
+      { "role": "customer", "text": "What do you charge for driveway replacement?" },
+      { "role": "bot", "text": "Hey! Driveway replacements typically run $8-12 per square foot depending on thickness and prep work. How big is your driveway?" },
+      { "role": "customer", "text": "About 20x40 feet, standard 2-car." },
+      { "role": "bot", "text": "Perfect — that's about 800 sq ft, so ballpark $6,400-9,600 installed. Can you send me a couple photos of the current driveway? I can get you a firm quote within a few hours." }
+    ]
+  },
+  "upstate-movers": {
+    "businessName": "Upstate Movers",
+    "ownerName": null,
+    "trade": "moving",
+    "location": "Rochester, NY & Surrounding Counties",
+    "services": [
+      "Residential Moving",
+      "Commercial Moving",
+      "Piano Moving",
+      "Long Distance",
+      "Senior & Veteran Discounts",
+      "24/7 Availability"
+    ],
+    "heroTagline": "Your stress-free move starts here — 24/7, senior & veteran discounts.",
+    "chatPreview": [
+      { "role": "customer", "text": "How much to move a 2 bedroom apartment?" },
+      { "role": "bot", "text": "Hey! 2BR moves usually take 3-5 hours with our crew. Are you moving locally or long distance?" },
+      { "role": "customer", "text": "Local, about 15 minutes away. Moving next Saturday." },
+      { "role": "bot", "text": "Perfect — local moves are straightforward. We have availability next Saturday. Let me get you a free quote. Can I grab your current address and where you're moving to?" }
+    ]
+  },
+  "richie-plumbing": {
+    "businessName": "RICHIE PLUMBING and HEATING",
+    "ownerName": "Richie",
+    "trade": "plumbing",
+    "location": "Rochester & Monroe County, NY",
+    "services": [
+      "Sinks & Faucets",
+      "Sump Pumps",
+      "Hot Water Tanks",
+      "Garbage Disposals",
+      "Drain Cleaning",
+      "45 Years Experience"
+    ],
+    "heroTagline": "45 years of trusted plumbing — RG&E Certified, insured, no subcontractors.",
+    "chatPreview": [
+      { "role": "customer", "text": "My hot water tank is leaking. Can you help?" },
+      { "role": "bot", "text": "Absolutely — leaking tanks usually need replacement. How old is the tank, and is it gas or electric?" },
+      { "role": "customer", "text": "About 12 years old, gas." },
+      { "role": "bot", "text": "Yeah, 12 years is right around the end of life for most tanks. Richie can get you a same-day estimate and have a new one installed within 24-48 hours. What's your address?" }
+    ]
+  },
+  "exact-hvac": {
+    "businessName": "EXACT HVAC SERVICE AND INSTALL",
+    "ownerName": null,
+    "trade": "hvac",
+    "location": "Monroe County, Rochester, NY",
+    "services": [
+      "Boiler Repair & Install",
+      "Furnace Service",
+      "Air Conditioning",
+      "Heat Pumps",
+      "Tankless Water Heaters",
+      "24/7 Emergency"
+    ],
+    "heroTagline": "MCC Certified HVAC — 24/7 service, new customer discounts.",
+    "chatPreview": [
+      { "role": "customer", "text": "My furnace stopped working. It's freezing in here!" },
+      { "role": "bot", "text": "Sorry to hear that! We offer 24/7 emergency service. Is it a gas or electric furnace, and how long has it been out?" },
+      { "role": "customer", "text": "Gas furnace, been out since this morning." },
+      { "role": "bot", "text": "Got it. We can get a tech out to you today — 24/7 emergency availability. What's your address and best contact number?" }
+    ]
+  },
+  "stalczynski-contracting": {
+    "businessName": "Stalczynski Contracting LLC",
+    "ownerName": null,
+    "trade": "demolition",
+    "location": "Erie, PA & Surrounding Areas",
+    "services": [
+      "House Demolition",
+      "Garage Demolition",
+      "Excavating",
+      "Site Preparation",
+      "REDI-ROCK Walls",
+      "24hr Emergency"
+    ],
+    "heroTagline": "PA Licensed demolition and excavation — from teardown to site-ready.",
+    "chatPreview": [
+      { "role": "customer", "text": "How much to demolish a detached garage?" },
+      { "role": "bot", "text": "Hey! Garage demolitions vary based on size and foundation. What are the dimensions, and does it have a concrete slab or foundation that needs to be removed?" },
+      { "role": "customer", "text": "It's about 20x24, concrete slab." },
+      { "role": "bot", "text": "Perfect — we handle those all the time. We offer free on-site estimates. What's your address in Erie, and when works for you?" }
+    ]
   }
 }
