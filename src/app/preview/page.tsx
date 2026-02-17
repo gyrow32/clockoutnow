@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import AnimatedSection from '@/components/AnimatedSection'
@@ -14,7 +14,7 @@ interface PageInfo {
 
 const ACCESS_KEY = 'clockout'
 
-export default function PreviewIndex() {
+function PreviewContent() {
   const [pages, setPages] = useState<PageInfo[]>([])
   const [authorized, setAuthorized] = useState(false)
   const searchParams = useSearchParams()
@@ -142,5 +142,13 @@ export default function PreviewIndex() {
         </div>
       </section>
     </>
+  )
+}
+
+export default function PreviewIndex() {
+  return (
+    <Suspense fallback={null}>
+      <PreviewContent />
+    </Suspense>
   )
 }
