@@ -46,7 +46,7 @@ export async function GET(
         transition:background .2s;
       " onmouseover="this.style.background='#15803d'"
          onmouseout="this.style.background='#16a34a'">
-        Want one like this? Let&apos;s talk &rarr;
+        Get a Website Like This &mdash; Free Consultation &rarr;
       </a>
     </div>
     <div style="height:40px;"></div>`

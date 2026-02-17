@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import AnimatedSection from '@/components/AnimatedSection'
 
@@ -11,15 +12,27 @@ interface PageInfo {
   location: string
 }
 
+const ACCESS_KEY = 'clockout'
+
 export default function PreviewIndex() {
   const [pages, setPages] = useState<PageInfo[]>([])
+  const [authorized, setAuthorized] = useState(false)
+  const searchParams = useSearchParams()
+  const router = useRouter()
 
   useEffect(() => {
+    if (searchParams.get('key') !== ACCESS_KEY) {
+      router.replace('/')
+      return
+    }
+    setAuthorized(true)
     fetch('/api/preview-pages')
       .then((r) => r.json())
       .then(setPages)
       .catch(() => {})
-  }, [])
+  }, [searchParams, router])
+
+  if (!authorized) return null
 
   return (
     <>
