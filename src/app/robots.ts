@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://getyourtimeback.com/sitemap.xml',
+    sitemap: 'https://clockoutnow.com/sitemap.xml',
   }
 }
