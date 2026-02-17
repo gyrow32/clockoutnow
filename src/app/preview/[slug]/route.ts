@@ -39,15 +39,27 @@ export async function GET(
         </svg>
         <span>Free preview by <a href="https://clockoutnow.com" style="color:#4ade80;text-decoration:none;font-weight:600;">ClockOutNow</a></span>
       </div>
-      <a href="https://clockoutnow.com/contact" style="
-        background:#16a34a;color:#fff;
-        padding:6px 16px;border-radius:6px;
-        text-decoration:none;font-weight:600;font-size:12px;
-        transition:background .2s;
-      " onmouseover="this.style.background='#15803d'"
-         onmouseout="this.style.background='#16a34a'">
-        Get a Website Like This &mdash; Free Consultation &rarr;
-      </a>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <a href="https://clockoutnow.com" style="
+          color:#d1d5db;
+          padding:6px 14px;border-radius:6px;
+          text-decoration:none;font-weight:500;font-size:12px;
+          border:1px solid #374151;
+          transition:background .2s,color .2s;
+        " onmouseover="this.style.background='#1f2937';this.style.color='#fff'"
+           onmouseout="this.style.background='transparent';this.style.color='#d1d5db'">
+          Visit Website
+        </a>
+        <a href="https://clockoutnow.com/contact" style="
+          background:#16a34a;color:#fff;
+          padding:6px 14px;border-radius:6px;
+          text-decoration:none;font-weight:600;font-size:12px;
+          transition:background .2s;
+        " onmouseover="this.style.background='#15803d'"
+           onmouseout="this.style.background='#16a34a'">
+          Free Consultation &rarr;
+        </a>
+      </div>
     </div>
     <div style="height:40px;"></div>`
 
