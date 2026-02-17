@@ -14,6 +14,16 @@ interface PageInfo {
 
 const ACCESS_KEY = 'clockout'
 
+// Placeholder cards shown blurred when locked
+const PLACEHOLDER_CARDS = [
+  { business: 'ABC Plumbing Co', location: 'Rochester, NY' },
+  { business: 'Pro Electrical LLC', location: 'Buffalo, NY' },
+  { business: 'Summit Roofing', location: 'Syracuse, NY' },
+  { business: 'Quality Painters Inc', location: 'Pittsburgh, PA' },
+  { business: 'Metro HVAC Services', location: 'Cleveland, OH' },
+  { business: 'First Choice Movers', location: 'Erie, PA' },
+]
+
 function PreviewContent() {
   const [pages, setPages] = useState<PageInfo[]>([])
   const [authorized, setAuthorized] = useState(false)
@@ -51,48 +61,15 @@ function PreviewContent() {
       <section className="relative pt-32 pb-16 overflow-hidden">
         <div className="container-custom">
           <AnimatedSection>
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-              <div>
-                <span className="section-label">Our Work</span>
-                <h1 className="section-title mt-4 max-w-3xl">
-                  Landing Page{' '}
-                  <span className="text-green-600">Previews</span>
-                </h1>
-                <p className="section-subtitle mt-4 max-w-2xl text-charcoal-400">
-                  Custom-built landing pages for local businesses. Each one is a free
-                  preview — no strings attached.
-                </p>
-              </div>
-
-              {/* Key input — right side */}
-              {!authorized && (
-                <div className="flex-shrink-0">
-                  <div className="flex items-center gap-2">
-                    <input
-                      type="password"
-                      value={keyInput}
-                      onChange={(e) => { setKeyInput(e.target.value); setError(false) }}
-                      onKeyDown={(e) => e.key === 'Enter' && handleUnlock()}
-                      placeholder="Access key"
-                      className={`w-36 px-3 py-2 text-sm rounded-lg border bg-white text-charcoal-800 outline-none transition-colors ${
-                        error
-                          ? 'border-red-400 focus:border-red-500'
-                          : 'border-charcoal-200 focus:border-green-600'
-                      }`}
-                    />
-                    <button
-                      onClick={handleUnlock}
-                      className="px-4 py-2 text-sm font-medium rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors"
-                    >
-                      Unlock
-                    </button>
-                  </div>
-                  {error && (
-                    <p className="text-red-500 text-xs mt-1.5">Invalid key</p>
-                  )}
-                </div>
-              )}
-            </div>
+            <span className="section-label">Our Work</span>
+            <h1 className="section-title mt-4 max-w-3xl">
+              Landing Page{' '}
+              <span className="text-green-600">Previews</span>
+            </h1>
+            <p className="section-subtitle mt-4 max-w-2xl text-charcoal-400">
+              Custom-built landing pages for local businesses. Each one is a free
+              preview — no strings attached.
+            </p>
           </AnimatedSection>
         </div>
       </section>
@@ -101,17 +78,73 @@ function PreviewContent() {
       <section className="pb-20">
         <div className="container-custom">
           {!authorized ? (
-            <AnimatedSection>
-              <div className="text-center py-16">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-cream-300 flex items-center justify-center">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#A3A3A3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                  </svg>
-                </div>
-                <p className="text-charcoal-500 text-lg">Enter access key to view previews</p>
+            <div className="relative">
+              {/* Blurred placeholder cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 blur-md select-none pointer-events-none" aria-hidden="true">
+                {PLACEHOLDER_CARDS.map((card, i) => (
+                  <div key={i} className="card !p-0 overflow-hidden">
+                    <div className="h-40 bg-gradient-to-br from-green-800 to-charcoal-800 flex items-center justify-center">
+                      <div className="text-center px-6">
+                        <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center">
+                          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <line x1="3" y1="9" x2="21" y2="9" />
+                            <line x1="9" y1="21" x2="9" y2="9" />
+                          </svg>
+                        </div>
+                        <p className="text-white font-semibold">{card.business}</p>
+                        <p className="text-white/60 text-xs mt-1">{card.location}</p>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-charcoal-800 font-semibold text-lg mb-1">{card.business}</h3>
+                      <p className="text-charcoal-400 text-sm">Landing page preview</p>
+                      <div className="mt-4 flex items-center gap-2 text-coral-500 text-sm font-medium">
+                        View preview
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </AnimatedSection>
+
+              {/* Unlock overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="bg-white rounded-2xl shadow-2xl border border-charcoal-100 p-8 max-w-sm w-full text-center">
+                  <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-green-50 flex items-center justify-center">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                  </div>
+                  <h3 className="text-charcoal-800 font-bold text-lg mb-1">Locked</h3>
+                  <p className="text-charcoal-400 text-sm mb-6">Enter the access key to view previews</p>
+                  <div className="flex gap-2">
+                    <input
+                      type="password"
+                      value={keyInput}
+                      onChange={(e) => { setKeyInput(e.target.value); setError(false) }}
+                      onKeyDown={(e) => e.key === 'Enter' && handleUnlock()}
+                      placeholder="Access key"
+                      className={`flex-1 px-4 py-2.5 text-sm rounded-lg border bg-white text-charcoal-800 outline-none transition-colors ${
+                        error
+                          ? 'border-red-400 focus:border-red-500'
+                          : 'border-charcoal-200 focus:border-green-600'
+                      }`}
+                      autoFocus
+                    />
+                    <button
+                      onClick={handleUnlock}
+                      className="px-5 py-2.5 text-sm font-semibold rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors"
+                    >
+                      Unlock
+                    </button>
+                  </div>
+                  {error && (
+                    <p className="text-red-500 text-xs mt-2">Invalid access key</p>
+                  )}
+                </div>
+              </div>
+            </div>
           ) : pages.length === 0 ? (
             <AnimatedSection>
               <div className="text-center py-16">
@@ -136,7 +169,6 @@ function PreviewContent() {
                     className="block h-full"
                   >
                     <div className="card h-full group cursor-pointer !p-0 overflow-hidden">
-                      {/* Card Header */}
                       <div className="h-40 bg-gradient-to-br from-green-800 to-charcoal-800 flex items-center justify-center relative overflow-hidden">
                         <div className="absolute inset-0 grid-pattern opacity-50" />
                         <div className="text-center px-6 relative z-10">
@@ -153,8 +185,6 @@ function PreviewContent() {
                           )}
                         </div>
                       </div>
-
-                      {/* Card Body */}
                       <div className="p-6">
                         <h3 className="text-charcoal-800 font-semibold text-lg mb-1 group-hover:text-green-600 transition-colors">
                           {page.business}
