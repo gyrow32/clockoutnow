@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stalczynski Contracting LLC | Erie PA | Licensed Demolition &amp; Excavation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --iron: #1c1917;
+      --iron-light: #292524;
+      --amber: #f59e0b;
+      --amber-hover: #d97706;
+      --steel: #57534e;
+      --steel-light: #78716c;
+      --warm-white: #fafaf9;
+      --gray-50: #f5f5f4;
+      --gray-100: #e7e5e4;
+      --gray-600: #57534e;
+      --gray-800: #1c1917;
+      --green: #16a34a;
+      --green-light: #dcfce7;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray-800); background: var(--warm-white); overflow-x: hidden; }
+
+    /* === NAVBAR === */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(28, 25, 23, 0.95); backdrop-filter: blur(10px);
+      padding: 0.8rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .navbar-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none; color: #fff;
+    }
+    .navbar-brand .icon {
+      width: 40px; height: 40px; background: var(--amber);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .navbar-brand span { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.5px; }
+    .navbar-phone {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--amber); color: var(--iron);
+      padding: 0.6rem 1.2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+    .navbar-phone:hover { background: var(--amber-hover); transform: scale(1.05); }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh; padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--iron) 0%, #292524 50%, #44403c 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -50%; right: -20%;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -10%; left: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(87,83,78,0.4) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      max-width: 1100px; width: 100%; position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center;
+    }
+    .hero-text { color: #fff; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+      padding: 0.4rem 1rem; border-radius: 50px;
+      font-size: 0.85rem; color: rgba(255,255,255,0.9);
+      margin-bottom: 1.5rem; backdrop-filter: blur(5px);
+    }
+    .hero-badge .dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 800; line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 .highlight { color: var(--amber); }
+    .hero-sub {
+      font-size: 1.15rem; line-height: 1.7; color: rgba(255,255,255,0.8);
+      margin-bottom: 2rem; max-width: 500px;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--amber); color: var(--iron); border: none;
+      padding: 1rem 2rem; border-radius: 12px;
+      font-size: 1.05rem; font-weight: 700; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.3s; box-shadow: 0 4px 20px rgba(245,158,11,0.4);
+    }
+    .btn-primary:hover { background: var(--amber-hover); transform: translateY(-2px); box-shadow: 0 6px 25px rgba(245,158,11,0.5); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1); color: #fff;
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 1rem 2rem; border-radius: 12px;
+      font-size: 1.05rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
+
+    /* Hero image */
+    .hero-image-wrapper {
+      position: relative; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .hero-image-wrapper img {
+      width: 100%; height: 420px; object-fit: cover; display: block;
+    }
+    .hero-image-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(28,25,23,0.95), transparent);
+      padding: 2rem 1.5rem 1.5rem;
+    }
+    .hero-overlay-stats { display: flex; flex-direction: column; gap: 0.5rem; }
+    .hero-stat {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.9rem; color: rgba(255,255,255,0.9);
+    }
+    .hero-stat .check {
+      width: 26px; height: 26px; background: rgba(22,163,74,0.25);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; flex-shrink: 0; color: #4ade80;
+    }
+    .hero-llc-badge {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      background: var(--amber); color: var(--iron);
+      width: 80px; height: 80px; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(245,158,11,0.5);
+    }
+    .hero-llc-badge .num { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 800; line-height: 1; }
+    .hero-llc-badge .lbl { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Section images */
+    .section-img {
+      width: 100%; border-radius: 16px; object-fit: cover;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .credentials-img-wrapper {
+      position: relative; border-radius: 20px; overflow: hidden;
+    }
+    .credentials-img-wrapper img {
+      width: 100%; height: 380px; object-fit: cover; display: block;
+    }
+    .credentials-tag {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: #fff; border-radius: 16px; padding: 1.2rem 1.8rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    .credentials-tag .big { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 800; color: var(--green); line-height: 1; }
+    .credentials-tag .lbl { font-size: 0.85rem; font-weight: 700; color: var(--iron); }
+
+    /* === TRUST BAR === */
+    .trust-bar {
+      background: var(--iron); padding: 1.5rem 2rem;
+      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      color: rgba(255,255,255,0.85); font-size: 0.9rem; font-weight: 500;
+    }
+    .trust-item svg { width: 22px; height: 22px; fill: var(--amber); flex-shrink: 0; }
+
+    /* === SECTIONS === */
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: inline-block; background: #fef3c7; color: #92400e;
+      padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.8rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 800; color: var(--iron);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-sub { font-size: 1.1rem; color: var(--gray-600); line-height: 1.7; max-width: 600px; margin-bottom: 3rem; }
+
+    /* === WHY US === */
+    .why-section { background: var(--gray-50); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .why-card {
+      background: #fff; border-radius: 16px; padding: 2rem;
+      border: 1px solid var(--gray-100);
+      transition: all 0.3s;
+    }
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .why-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.2rem;
+    }
+    .why-icon.amber { background: #fef3c7; }
+    .why-icon.steel { background: #e7e5e4; }
+    .why-icon.green { background: var(--green-light); }
+    .why-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--iron); }
+    .why-card p { font-size: 0.92rem; line-height: 1.6; color: var(--gray-600); }
+
+    /* === SERVICES === */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+    .service-card {
+      background: #f5f5f4; border-radius: 14px; padding: 1.5rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: all 0.3s; border: 2px solid transparent;
+    }
+    .service-card:hover { border-color: var(--amber); background: #fff; }
+    .service-icon {
+      width: 44px; height: 44px; background: var(--iron); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.2rem; flex-shrink: 0;
+    }
+    .service-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--iron); margin-bottom: 0.3rem; }
+    .service-card p { font-size: 0.82rem; color: var(--gray-600); line-height: 1.5; }
+
+    /* === CTA BANNER === */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--iron) 0%, #44403c 100%);
+      padding: 4rem 2rem; text-align: center; color: #fff;
+    }
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;
+    }
+    .cta-banner p { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-phone-big {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      background: var(--amber); color: var(--iron);
+      padding: 1.2rem 2.5rem; border-radius: 16px;
+      font-size: 1.5rem; font-weight: 800;
+      text-decoration: none; transition: all 0.3s;
+      box-shadow: 0 4px 30px rgba(245,158,11,0.4);
+    }
+    .cta-phone-big:hover { background: var(--amber-hover); transform: scale(1.05); }
+    .cta-sub { margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+
+    /* === CREDENTIALS SECTION === */
+    .credentials-section { background: #fff; }
+    .credentials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .credentials-content h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; color: var(--iron); margin-bottom: 1rem; }
+    .credentials-content p { font-size: 1.05rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 1.5rem; }
+    .credentials-list { list-style: none; }
+    .credentials-list li {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.5rem 0; font-size: 1rem; color: var(--gray-800);
+    }
+    .credentials-list li::before { content: '\2713'; color: var(--green); font-weight: 700; font-size: 1.1rem; }
+
+    /* === TESTIMONIALS === */
+    .testimonials-section { background: var(--gray-50); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .testimonial-card {
+      background: #fff; border-radius: 16px; padding: 2rem;
+      border: 1px solid var(--gray-100);
+    }
+    .testimonial-stars { color: var(--amber); font-size: 1.1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .testimonial-text { font-size: 0.95rem; line-height: 1.7; color: var(--gray-600); margin-bottom: 1.2rem; font-style: italic; }
+    .testimonial-author { font-weight: 700; font-size: 0.9rem; color: var(--iron); }
+    .testimonial-loc { font-size: 0.8rem; color: var(--gray-600); }
+
+    /* === FOOTER === */
+    .footer {
+      background: var(--iron); color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem; text-align: center;
+    }
+    .footer-brand { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .footer-info { font-size: 0.9rem; line-height: 1.8; }
+    .footer-phone { color: var(--amber); text-decoration: none; font-weight: 700; }
+    .footer-bottom { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .why-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .credentials-grid { grid-template-columns: 1fr; }
+      .trust-bar { gap: 1.5rem; }
+      .navbar-brand span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">
+      <div class="icon">
+        <svg width="22" height="22" fill="none" stroke="#1c1917" stroke-width="2.5" viewBox="0 0 24 24"><path d="M2 20h20M5 20V10l7-7 7 7v10M4 10l8-7 8 7"/><path d="M10 20v-6h4v6"/></svg>
+      </div>
+      <span>Stalczynski Contracting LLC</span>
+    </a>
+    <a href="tel:4126285169" class="navbar-phone">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      (412) 628-5169
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Serving Erie, PA &amp; Surrounding Areas
+        </div>
+        <h1>Erie's Licensed Demolition &amp; Excavation <span class="highlight">Experts.</span></h1>
+        <p class="hero-sub">PA License #63904. From full building demolition to precision excavation and REDI-ROCK retaining walls, Stalczynski Contracting delivers commercial-grade results with 24-hour emergency response.</p>
+        <div class="hero-ctas">
+          <a href="tel:4126285169" class="btn-primary">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call Now - Free Estimate
+          </a>
+          <a href="#services" class="btn-secondary">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            View Services
+          </a>
+        </div>
+      </div>
+      <div class="hero-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=500&fit=crop" alt="Excavation and demolition heavy equipment at work">
+        <div class="hero-llc-badge">
+          <span class="num">LLC</span>
+          <span class="lbl">Licensed</span>
+        </div>
+        <div class="hero-image-overlay">
+          <div class="hero-overlay-stats">
+            <div class="hero-stat"><span class="check">&#10003;</span> PA Licensed #63904</div>
+            <div class="hero-stat"><span class="check">&#10003;</span> REDI-ROCK Authorized Installer</div>
+            <div class="hero-stat"><span class="check">&#10003;</span> 24hr Emergency &bull; Commercial Grade</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+      PA Licensed #63904
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      REDI-ROCK Authorized
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      24hr Emergency Service
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+      LLC
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      Fully Insured
+    </div>
+  </div>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section why-section">
+    <div class="section-inner">
+      <span class="section-label">Why Choose Stalczynski</span>
+      <h2 class="section-title">Built for the Toughest Jobs</h2>
+      <p class="section-sub">When the project demands heavy equipment, licensed expertise, and zero room for error &mdash; Erie trusts Stalczynski Contracting to get it done right.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon green">
+            <svg width="28" height="28" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3>PA Licensed #63904</h3>
+          <p>Fully licensed by the State of Pennsylvania. Every job meets or exceeds code requirements and state regulations.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon amber">
+            <svg width="28" height="28" fill="none" stroke="var(--amber)" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <h3>REDI-ROCK Authorized</h3>
+          <p>Certified installer of REDI-ROCK retaining wall systems. Engineered solutions for large-scale wall and slope projects.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon steel">
+            <svg width="28" height="28" fill="none" stroke="var(--steel)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3>24hr Emergency Service</h3>
+          <p>Land slides, structural collapses, and urgent site work don't wait &mdash; and neither do we. Available around the clock.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon amber">
+            <svg width="28" height="28" fill="none" stroke="var(--amber)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+          </div>
+          <h3>Commercial Grade</h3>
+          <p>Equipped and experienced for large-scale commercial site work, not just residential. We handle the big projects others can't.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon steel">
+            <svg width="28" height="28" fill="none" stroke="var(--steel)" stroke-width="2" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+          </div>
+          <h3>Full Demolition</h3>
+          <p>Houses, garages, commercial buildings &mdash; complete tear-down and removal with safe, efficient methods and full debris hauling.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon green">
+            <svg width="28" height="28" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+          </div>
+          <h3>Land Clearing</h3>
+          <p>Transform overgrown, wooded, or unusable land into build-ready sites. Stump removal, grading, and complete clearing services.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-inner">
+      <span class="section-label">Our Services</span>
+      <h2 class="section-title">Demolition, Excavation &amp; Site Work</h2>
+      <p class="section-sub">From tearing down structures to building retaining walls, we provide full-scope site services across Erie, PA and the surrounding region.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem;">
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1590496793929-36417d3117de?w=400&h=200&fit=crop" alt="Heavy excavation equipment" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&h=200&fit=crop" alt="Active construction site" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=200&fit=crop" alt="Site work and grading" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+          </div>
+          <div>
+            <h4>House Demolition</h4>
+            <p>Complete residential tear-down with debris removal and site cleanup.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+          <div>
+            <h4>Garage Demolition</h4>
+            <p>Safe garage and outbuilding removal, including foundation breakup.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          </div>
+          <div>
+            <h4>Excavating</h4>
+            <p>Precision digging for foundations, utilities, drainage, and grading.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+          </div>
+          <div>
+            <h4>Land Clearing</h4>
+            <p>Tree removal, brush clearing, stump grinding, and full lot preparation.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: var(--amber);">
+            <svg width="22" height="22" fill="none" stroke="var(--iron)" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <div>
+            <h4>Retaining Walls</h4>
+            <p>Large-scale retaining wall construction for slopes and grade changes.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: var(--amber);">
+            <svg width="22" height="22" fill="none" stroke="var(--iron)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <div>
+            <h4>REDI-ROCK Walls</h4>
+            <p>Authorized installer of engineered REDI-ROCK retaining wall systems.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+          </div>
+          <div>
+            <h4>Commercial Site Prep</h4>
+            <p>Full commercial site work including clearing, grading, and utility prep.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: #dc2626;">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h4>24hr Emergency</h4>
+            <p>Land slides, collapses, and urgent site hazards handled around the clock.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PA LICENSED & REDI-ROCK SECTION -->
+  <section class="section credentials-section">
+    <div class="section-inner">
+      <div class="credentials-grid">
+        <div class="credentials-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=450&fit=crop" alt="Heavy machinery on construction site">
+          <div class="credentials-tag">
+            <div class="big">#63904</div>
+            <div class="lbl">PA License</div>
+          </div>
+        </div>
+        <div class="credentials-content">
+          <h2>PA Licensed &amp; REDI-ROCK Authorized</h2>
+          <p>Stalczynski Contracting isn't just another demo crew with a backhoe. We're a fully licensed, insured LLC with the credentials, equipment, and expertise to take on the projects that demand it.</p>
+          <ul class="credentials-list">
+            <li>PA Contractor License #63904</li>
+            <li>Registered LLC &mdash; fully insured</li>
+            <li>REDI-ROCK authorized installation contractor</li>
+            <li>Commercial and residential capabilities</li>
+            <li>24-hour emergency response available</li>
+            <li>Heavy equipment fleet for large-scale jobs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <h2>Need Demolition or Excavation? Call Now.</h2>
+    <p>From tearing down structures to moving earth, Stalczynski Contracting has the license, equipment, and experience to handle your next project. Free estimates available.</p>
+    <a href="tel:4126285169" class="cta-phone-big">
+      <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      (412) 628-5169
+    </a>
+    <p class="cta-sub">Available 24/7 &bull; PA Licensed #63904 &bull; Erie, PA &amp; Surrounding Areas</p>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials-section">
+    <div class="section-inner">
+      <span class="section-label">What Clients Say</span>
+      <h2 class="section-title">Trusted Across Erie County</h2>
+      <p class="section-sub">When the job is too big for the average contractor, Erie homeowners and businesses call Stalczynski.</p>
+      <div style="margin-bottom: 2.5rem; border-radius: 20px; overflow: hidden; max-height: 220px;">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1100&h=300&fit=crop&crop=bottom" alt="Erie PA area neighborhood" style="width: 100%; object-fit: cover; display: block;">
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Had an old two-story house that needed to come down. Stalczynski brought the right equipment, handled all the permits, and had the lot cleared in three days. Incredibly professional for the price."</p>
+          <div class="testimonial-author">Dave K.</div>
+          <div class="testimonial-loc">Meadville, PA</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"We needed a massive retaining wall after a land slide took out part of our hillside. They installed REDI-ROCK and it looks like it's been there forever. Solid work and great communication throughout."</p>
+          <div class="testimonial-author">Karen &amp; Jim M.</div>
+          <div class="testimonial-loc">Erie, PA</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Called at 11pm after a storm caused a land slide that blocked our access road. Their emergency crew was on-site within two hours and had it cleared by morning. Lifesavers."</p>
+          <div class="testimonial-author">Brian T.</div>
+          <div class="testimonial-loc">Stoneboro, PA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">Stalczynski Contracting LLC</div>
+    <div class="footer-info">
+      Serving Erie, PA &amp; Surrounding Areas &bull; PA License #63904<br>
+      <a href="tel:4126285169" class="footer-phone">(412) 628-5169</a><br>
+      REDI-ROCK Authorized &bull; Fully Insured &bull; 24hr Emergency Service
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Stalczynski Contracting LLC. All rights reserved.<br>
+      <span style="color: rgba(255,255,255,0.4); font-size: 0.75rem;">Landing page designed by ClockOutNow.com</span>
+    </div>
+  </footer>
+
+</body>
+</html>

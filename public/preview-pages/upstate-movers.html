@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upstate Movers | Rochester NY | 24/7 Moving - Senior & Veteran Discounts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy: #1e3a5f;
+      --navy-dark: #152d4a;
+      --orange: #e8590c;
+      --orange-hover: #d14b06;
+      --steel: #3b82f6;
+      --steel-light: #dbeafe;
+      --steel-bg: #eff6ff;
+      --light-bg: #f8fafc;
+      --green: #16a34a;
+      --green-light: #dcfce7;
+      --gray-50: #f8f9fa;
+      --gray-100: #e9ecef;
+      --gray-600: #6c757d;
+      --gray-800: #343a40;
+      --warm-white: #fdfdfd;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray-800); background: var(--warm-white); overflow-x: hidden; }
+
+    /* === NAVBAR === */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(30, 58, 95, 0.95); backdrop-filter: blur(10px);
+      padding: 0.8rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .navbar-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none; color: #fff;
+    }
+    .navbar-brand .icon {
+      width: 40px; height: 40px; background: var(--orange);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .navbar-brand span { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.5px; }
+    .navbar-phone {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--orange); color: #fff;
+      padding: 0.6rem 1.2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+    .navbar-phone:hover { background: var(--orange-hover); transform: scale(1.05); }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh; padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, #1e4d7a 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -50%; right: -20%;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(232,89,12,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -10%; left: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      max-width: 1100px; width: 100%; position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center;
+    }
+    .hero-text { color: #fff; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.4rem 1rem; border-radius: 50px;
+      font-size: 0.85rem; color: rgba(255,255,255,0.9);
+      margin-bottom: 1.5rem; backdrop-filter: blur(5px);
+    }
+    .hero-badge .dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.4rem; font-weight: 800; line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 .highlight { color: var(--orange); }
+    .hero-sub {
+      font-size: 1.15rem; line-height: 1.7; color: rgba(255,255,255,0.8);
+      margin-bottom: 2rem; max-width: 500px;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--orange); color: #fff; border: none;
+      padding: 1rem 2rem; border-radius: 12px;
+      font-size: 1.05rem; font-weight: 700; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.3s; box-shadow: 0 4px 20px rgba(232,89,12,0.4);
+    }
+    .btn-primary:hover { background: var(--orange-hover); transform: translateY(-2px); box-shadow: 0 6px 25px rgba(232,89,12,0.5); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1); color: #fff;
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 1rem 2rem; border-radius: 12px;
+      font-size: 1.05rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
+
+    /* Hero image */
+    .hero-image-wrapper {
+      position: relative; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .hero-image-wrapper img {
+      width: 100%; height: 420px; object-fit: cover; display: block;
+    }
+    .hero-image-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(30,58,95,0.95), transparent);
+      padding: 2rem 1.5rem 1.5rem;
+    }
+    .hero-overlay-stats { display: flex; flex-direction: column; gap: 0.5rem; }
+    .hero-stat {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.9rem; color: rgba(255,255,255,0.9);
+    }
+    .hero-stat .check {
+      width: 26px; height: 26px; background: rgba(22,163,74,0.25);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; flex-shrink: 0; color: #4ade80;
+    }
+    .hero-availability-badge {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      background: var(--orange); color: #fff;
+      width: 80px; height: 80px; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(232,89,12,0.5);
+    }
+    .hero-availability-badge .num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; line-height: 1; }
+    .hero-availability-badge .lbl { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* === TRUST BAR === */
+    .trust-bar {
+      background: var(--navy-dark); padding: 1.5rem 2rem;
+      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      color: rgba(255,255,255,0.85); font-size: 0.9rem; font-weight: 500;
+    }
+    .trust-item svg { width: 22px; height: 22px; fill: var(--orange); flex-shrink: 0; }
+
+    /* === SECTIONS === */
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: inline-block; background: var(--steel-bg); color: var(--steel);
+      padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.8rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 800; color: var(--navy);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-sub { font-size: 1.1rem; color: var(--gray-600); line-height: 1.7; max-width: 600px; margin-bottom: 3rem; }
+
+    /* === WHY US === */
+    .why-section { background: var(--light-bg); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .why-card {
+      background: #fff; border-radius: 16px; padding: 2rem;
+      border: 1px solid var(--gray-100);
+      transition: all 0.3s;
+    }
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .why-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.2rem;
+    }
+    .why-icon.blue { background: var(--steel-bg); }
+    .why-icon.orange { background: #fff3ec; }
+    .why-icon.green { background: var(--green-light); }
+    .why-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--navy); }
+    .why-card p { font-size: 0.92rem; line-height: 1.6; color: var(--gray-600); }
+
+    /* === SERVICES === */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+    .service-card {
+      background: var(--steel-bg); border-radius: 14px; padding: 1.5rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: all 0.3s; border: 2px solid transparent;
+    }
+    .service-card:hover { border-color: var(--steel); background: #fff; }
+    .service-icon {
+      width: 44px; height: 44px; background: var(--navy); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.2rem; flex-shrink: 0;
+    }
+    .service-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.3rem; }
+    .service-card p { font-size: 0.82rem; color: var(--gray-600); line-height: 1.5; }
+
+    /* === DISCOUNT SECTION === */
+    .discount-section { background: #fff; }
+    .discount-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .discount-img-wrapper {
+      position: relative; border-radius: 20px; overflow: hidden;
+    }
+    .discount-img-wrapper img {
+      width: 100%; height: 380px; object-fit: cover; display: block;
+    }
+    .discount-tag {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: #fff; border-radius: 16px; padding: 1.2rem 1.8rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    .discount-tag .big { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: var(--green); line-height: 1; }
+    .discount-tag .lbl { font-size: 0.85rem; font-weight: 700; color: var(--navy); }
+    .discount-content h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem; }
+    .discount-content p { font-size: 1.05rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 1.5rem; }
+    .discount-list { list-style: none; }
+    .discount-list li {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.5rem 0; font-size: 1rem; color: var(--gray-800);
+    }
+    .discount-list li::before { content: '\2713'; color: var(--green); font-weight: 700; font-size: 1.1rem; }
+
+    /* === CTA BANNER === */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+      padding: 4rem 2rem; text-align: center; color: #fff;
+    }
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;
+    }
+    .cta-banner p { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-phone-big {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      background: var(--orange); color: #fff;
+      padding: 1.2rem 2.5rem; border-radius: 16px;
+      font-size: 1.5rem; font-weight: 800;
+      text-decoration: none; transition: all 0.3s;
+      box-shadow: 0 4px 30px rgba(232,89,12,0.4);
+    }
+    .cta-phone-big:hover { background: var(--orange-hover); transform: scale(1.05); }
+    .cta-sub { margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+
+    /* === TESTIMONIALS === */
+    .testimonials-section { background: var(--light-bg); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .testimonial-card {
+      background: #fff; border-radius: 16px; padding: 2rem;
+      border: 1px solid var(--gray-100);
+    }
+    .testimonial-stars { color: var(--orange); font-size: 1.1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .testimonial-text { font-size: 0.95rem; line-height: 1.7; color: var(--gray-600); margin-bottom: 1.2rem; font-style: italic; }
+    .testimonial-author { font-weight: 700; font-size: 0.9rem; color: var(--navy); }
+    .testimonial-loc { font-size: 0.8rem; color: var(--gray-600); }
+
+    /* === FOOTER === */
+    .footer {
+      background: var(--navy-dark); color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem; text-align: center;
+    }
+    .footer-brand { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .footer-info { font-size: 0.9rem; line-height: 1.8; }
+    .footer-phone { color: var(--orange); text-decoration: none; font-weight: 700; }
+    .footer-bottom { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero h1 { font-size: 2.4rem; }
+      .why-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .discount-grid { grid-template-columns: 1fr; }
+      .trust-bar { gap: 1.5rem; }
+      .navbar-brand span { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .section-title { font-size: 2rem; }
+      .cta-banner h2 { font-size: 2rem; }
+      .cta-phone-big { font-size: 1.2rem; padding: 1rem 2rem; }
+    }
+    @media (max-width: 480px) {
+      .hero { padding: 6rem 1.2rem 3rem; }
+      .hero h1 { font-size: 2rem; }
+      .section { padding: 3.5rem 1.2rem; }
+      .trust-bar { gap: 1rem; padding: 1.2rem 1rem; }
+      .trust-item { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">
+      <div class="icon">
+        <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><rect x="1" y="6" width="15" height="10" rx="2"/><path d="M16 8h4l3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <span>Upstate Movers</span>
+    </a>
+    <a href="tel:5853608026" class="navbar-phone">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      (585) 360-8026
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Rochester's Trusted Moving Company
+        </div>
+        <h1>Rochester's Go-To Movers. <span class="highlight">24/7.</span> Senior &amp; Veteran Discounts.</h1>
+        <p class="hero-sub">Whether you're moving across the street or across the state, Upstate Movers handles it all &mdash; residential, commercial, piano, hot tub, and more. Available around the clock with special discounts for those who've served.</p>
+        <div class="hero-ctas">
+          <a href="tel:5853608026" class="btn-primary">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Get a Free Quote
+          </a>
+          <a href="#services" class="btn-secondary">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            View Services
+          </a>
+        </div>
+      </div>
+      <div class="hero-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=600&h=500&fit=crop" alt="Moving truck and boxes ready for a move">
+        <div class="hero-availability-badge">
+          <span class="num">24/7</span>
+          <span class="lbl">Available</span>
+        </div>
+        <div class="hero-image-overlay">
+          <div class="hero-overlay-stats">
+            <div class="hero-stat"><span class="check">&#10003;</span> 24/7 Available &bull; Day or Night</div>
+            <div class="hero-stat"><span class="check">&#10003;</span> Senior &amp; Veteran Discounts</div>
+            <div class="hero-stat"><span class="check">&#10003;</span> Fully Insured &bull; Free Estimates</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      24/7 Available
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+      Senior Discount
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+      Veteran Discount
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+      Fully Insured
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+      Same-Day Moves
+    </div>
+  </div>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section why-section">
+    <div class="section-inner">
+      <span class="section-label">Why Choose Us</span>
+      <h2 class="section-title">Not Your Average Moving Company</h2>
+      <p class="section-sub">Upstate Movers goes above and beyond &mdash; available around the clock, with special care for seniors, veterans, and specialty items most companies won't touch.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon blue">
+            <svg width="28" height="28" fill="none" stroke="var(--steel)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3>24/7 Availability</h3>
+          <p>Need to move at midnight? Early morning? Weekend? We're ready when you are. Upstate Movers operates around the clock, 365 days a year.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon orange">
+            <svg width="28" height="28" fill="none" stroke="var(--orange)" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3>Senior &amp; Veteran Discounts</h3>
+          <p>We proudly offer special pricing for seniors and veterans. It's our way of giving back to those who've given so much to our community.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon green">
+            <svg width="28" height="28" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
+          </div>
+          <h3>Specialty Moves</h3>
+          <p>Piano, hot tub, gun safe, pool table &mdash; we handle the heavy, awkward, and fragile items other movers turn away. Trained and equipped.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon blue">
+            <svg width="28" height="28" fill="none" stroke="var(--steel)" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3>Same-Day Service</h3>
+          <p>Last-minute move? Emergency relocation? We offer same-day moving services so you're never left scrambling for help when time is short.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon orange">
+            <svg width="28" height="28" fill="none" stroke="var(--orange)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3>No Hidden Fees</h3>
+          <p>The quote you get is the price you pay. No surprise charges, no fuel surcharges, no stair fees added after the fact. Transparent pricing always.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon green">
+            <svg width="28" height="28" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3>Professional Crew</h3>
+          <p>Our movers are trained, background-checked, and treat your belongings like their own. Careful handling and respectful service every time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-inner">
+      <span class="section-label">Our Services</span>
+      <h2 class="section-title">Full-Service Moving Solutions</h2>
+      <p class="section-sub">From a one-bedroom apartment to an entire office building, Upstate Movers has the crew, equipment, and experience for every job.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem;">
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=200&fit=crop" alt="Residential homes in Rochester area" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=400&h=200&fit=crop" alt="Beautiful home interior packed for moving" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1558036117-15d82a90b9b1?w=400&h=200&fit=crop" alt="Suburban home exterior ready for move" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+          <div>
+            <h4>Residential Moving</h4>
+            <p>Houses, apartments, condos. Local or long-distance. Full-service or labor-only.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <div>
+            <h4>Commercial Moving</h4>
+            <p>Office relocations, retail moves, and warehouse transfers done on your schedule.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
+          </div>
+          <div>
+            <h4>Piano Moving</h4>
+            <p>Uprights, baby grands, and grands moved safely with specialized equipment and care.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
+          </div>
+          <div>
+            <h4>Hot Tub Moving</h4>
+            <p>Heavy and awkward? No problem. We have the crew and gear for safe hot tub relocation.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: var(--steel);">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          </div>
+          <div>
+            <h4>Packing Services</h4>
+            <p>Full packing, partial packing, or supplies only. We protect your belongings with care.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: var(--steel);">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <div>
+            <h4>Same-Day Moves</h4>
+            <p>Emergency move? Last-minute lease? Call us and we'll get you moved today.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: var(--orange);">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+          </div>
+          <div>
+            <h4>Long-Distance</h4>
+            <p>Moving out of Rochester? We handle interstate and long-distance relocations coast to coast.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: var(--orange);">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h4>24/7 Services</h4>
+            <p>Day or night, weekend or holiday. We're always available when you need us most.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SENIOR & VETERAN DISCOUNTS -->
+  <section class="section discount-section">
+    <div class="section-inner">
+      <div class="discount-grid">
+        <div class="discount-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1600518464441-9154a4dea21b?w=600&h=450&fit=crop" alt="Professional movers carefully loading a moving truck">
+          <div class="discount-tag">
+            <div class="big">Save $$$</div>
+            <div class="lbl">Senior &amp; Veteran Rates</div>
+          </div>
+        </div>
+        <div class="discount-content">
+          <h2>Senior &amp; Veteran Discounts &mdash; Because You've Earned It</h2>
+          <p>At Upstate Movers, we believe in honoring those who've served our country and our seniors who built this community. That's why we offer exclusive discounts to make your move more affordable.</p>
+          <ul class="discount-list">
+            <li>Special pricing for seniors 60+</li>
+            <li>Veteran &amp; active military discounts</li>
+            <li>Extra care and patience during your move</li>
+            <li>Free in-home estimates with no obligation</li>
+            <li>Flexible scheduling around your needs</li>
+            <li>Fully insured for your peace of mind</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <h2>Ready to Move? Get a Free Quote Today</h2>
+    <p>Whether it's across Rochester or across the state, Upstate Movers is ready to make your next move stress-free. Call now for a free, no-obligation estimate.</p>
+    <a href="tel:5853608026" class="cta-phone-big">
+      <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      (585) 360-8026
+    </a>
+    <p class="cta-sub">Available 24/7 &bull; Free Estimates &bull; Rochester &amp; All Surrounding Counties</p>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials-section">
+    <div class="section-inner">
+      <span class="section-label">What Our Customers Say</span>
+      <h2 class="section-title">Trusted by Rochester Families</h2>
+      <p class="section-sub">Don't just take our word for it. Here's what your neighbors have to say about Upstate Movers.</p>
+      <div style="margin-bottom: 2.5rem; border-radius: 20px; overflow: hidden; max-height: 220px;">
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1100&h=300&fit=crop&crop=bottom" alt="Rochester NY neighborhood" style="width: 100%; object-fit: cover; display: block;">
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"We needed to move my mother out of her house in Greece on short notice. Upstate Movers came the next day, were incredibly gentle with her belongings, and gave us the senior discount. Couldn't ask for better."</p>
+          <div class="testimonial-author">Karen M.</div>
+          <div class="testimonial-loc">Greece, NY</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"These guys moved our baby grand piano down two flights of stairs without a scratch. I was nervous the whole time but they clearly knew exactly what they were doing. Worth every penny."</p>
+          <div class="testimonial-author">David &amp; Sarah T.</div>
+          <div class="testimonial-loc">Pittsford, NY</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Called at 9 PM on a Friday because our closing moved up unexpectedly. They had a crew at our door by 7 AM Saturday. The 24/7 availability is real. As a veteran, I appreciated the discount too."</p>
+          <div class="testimonial-author">Marcus J.</div>
+          <div class="testimonial-loc">Henrietta, NY</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">Upstate Movers</div>
+    <div class="footer-info">
+      Serving Rochester, Greece &amp; All Surrounding Counties<br>
+      <a href="tel:5853608026" class="footer-phone">(585) 360-8026</a><br>
+      24/7 Available &bull; Fully Insured &bull; Senior &amp; Veteran Discounts
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Upstate Movers. All rights reserved.<br>
+      <span style="color: rgba(255,255,255,0.4); font-size: 0.75rem;">Landing page designed by <a href="https://clockoutnow.com" style="color: rgba(255,255,255,0.5); text-decoration: none;">ClockOutNow.com</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>
