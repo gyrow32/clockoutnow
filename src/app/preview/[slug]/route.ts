@@ -21,9 +21,21 @@ export async function GET(
 
   let html = fs.readFileSync(filePath, 'utf-8')
 
-  // Inject ClockOutNow links into the landing page's own navbar (before </nav>)
+  // Inject style override + ClockOutNow links into navbar
+  // Add gap to navbar and group phone + new links on the right
+  const navStyle = `
+    <style>
+      .navbar { gap: 1rem !important; }
+      .navbar-phone { margin-left: auto !important; }
+      @media(max-width:768px) {
+        .clockout-nav-links { display: none !important; }
+      }
+    </style>`
+
+  html = html.replace('</head>', navStyle + '\n</head>')
+
   const navLinks = `
-    <div style="display:flex;align-items:center;gap:8px;margin-left:auto;">
+    <div class="clockout-nav-links" style="display:flex;align-items:center;gap:8px;">
       <a href="https://clockoutnow.com" style="
         display:flex;align-items:center;gap:6px;
         color:#fff;opacity:0.85;
