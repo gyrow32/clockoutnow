@@ -27,6 +27,7 @@ export default function Navbar() {
 
   return (
     <nav
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-cream-200/90 backdrop-blur-xl shadow-sm border-b border-cream-300'
@@ -79,7 +80,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center">
             <Link href="/contact" className="btn-coral text-sm">
               Free Consultation
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg aria-hidden="true" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
               </svg>
             </Link>
@@ -90,7 +91,9 @@ export default function Navbar() {
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               className="relative w-10 h-10 flex items-center justify-center text-charcoal-500 hover:text-charcoal-800 transition-colors"
-              aria-label="Toggle menu"
+              aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileOpen}
+              aria-controls="mobile-nav"
             >
               <div className="flex flex-col gap-1.5">
                 <span className={`block w-6 h-0.5 bg-current transition-all duration-300 ${isMobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
@@ -106,6 +109,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
+            id="mobile-nav"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -122,7 +126,7 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
-              <Link href="/contact" onClick={handleNavClick} className="btn-coral text-sm mt-2 justify-center">
+              <Link href="/contact" onClick={handleNavClick} className="btn-coral text-sm mt-2 justify-center" aria-label="Get a free consultation">
                 Free Consultation
               </Link>
             </div>
