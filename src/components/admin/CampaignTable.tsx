@@ -119,18 +119,29 @@ export default function CampaignTable({
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm">
                       <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                        <a
+                          href={`/preview/${campaign.preview_page_slug}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition-colors"
+                        >
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                          View
+                        </a>
                         {campaign.status === 'CONTACTED' && (
                           <button
                             onClick={() => handleMarkReplied(campaign.id)}
                             disabled={updatingId === campaign.id}
-                            className="px-3 py-1.5 text-xs font-medium rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors disabled:opacity-50"
+                            className="px-3 py-1.5 text-xs font-medium rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition-colors disabled:opacity-50"
                           >
                             {updatingId === campaign.id ? '...' : 'Mark Replied'}
                           </button>
                         )}
                         <button
                           onClick={() => handleCopyLink(campaign.preview_page_slug, campaign.id)}
-                          className="px-3 py-1.5 text-xs font-medium rounded-lg border border-charcoal-200 text-charcoal-700 hover:bg-gray-50 transition-colors"
+                          className="px-3 py-1.5 text-xs font-medium rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors"
                         >
                           {copiedId === campaign.id ? '✓ Copied' : 'Copy Link'}
                         </button>
