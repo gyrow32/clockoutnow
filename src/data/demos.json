@@ -149,5 +149,31 @@
       { "role": "customer", "text": "It's about 20x24, concrete slab." },
       { "role": "bot", "text": "Perfect — we handle those all the time. We offer free on-site estimates. What's your address in Erie, and when works for you?" }
     ]
+  },
+  "garys-electrical": {
+    "businessName": "Gary's Electrical",
+    "ownerName": "Gary",
+    "trade": "electrical",
+    "location": "All of Western New York",
+    "phone": "(716) 352-0301",
+    "services": [
+      "Panel Upgrades ($999 Special)",
+      "Service Entrance Installation",
+      "EV Charger Installation",
+      "Generator Hookups",
+      "Recessed Lighting",
+      "Baseboard Heating",
+      "Hot Tub Wiring",
+      "Electrical Troubleshooting"
+    ],
+    "heroTagline": "Licensed Master Electrician — Lifetime Guarantee on All Work",
+    "chatPreview": [
+      { "role": "customer", "text": "Hi, I need to upgrade my electrical panel. What do you charge?" },
+      { "role": "bot", "text": "Hey! Thanks for reaching out. Gary's running a special right now — panel upgrades are $999 installed. That includes the panel, labor, and inspection. Is this for a home or business?" },
+      { "role": "customer", "text": "Home in Lockport. My panel is from the 70s and only has 100 amps." },
+      { "role": "bot", "text": "Perfect, that's exactly what the special covers — upgrading from 100 to 200 amp service. Gary's a licensed master electrician and guarantees all his work for life. He serves all of WNY. Want me to have him call you for a quick walkthrough?" },
+      { "role": "customer", "text": "Yeah that works. How soon can he do it?" },
+      { "role": "bot", "text": "Usually within a week, sometimes sooner depending on the schedule. Let me grab your name and number and Gary will call you back today to set it up. 👍" }
+    ]
   }
 }
