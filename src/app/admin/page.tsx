@@ -220,15 +220,8 @@ function AdminContent() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <div className="relative bg-white border-b border-slate-200 overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-50 to-white" />
-        <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: 'radial-gradient(circle at 2px 2px, rgb(15 23 42) 1px, transparent 0)',
-          backgroundSize: '32px 32px'
-        }} />
-
-        <div className="container-custom py-8 relative z-10">
+      <div className="bg-white border-b border-slate-200">
+        <div className="container-custom py-8">
           <div className="flex items-center justify-between">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 mb-3">
