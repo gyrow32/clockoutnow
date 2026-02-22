@@ -608,3 +608,21 @@
 
 </body>
 </html>
+  <!-- Analytics Tracking -->
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      fetch('/api/track-view', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          page: window.location.pathname.split('/').pop(),
+          utm_source: params.get('utm_source'),
+          utm_campaign: params.get('utm_campaign'),
+          referrer: document.referrer,
+          timestamp: new Date().toISOString()
+        })
+      }).catch(() => {}); // Silent fail - bulletproof
+
+</body>
+</html>
