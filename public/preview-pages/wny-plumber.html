@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MR. CONCRETE INC. | Avon OH | Licensed Concrete Contractor - Driveways, Patios &amp; More</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --charcoal: #2d2d2d;
+      --charcoal-deep: #1a1a1a;
+      --amber: #d4920a;
+      --amber-hover: #b87d08;
+      --concrete-gray: #6b7280;
+      --warm-white: #f5f5f0;
+      --gray-50: #f0efea;
+      --gray-100: #e5e4df;
+      --gray-600: #6b7280;
+      --gray-800: #343a40;
+      --green: #16a34a;
+      --amber-light: #fef3d6;
+      --green-light: #dcfce7;
+      --charcoal-light: #e8e8e6;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray-800); background: var(--warm-white); overflow-x: hidden; }
+
+    /* === NAVBAR === */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(10px);
+      padding: 0.8rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .navbar-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none; color: #fff;
+    }
+    .navbar-brand .icon {
+      width: 40px; height: 40px; background: var(--amber);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .navbar-brand span { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.5px; }
+    .navbar-phone {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--amber); color: #fff;
+      padding: 0.6rem 1.2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+    .navbar-phone:hover { background: var(--amber-hover); transform: scale(1.05); }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh; padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, var(--charcoal-deep) 0%, var(--charcoal) 60%, #3d3d3d 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -50%; right: -20%;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(212,146,10,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -10%; left: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(107,114,128,0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      max-width: 1100px; width: 100%; position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center;
+    }
+    .hero-text { color: #fff; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.4rem 1rem; border-radius: 50px;
+      font-size: 0.85rem; color: rgba(255,255,255,0.9);
+      margin-bottom: 1.5rem; backdrop-filter: blur(5px);
+    }
+    .hero-badge .dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 800; line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 .highlight { color: var(--amber); }
+    .hero-sub {
+      font-size: 1.15rem; line-height: 1.7; color: rgba(255,255,255,0.8);
+      margin-bottom: 2rem; max-width: 500px;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--amber); color: #fff; border: none;
+      padding: 1rem 2rem; border-radius: 12px;
+      font-size: 1.05rem; font-weight: 700; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.3s; box-shadow: 0 4px 20px rgba(212,146,10,0.4);
+    }
+    .btn-primary:hover { background: var(--amber-hover); transform: translateY(-2px); box-shadow: 0 6px 25px rgba(212,146,10,0.5); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1); color: #fff;
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 1rem 2rem; border-radius: 12px;
+      font-size: 1.05rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
+
+    /* Hero image */
+    .hero-image-wrapper {
+      position: relative; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .hero-image-wrapper img {
+      width: 100%; height: 420px; object-fit: cover; display: block;
+    }
+    .hero-image-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(26,26,26,0.95), transparent);
+      padding: 2rem 1.5rem 1.5rem;
+    }
+    .hero-overlay-stats { display: flex; flex-direction: column; gap: 0.5rem; }
+    .hero-stat {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.9rem; color: rgba(255,255,255,0.9);
+    }
+    .hero-stat .check {
+      width: 26px; height: 26px; background: rgba(22,163,74,0.25);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; flex-shrink: 0; color: #22c55e;
+    }
+    .hero-years-badge {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      background: var(--amber); color: #fff;
+      width: 80px; height: 80px; border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(212,146,10,0.5);
+    }
+    .hero-years-badge .num { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 800; line-height: 1; }
+    .hero-years-badge .lbl { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* Section images */
+    .section-img {
+      width: 100%; border-radius: 16px; object-fit: cover;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .nofee-img-wrapper {
+      position: relative; border-radius: 20px; overflow: hidden;
+    }
+    .nofee-img-wrapper img {
+      width: 100%; height: 380px; object-fit: cover; display: block;
+    }
+    .nofee-price-tag {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: #fff; border-radius: 16px; padding: 1.2rem 1.8rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    .nofee-price-tag .big { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: var(--green); line-height: 1; }
+    .nofee-price-tag .lbl { font-size: 0.8rem; font-weight: 700; color: var(--charcoal); }
+
+    /* === TRUST BAR === */
+    .trust-bar {
+      background: var(--charcoal-deep); padding: 1.5rem 2rem;
+      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      color: rgba(255,255,255,0.85); font-size: 0.9rem; font-weight: 500;
+    }
+    .trust-item svg { width: 22px; height: 22px; fill: var(--amber); flex-shrink: 0; }
+
+    /* === SECTIONS === */
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: inline-block; background: var(--amber-light); color: var(--amber);
+      padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.8rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 800; color: var(--charcoal);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-sub { font-size: 1.1rem; color: var(--gray-600); line-height: 1.7; max-width: 600px; margin-bottom: 3rem; }
+
+    /* === WHY US === */
+    .why-section { background: var(--gray-50); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .why-card {
+      background: #fff; border-radius: 16px; padding: 2rem;
+      border: 1px solid var(--gray-100);
+      transition: all 0.3s;
+    }
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .why-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 1.2rem;
+    }
+    .why-icon.charcoal { background: var(--charcoal-light); }
+    .why-icon.amber { background: var(--amber-light); }
+    .why-icon.green { background: var(--green-light); }
+    .why-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--charcoal); }
+    .why-card p { font-size: 0.92rem; line-height: 1.6; color: var(--gray-600); }
+
+    /* === SERVICES === */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+    .service-card {
+      background: var(--charcoal-light); border-radius: 14px; padding: 1.5rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: all 0.3s; border: 2px solid transparent;
+    }
+    .service-card:hover { border-color: var(--charcoal); background: #fff; }
+    .service-icon {
+      width: 44px; height: 44px; background: var(--charcoal); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.2rem; flex-shrink: 0;
+    }
+    .service-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.3rem; }
+    .service-card p { font-size: 0.82rem; color: var(--gray-600); line-height: 1.5; }
+
+    /* === CTA BANNER === */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--charcoal-deep) 0%, var(--charcoal) 100%);
+      padding: 4rem 2rem; text-align: center; color: #fff;
+    }
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;
+    }
+    .cta-banner p { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-phone-big {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      background: var(--amber); color: #fff;
+      padding: 1.2rem 2.5rem; border-radius: 16px;
+      font-size: 1.5rem; font-weight: 800;
+      text-decoration: none; transition: all 0.3s;
+      box-shadow: 0 4px 30px rgba(212,146,10,0.4);
+    }
+    .cta-phone-big:hover { background: var(--amber-hover); transform: scale(1.05); }
+    .cta-sub { margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+
+    /* === PERMIT SECTION === */
+    .permit-section { background: #fff; }
+    .permit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .permit-content h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 800; color: var(--charcoal); margin-bottom: 1rem; }
+    .permit-content p { font-size: 1.05rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 1.5rem; }
+    .permit-list { list-style: none; }
+    .permit-list li {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.5rem 0; font-size: 1rem; color: var(--gray-800);
+    }
+    .permit-list li::before { content: '\2713'; color: var(--green); font-weight: 700; font-size: 1.1rem; }
+
+    /* === TESTIMONIALS === */
+    .testimonials-section { background: var(--gray-50); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .testimonial-card {
+      background: #fff; border-radius: 16px; padding: 2rem;
+      border: 1px solid var(--gray-100);
+    }
+    .testimonial-stars { color: var(--amber); font-size: 1.1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .testimonial-text { font-size: 0.95rem; line-height: 1.7; color: var(--gray-600); margin-bottom: 1.2rem; font-style: italic; }
+    .testimonial-author { font-weight: 700; font-size: 0.9rem; color: var(--charcoal); }
+    .testimonial-loc { font-size: 0.8rem; color: var(--gray-600); }
+
+    /* === FOOTER === */
+    .footer {
+      background: var(--charcoal-deep); color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem; text-align: center;
+    }
+    .footer-brand { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .footer-info { font-size: 0.9rem; line-height: 1.8; }
+    .footer-phone { color: var(--amber); text-decoration: none; font-weight: 700; }
+    .footer-bottom { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .why-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .permit-grid { grid-template-columns: 1fr; }
+      .trust-bar { gap: 1.5rem; }
+      .navbar-brand span { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">
+      <div class="icon">
+        <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+      </div>
+      <span>MR. CONCRETE INC.</span>
+    </a>
+    <a href="tel:4409414281" class="navbar-phone">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      (440) 941-4281
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Serving All of Ohio &bull; Based in Avon
+        </div>
+        <h1>Ohio's Most Trusted Concrete Contractor. <span class="highlight">Licensed. Bonded. Guaranteed.</span></h1>
+        <p class="hero-sub">From driveway replacements to garage floors and outdoor patios, MR. CONCRETE INC. delivers professional flatwork across every city in Ohio. Incorporated, licensed, bonded, and insured &mdash; with a satisfaction guarantee on every pour.</p>
+        <div class="hero-ctas">
+          <a href="tel:4409414281" class="btn-primary">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call Now - Free Estimate
+          </a>
+          <a href="#services" class="btn-secondary">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            View Services
+          </a>
+        </div>
+      </div>
+      <div class="hero-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1590496793929-36417d3117de?w=600&h=500&fit=crop" alt="Professional concrete pouring">
+        <div class="hero-years-badge">
+          <span class="num">INC.</span>
+          <span class="lbl">Licensed</span>
+        </div>
+        <div class="hero-image-overlay">
+          <div class="hero-overlay-stats">
+            <div class="hero-stat"><span class="check">&#10003;</span> Licensed &amp; Incorporated in Ohio</div>
+            <div class="hero-stat"><span class="check">&#10003;</span> Bonded &bull; Fully Insured</div>
+            <div class="hero-stat"><span class="check">&#10003;</span> Pulls Permits in Every City Statewide</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Licensed
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+      Bonded
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+      Insured
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      Statewide Permits
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      Satisfaction Guarantee
+    </div>
+  </div>
+
+  <!-- WHY MR. CONCRETE -->
+  <section class="section why-section">
+    <div class="section-inner">
+      <span class="section-label">Why Choose Us</span>
+      <h2 class="section-title">Not Your Average Concrete Crew</h2>
+      <p class="section-sub">MR. CONCRETE INC. is a fully incorporated, licensed, and bonded company that handles permits statewide &mdash; so your project is done right and done legal.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon charcoal">
+            <svg width="28" height="28" fill="none" stroke="var(--charcoal)" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3>Statewide Permits</h3>
+          <p>We pull permits in every city across Ohio. No matter where your project is, we handle the paperwork and inspections.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon amber">
+            <svg width="28" height="28" fill="none" stroke="var(--amber)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+          </div>
+          <h3>Licensed &amp; Bonded</h3>
+          <p>Fully incorporated, licensed, and bonded for your protection. We carry the credentials that back up our work.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon green">
+            <svg width="28" height="28" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3>Satisfaction Guarantee</h3>
+          <p>We stand behind every pour. If you're not satisfied, we'll make it right. Your satisfaction is our reputation.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon charcoal">
+            <svg width="28" height="28" fill="none" stroke="var(--charcoal)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1"/></svg>
+          </div>
+          <h3>Clear Pricing</h3>
+          <p>No hidden fees or surprise charges. We give you a clear, detailed estimate upfront so you know exactly what to expect.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon amber">
+            <svg width="28" height="28" fill="none" stroke="var(--amber)" stroke-width="2" viewBox="0 0 24 24"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3>No Subcontractors</h3>
+          <p>Our own crew handles every job from start to finish. No hand-offs, no strangers, no finger-pointing &mdash; just accountability.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon green">
+            <svg width="28" height="28" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+          </div>
+          <h3>Full Service</h3>
+          <p>From demolition and removal to pouring and finishing &mdash; we handle every phase of your concrete project in-house.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-inner">
+      <span class="section-label">Our Services</span>
+      <h2 class="section-title">Concrete &amp; Flatwork Services</h2>
+      <p class="section-sub">Professional concrete work for residential and commercial properties across every city in Ohio.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem;">
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1632863028132-1c4e2e8c8e0e?w=400&h=200&fit=crop" alt="Driveway concrete work" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&h=200&fit=crop" alt="Residential exterior work" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=200&fit=crop" alt="Construction work site" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
+          </div>
+          <div>
+            <h4>Driveway Replacement</h4>
+            <p>Complete tear-out and repour of concrete driveways. Built to last with proper grading and drainage.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+          </div>
+          <div>
+            <h4>Garage Floors</h4>
+            <p>Standard and monolithic garage floor pours. Smooth, level finishes engineered for heavy use.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M4 20h16M4 20V10l8-6 8 6v10"/></svg>
+          </div>
+          <div>
+            <h4>Sidewalks</h4>
+            <p>Residential and commercial sidewalk installation and replacement to city code standards.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </div>
+          <div>
+            <h4>Outdoor Patios</h4>
+            <p>Custom outdoor patio slabs for entertaining, relaxing, and adding value to your home.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+          <div>
+            <h4>Porch Stoops &amp; Treads</h4>
+            <p>Solid front porch stoops and steps that look great and hold up to Ohio weather year-round.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+          </div>
+          <div>
+            <h4>Concrete Stairs</h4>
+            <p>Exterior and interior concrete stairways built to proper grade with smooth, safe finishes.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: var(--amber);">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M12 19V5m0 0l-4 4m4-4l4 4"/><path d="M5 12H3m18 0h-2"/></svg>
+          </div>
+          <div>
+            <h4>Leveling &amp; Foundations</h4>
+            <p>Foundation leveling, driveway drains, and grade work to protect your property from water damage.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: var(--amber);">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+          </div>
+          <div>
+            <h4>Concrete Removal</h4>
+            <p>Old concrete tear-out and hauling at just $2/sqft. City violation and point-of-sale work available.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERMIT SECTION (unique selling point) -->
+  <section class="section permit-section">
+    <div class="section-inner">
+      <div class="permit-grid">
+        <div class="nofee-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=450&fit=crop" alt="Professional construction site">
+          <div class="nofee-price-tag">
+            <div class="big">ALL OH</div>
+            <div class="lbl">Statewide Permits</div>
+          </div>
+        </div>
+        <div class="permit-content">
+          <h2>We Pull Permits in Every City Across Ohio</h2>
+          <p>Most concrete companies can only work in a handful of cities. MR. CONCRETE INC. is licensed to pull permits statewide &mdash; which means no delays, no runaround, and no failed inspections.</p>
+          <ul class="permit-list">
+            <li>Permits pulled in every Ohio municipality</li>
+            <li>City violation and point-of-sale work handled</li>
+            <li>All inspections scheduled and coordinated</li>
+            <li>Fully incorporated (Inc.) for your protection</li>
+            <li>Bonded and insured on every project</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <h2>Ready to Start Your Concrete Project?</h2>
+    <p>Get a free, no-obligation estimate from Ohio's trusted concrete professionals. Licensed, bonded, and backed by our satisfaction guarantee.</p>
+    <a href="tel:4409414281" class="cta-phone-big">
+      <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      (440) 941-4281
+    </a>
+    <p class="cta-sub">Free Estimates &bull; Satisfaction Guarantee &bull; Serving All of Ohio</p>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials-section">
+    <div class="section-inner">
+      <span class="section-label">What Clients Say</span>
+      <h2 class="section-title">Trusted Across Ohio</h2>
+      <p class="section-sub">Our work speaks for itself &mdash; but our clients like to speak up too.</p>
+      <div style="margin-bottom: 2.5rem; border-radius: 20px; overflow: hidden; max-height: 220px;">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1100&h=300&fit=crop&crop=bottom" alt="Ohio neighborhood homes" style="width: 100%; object-fit: cover; display: block;">
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"They replaced our entire driveway and it looks incredible. The crew was professional, showed up on time, and handled the city permits themselves. Best concrete company we've ever hired."</p>
+          <div class="testimonial-author">Dave &amp; Karen M.</div>
+          <div class="testimonial-loc">Avon, OH</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"Had a point-of-sale violation on my sidewalk and needed it fixed fast. MR. CONCRETE pulled the permit and had the work done in two days. Passed inspection first try. Highly recommend."</p>
+          <div class="testimonial-author">Rachel T.</div>
+          <div class="testimonial-loc">Cleveland, OH</div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-text">"We got quotes from four companies for our garage floor and patio. MR. CONCRETE was the most upfront with pricing and the only one that was actually bonded and insured. Great work, fair price."</p>
+          <div class="testimonial-author">Steve P.</div>
+          <div class="testimonial-loc">Elyria, OH</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">MR. CONCRETE INC.</div>
+    <div class="footer-info">
+      Based in Avon, OH &bull; Serving All of Ohio<br>
+      <a href="tel:4409414281" class="footer-phone">(440) 941-4281</a><br>
+      Licensed &bull; Bonded &bull; Insured &bull; Satisfaction Guarantee
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 MR. CONCRETE INC. All rights reserved.<br>
+      <span style="color: rgba(255,255,255,0.4); font-size: 0.75rem;">Landing page designed by ClockOutNow.com</span>
+    </div>
+  </footer>
+
+</body>
+</html>
