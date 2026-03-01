@@ -205,21 +205,52 @@
     .service-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.3rem; }
     .service-card p { font-size: 0.82rem; color: var(--gray-600); line-height: 1.5; }
 
-    /* === GALLERY === */
-    .gallery-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    /* === GALLERY CAROUSEL === */
+    .carousel-wrapper {
+      position: relative; overflow: hidden; border-radius: 16px;
+      background: var(--charcoal-light);
     }
-    .gallery-grid .gallery-item {
-      border-radius: 14px; overflow: hidden; height: 220px;
+    .carousel-track {
+      display: flex; transition: transform 0.4s ease;
     }
-    .gallery-grid .gallery-item.tall {
-      grid-row: span 2; height: 100%;
+    .carousel-slide {
+      min-width: 100%; display: flex; align-items: center; justify-content: center;
+      padding: 1rem; box-sizing: border-box;
     }
-    .gallery-grid .gallery-item img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.4s;
+    .carousel-slide img {
+      max-width: 100%; max-height: 500px; object-fit: contain; display: block;
+      border-radius: 12px;
     }
-    .gallery-grid .gallery-item:hover img { transform: scale(1.05); }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(255,255,255,0.9); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15); z-index: 5;
+      font-size: 1.3rem; color: var(--charcoal); transition: all 0.2s;
+    }
+    .carousel-btn:hover { background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+    .carousel-btn.prev { left: 1rem; }
+    .carousel-btn.next { right: 1rem; }
+    .carousel-dots {
+      display: flex; justify-content: center; gap: 0.5rem;
+      padding: 1.2rem 0 0.5rem;
+    }
+    .carousel-dot {
+      width: 10px; height: 10px; border-radius: 50%; border: none; cursor: pointer;
+      background: var(--gray-100); transition: all 0.3s;
+    }
+    .carousel-dot.active { background: var(--accent); transform: scale(1.2); }
+    .carousel-counter {
+      text-align: center; font-size: 0.85rem; color: var(--gray-600);
+      padding-bottom: 0.5rem; font-weight: 500;
+    }
+    @media (max-width: 768px) {
+      .carousel-slide img { max-height: 350px; }
+      .carousel-btn { width: 38px; height: 38px; font-size: 1rem; }
+      .carousel-btn.prev { left: 0.5rem; }
+      .carousel-btn.next { right: 0.5rem; }
+    }
 
     /* === AI CHATBOT DEMO === */
     .ai-section { background: var(--charcoal-deep); color: #fff; }
@@ -479,44 +510,50 @@
     </div>
   </section>
 
-  <!-- GALLERY -->
+  <!-- GALLERY CAROUSEL -->
   <section class="section" style="background: var(--gray-50);">
     <div class="section-inner">
       <span class="section-label">Our Work</span>
       <h2 class="section-title">Recent Projects</h2>
       <p class="section-sub">A sampling of our craftsmanship across carpentry, tile, and remodeling projects throughout Western New York.</p>
-      <div class="gallery-grid">
-        <div class="gallery-item tall">
-          <img src="/preview-images/derme-family-remodeling/custom-cabinetry.jpg" alt="Custom built-in shelving and closet system">
+      <div class="carousel-wrapper" id="gallery-carousel">
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-slide">
+            <img src="/preview-images/derme-family-remodeling/custom-cabinetry.jpg" alt="Custom built-in shelving and closet system">
+          </div>
+          <div class="carousel-slide">
+            <img src="/preview-images/derme-family-remodeling/bathroom-tile.jpg" alt="White wavy tile shower with mosaic floor and glass door">
+          </div>
+          <div class="carousel-slide">
+            <img src="/preview-images/derme-family-remodeling/stone-fireplace-2.jpg" alt="Stone fireplace with mounted TV and dark wood mantel">
+          </div>
+          <div class="carousel-slide">
+            <img src="/preview-images/derme-family-remodeling/custom-bar-2.jpg" alt="Custom bar with green cabinets, wood countertop, and wine fridge">
+          </div>
+          <div class="carousel-slide">
+            <img src="/preview-images/derme-family-remodeling/shiplap-fireplace-2.jpg" alt="Teal shiplap fireplace with floating shelves and electric insert">
+          </div>
+          <div class="carousel-slide">
+            <img src="/preview-images/derme-family-remodeling/kitchen-island-2.jpg" alt="Kitchen island with teal fluted panel detail">
+          </div>
+          <div class="carousel-slide">
+            <img src="/preview-images/derme-family-remodeling/crown-molding.jpg" alt="Detailed dark crown molding trim work">
+          </div>
+          <div class="carousel-slide">
+            <img src="/preview-images/derme-family-remodeling/exterior-porch.jpg" alt="Exterior dark tile porch and deck work">
+          </div>
+          <div class="carousel-slide">
+            <img src="/preview-images/derme-family-remodeling/fireplace-mantel.jpg" alt="Custom white fireplace mantel with wood ceiling detail">
+          </div>
+          <div class="carousel-slide">
+            <img src="/preview-images/derme-family-remodeling/outdoor-pavilion-2.jpg" alt="Custom outdoor pavilion with white columns by the lake">
+          </div>
         </div>
-        <div class="gallery-item">
-          <img src="/preview-images/derme-family-remodeling/bathroom-tile.jpg" alt="White wavy tile shower with mosaic floor and glass door">
-        </div>
-        <div class="gallery-item">
-          <img src="/preview-images/derme-family-remodeling/crown-molding.jpg" alt="Detailed dark crown molding trim work">
-        </div>
-        <div class="gallery-item">
-          <img src="/preview-images/derme-family-remodeling/exterior-porch.jpg" alt="Exterior dark tile porch and deck work">
-        </div>
-        <div class="gallery-item">
-          <img src="/preview-images/derme-family-remodeling/fireplace-mantel.jpg" alt="Custom white fireplace mantel with wood ceiling detail">
-        </div>
-        <div class="gallery-item tall">
-          <img src="/preview-images/derme-family-remodeling/stone-fireplace-2.jpg" alt="Stone fireplace with mounted TV and dark wood mantel">
-        </div>
-        <div class="gallery-item">
-          <img src="/preview-images/derme-family-remodeling/custom-bar-2.jpg" alt="Custom bar with green cabinets, wood countertop, and wine fridge">
-        </div>
-        <div class="gallery-item">
-          <img src="/preview-images/derme-family-remodeling/shiplap-fireplace-2.jpg" alt="Teal shiplap fireplace with floating shelves and electric insert">
-        </div>
-        <div class="gallery-item">
-          <img src="/preview-images/derme-family-remodeling/kitchen-island-2.jpg" alt="Kitchen island with teal fluted panel detail">
-        </div>
-        <div class="gallery-item">
-          <img src="/preview-images/derme-family-remodeling/outdoor-pavilion-2.jpg" alt="Custom outdoor pavilion with white columns by the lake">
-        </div>
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Previous">&#10094;</button>
+        <button class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Next">&#10095;</button>
       </div>
+      <div class="carousel-dots" id="carousel-dots"></div>
+      <div class="carousel-counter" id="carousel-counter"></div>
     </div>
   </section>
 
@@ -581,10 +618,63 @@
     </div>
   </footer>
 
+  <!-- Gallery Carousel -->
+  <script>
+    (function() {
+      var current = 0;
+      var track = document.getElementById('carousel-track');
+      var slides = track.querySelectorAll('.carousel-slide');
+      var total = slides.length;
+      var dotsEl = document.getElementById('carousel-dots');
+      var counterEl = document.getElementById('carousel-counter');
+
+      // Build dots
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        dot.setAttribute('data-index', i);
+        dot.onclick = function() { goTo(parseInt(this.getAttribute('data-index'))); };
+        dotsEl.appendChild(dot);
+      }
+      updateCounter();
+
+      window.moveCarousel = function(dir) {
+        goTo((current + dir + total) % total);
+      };
+
+      function goTo(index) {
+        current = index;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        var dots = dotsEl.querySelectorAll('.carousel-dot');
+        for (var i = 0; i < dots.length; i++) {
+          dots[i].className = 'carousel-dot' + (i === current ? ' active' : '');
+        }
+        updateCounter();
+      }
+
+      function updateCounter() {
+        counterEl.textContent = (current + 1) + ' / ' + total;
+      }
+
+      // Swipe support
+      var startX = 0;
+      var wrapper = document.getElementById('gallery-carousel');
+      wrapper.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
+      wrapper.addEventListener('touchend', function(e) {
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) moveCarousel(diff > 0 ? 1 : -1);
+      });
+
+      // Auto-advance every 5s
+      setInterval(function() { moveCarousel(1); }, 5000);
+    })();
+  </script>
+
   <!-- Analytics Tracking -->
   <script>
     (function() {
-      const params = new URLSearchParams(window.location.search);
+      var params = new URLSearchParams(window.location.search);
       fetch('/api/track-view', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -595,7 +685,7 @@
           referrer: document.referrer,
           timestamp: new Date().toISOString()
         })
-      }).catch(() => {});
+      }).catch(function() {});
     })();
   </script>
 
