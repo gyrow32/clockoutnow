@@ -398,6 +398,36 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* TRY OUR AI AGENT */}
+      <section className="section-padding relative">
+        <div className="container-custom">
+          <AnimatedSection>
+            <div className="max-w-3xl mx-auto text-center">
+              <span className="section-label">Hear It In Action</span>
+              <h2 className="section-title mt-4">
+                Try Our <span className="text-green-600">AI Agent</span> Right Now
+              </h2>
+              <p className="section-subtitle mx-auto">
+                Call the number below and talk to our AI receptionist. It answers calls,
+                qualifies leads, and texts you the details &mdash; 24/7. See for yourself.
+              </p>
+              <a
+                href="tel:6072253400"
+                className="inline-flex items-center gap-3 mt-8 bg-green-600 hover:bg-green-700 text-white font-bold text-xl px-10 py-5 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              >
+                <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                (607) 225-3400
+              </a>
+              <p className="text-charcoal-400 text-sm mt-4">
+                Go ahead &mdash; give it a call. It&apos;s free and takes 30 seconds.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="relative py-20 overflow-hidden bg-charcoal-800">
         <div className="container-custom text-center">
