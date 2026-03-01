@@ -49,16 +49,17 @@ Once your project is ready:
 
 ## Step 2: Update Environment Variables
 
-1. Open `website/.env` in your code editor
-2. Replace the Supabase placeholders:
+1. Copy `website/.env.example` to `website/.env.local`
+2. Open `website/.env.local` in your code editor
+3. Replace the Supabase placeholders:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://YOUR-PROJECT-ID.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 ```
 
-3. Save the file
-4. **IMPORTANT:** If you deploy to production, add these same variables to your hosting platform (Vercel, etc.)
+4. Save the file
+5. **IMPORTANT:** If you deploy to production, add these same variables to your hosting platform (Vercel, etc.)
 
 ---
 
@@ -71,7 +72,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
    ```
 
 2. Open http://localhost:3000/admin
-3. Enter password: `buffalo2026`
+3. Enter password: your `ADMIN_ACCESS_KEY`
 4. You should see the dashboard (empty at first)
 
 If you see an error, check:
@@ -136,7 +137,7 @@ When you send an email to a lead:
 1. Go to `/admin`
 2. Click **"Log New Email"**
 3. Fill in:
-   - Business name (from leads.md)
+   - Business name (from Supabase `leads` table or your notes)
    - Contact (phone/email)
    - Select the preview page slug you built for them
    - Subject line (optional but helpful)
@@ -188,14 +189,14 @@ To see more details:
 
 **Old workflow:**
 1. Find lead on Craigslist
-2. Add to leads.md
+2. Add to Supabase `leads` table (or keep local notes in `docs/ops/leads.md`)
 3. Build preview page
 4. Send email with link
 5. ❌ No tracking
 
 **New workflow:**
 1. Find lead on Craigslist
-2. Add to leads.md *(still useful for research)*
+2. Add to Supabase `leads` table *(canonical)*
 3. Build preview page (static HTML)
 4. **Go to `/admin` dashboard**
 5. **Click "Log Email Sent"**
@@ -210,7 +211,7 @@ To see more details:
 ## Security Notes
 
 - Admin dashboard is password-protected
-- Password is `buffalo2026` (set in `.env` as `ADMIN_ACCESS_KEY`)
+- Password is your `ADMIN_ACCESS_KEY` (set in `website/.env.local`)
 - Change this in production!
 - Dashboard is not indexed by search engines (noindex meta tag)
 - Tracking endpoint is public (needs to be for preview pages to work)
@@ -220,7 +221,7 @@ To see more details:
 ## Troubleshooting
 
 ### Dashboard shows "Unauthorized"
-- Check that `ADMIN_ACCESS_KEY` is set in `.env`
+- Check that `ADMIN_ACCESS_KEY` is set in `website/.env.local`
 - Try refreshing the page
 - Re-enter the password
 
@@ -231,7 +232,7 @@ To see more details:
 - Check that tracking script is in the HTML file
 
 ### "Failed to create campaign"
-- Verify Supabase credentials in `.env`
+- Verify Supabase credentials in `website/.env.local`
 - Check that database migration ran successfully
 - Look at browser console for specific error
 
@@ -288,7 +289,7 @@ To see more details:
 
 **Modified:**
 - All 11 preview pages in `public/preview-pages/` - Added tracking script
-- `.env` - Added Supabase credentials and admin key
+- `website/.env.local` - Supabase credentials and admin key
 
 ---
 
@@ -298,7 +299,7 @@ If something isn't working:
 1. Check the Troubleshooting section above
 2. Look at browser console for errors
 3. Check Supabase logs (Project Settings → Logs)
-4. Verify environment variables are loaded (restart dev server after changing .env)
+4. Verify environment variables are loaded (restart dev server after changing `website/.env.local`)
 
 **The system is designed to be bulletproof:**
 - If Supabase is down, tracking fails silently (preview pages still work)

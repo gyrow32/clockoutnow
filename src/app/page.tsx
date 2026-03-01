@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import AnimatedSection from '@/components/AnimatedSection'
+import LancasterSkyline from '@/components/LancasterSkyline'
 import { scenarios } from '@/data/testimonials'
 
 const benefits = [
@@ -122,6 +123,10 @@ export default function HomePage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden">
+        {/* Lancaster skyline silhouette background */}
+        <div className="absolute bottom-0 left-0 right-0 text-green-600/[0.06] pointer-events-none">
+          <LancasterSkyline />
+        </div>
         <div className="container-custom pt-28 pb-16 md:pt-36 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
@@ -173,13 +178,35 @@ export default function HomePage() {
                 </a>
               </motion.div>
 
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="mt-8 bg-green-600/10 border border-green-600/20 rounded-xl p-5"
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="text-charcoal-800 font-bold text-sm">Try Our AI Agent Right Now</div>
+                    <div className="text-charcoal-400 text-xs">Call and see how it handles your customers</div>
+                  </div>
+                </div>
+                <a href="tel:+16072253400" className="inline-flex items-center gap-2 text-green-600 font-bold text-lg hover:text-green-700 transition-colors">
+                  (607) 225-3400
+                </a>
+              </motion.div>
+
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 className="text-charcoal-400 text-sm mt-6"
               >
-                Serving Buffalo &amp; Western NY &middot; Free consultation &middot; No contracts
+                Based in Lancaster, NY &middot; Serving Buffalo &amp; All of Western NY &middot; Free consultation
               </motion.p>
             </div>
 
@@ -191,8 +218,8 @@ export default function HomePage() {
             >
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
                 <Image
-                  src="/hero-contractor.png"
-                  alt="Contractor with laptop showing professional website"
+                  src="/hero-lancaster.jpg"
+                  alt="Como Lake Park castle in Lancaster, NY — home of ClockOutNow"
                   fill
                   className="object-cover"
                   priority
@@ -202,12 +229,12 @@ export default function HomePage() {
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-green-600/10 flex items-center justify-center">
                       <svg className="w-5 h-5 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
                       </svg>
                     </div>
                     <div>
-                      <div className="text-charcoal-800 text-sm font-bold">New lead captured</div>
-                      <div className="text-charcoal-400 text-xs">While you were on the job</div>
+                      <div className="text-charcoal-800 text-sm font-bold">Lancaster, NY</div>
+                      <div className="text-charcoal-400 text-xs">Proudly local since day one</div>
                     </div>
                   </div>
                 </div>
@@ -224,8 +251,8 @@ export default function HomePage() {
             <AnimatedSection>
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg">
                 <Image
-                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
-                  alt="Contractor checking phone between jobs"
+                  src="/buffalo-neighborhood.jpg"
+                  alt="Cayuga Creek and water tower in Lancaster, NY"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -428,9 +455,92 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* PROUDLY LOCAL */}
+      <section className="section-padding relative">
+        <div className="container-custom">
+          <AnimatedSection>
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="section-label">Our Home</span>
+              <h2 className="section-title mt-4">
+                Proudly Based in <span className="text-green-600">Lancaster, NY</span>
+              </h2>
+              <p className="section-subtitle mx-auto">
+                We&apos;re not some faceless tech company. We&apos;re your neighbors &mdash;
+                building tools for the trades that keep Western New York running.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <AnimatedSection delay={0}>
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg group">
+                <Image
+                  src="/images/lancaster/como-park-castle.jpg"
+                  alt="Como Lake Park and the Lancaster Lighthouse, Lancaster NY"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <p className="text-white text-sm font-semibold">Como Lake Park</p>
+                  <p className="text-white/70 text-xs">The Lancaster Lighthouse</p>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.15}>
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg group">
+                <Image
+                  src="/images/lancaster/cayuga-creek-lancaster.jpg"
+                  alt="Cayuga Creek and Village of Lancaster water tower, Lancaster NY"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <p className="text-white text-sm font-semibold">Village of Lancaster</p>
+                  <p className="text-white/70 text-xs">Cayuga Creek &amp; the Water Tower</p>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.3}>
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg group">
+                <Image
+                  src="/images/lancaster/village-municipal.jpg"
+                  alt="Lancaster Municipal Building, downtown Lancaster NY"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <p className="text-white text-sm font-semibold">Downtown Lancaster</p>
+                  <p className="text-white/70 text-xs">Municipal Building on Main St</p>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+
+          <AnimatedSection delay={0.2}>
+            <p className="text-center text-charcoal-400 text-sm mt-8 max-w-lg mx-auto">
+              Lancaster, NY 14086 &middot; Serving Buffalo, Cheektowaga, Depew, Elma, Alden &amp; all of WNY
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="relative py-20 overflow-hidden bg-charcoal-800">
-        <div className="container-custom text-center">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/buffalo-skyline.jpg"
+            alt="Downtown Lancaster, NY"
+            fill
+            className="object-cover opacity-15"
+            sizes="100vw"
+          />
+        </div>
+        <div className="container-custom text-center relative z-10">
           <AnimatedSection>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
               Ready to Stop <span className="text-coral-400">Missing Calls</span>?
@@ -440,11 +550,11 @@ export default function HomePage() {
               no tech jargon. Just a conversation about how to get you more jobs.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#contact" className="btn-coral text-base px-8 py-4">
-                Get Your Free Consultation
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+              <a href="tel:+16072253400" className="btn-coral text-base px-8 py-4">
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                 </svg>
+                Call Our AI Agent: (607) 225-3400
               </a>
               <a href="mailto:hello@clockoutnow.com" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-white/30 text-white font-semibold hover:bg-white/10 transition-all duration-300 hover:-translate-y-0.5">
                 Email Us Directly

@@ -38,7 +38,7 @@ const values = [
   },
   {
     title: 'We\'re Right Here',
-    description: 'Based in Western New York. We\'re local, we\'re available, and we actually pick up the phone.',
+    description: 'Based in Lancaster, NY — serving Buffalo, Cheektowaga, Lockport, and all of WNY. We\'re local, we\'re available, and we actually pick up the phone.',
     icon: '📍',
   },
 ]
@@ -56,7 +56,7 @@ export default function AboutPage() {
               <span className="text-green-600">Work With Their Hands</span>
             </h1>
             <p className="section-subtitle mt-4 max-w-2xl text-charcoal-400">
-              Based in Western New York, we help plumbers, roofers, HVAC techs,
+              Based in Lancaster, NY, we help Buffalo-area plumbers, roofers, HVAC techs,
               cleaners, and other service businesses stop losing leads and start
               growing — with simple AI automation.
             </p>
@@ -114,6 +114,16 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Local Image Banner */}
+      <section className="relative h-64 overflow-hidden">
+        <img src="/buffalo-waterfront.jpg" alt="Buffalo, NY waterfront" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-charcoal-800/60 flex items-center justify-center">
+          <p className="text-white text-2xl sm:text-3xl font-bold text-center px-4">
+            Proudly Serving Buffalo &amp; Western New York
+          </p>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="relative py-20 overflow-hidden bg-charcoal-800">
         <div className="container-custom text-center">
@@ -126,7 +136,13 @@ export default function AboutPage() {
               eating your time and how we can help.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn-coral text-base px-8 py-4">
+              <a href="tel:+16072253400" className="btn-coral text-base px-8 py-4">
+                Call Our AI Agent: (607) 225-3400
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+              </a>
+              <Link href="/contact" className="btn-secondary text-base px-8 py-4 text-white border-white/20 hover:bg-white/10">
                 Get In Touch
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />

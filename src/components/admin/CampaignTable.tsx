@@ -32,7 +32,11 @@ export default function CampaignTable({
   }
 
   async function handleCopyLink(slug: string, id: string) {
-    const url = `https://clockoutnow.com/preview/${slug}?utm_source=email&utm_campaign=${id}`
+    const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL || window.location.origin).replace(
+      /\/$/,
+      ''
+    )
+    const url = `${baseUrl}/preview/${slug}?utm_source=email&utm_campaign=${id}`
     const success = await copyToClipboard(url)
     if (success) {
       setCopiedId(id)
@@ -48,7 +52,7 @@ export default function CampaignTable({
           No campaigns yet
         </h3>
         <p className="text-charcoal-400 text-sm">
-          Click "Log New Email" to get started
+          Click &quot;Log New Email&quot; to get started
         </p>
       </div>
     )

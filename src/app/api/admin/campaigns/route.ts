@@ -6,12 +6,13 @@ import {
   CreateCampaignInput,
 } from '@/lib/supabase-queries'
 
-const ADMIN_KEY = (process.env.ADMIN_ACCESS_KEY || 'buffalo2026').trim()
+const ADMIN_KEY = process.env.ADMIN_ACCESS_KEY?.trim()
 
 /**
  * Verify admin access key from request headers
  */
 function verifyAuth(req: NextRequest): boolean {
+  if (!ADMIN_KEY) return false
   const authHeader = req.headers.get('authorization')
   if (!authHeader) return false
 
@@ -72,8 +73,8 @@ export async function POST(req: NextRequest) {
     const campaign = await createCampaign(body)
 
     // Generate tracking URL
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://clockoutnow.com'
-    const trackingUrl = `${baseUrl}/preview/${preview_page_slug}?utm_source=email&utm_campaign=${campaign.id}`
+    const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL || 'https://clockoutnow.com').trim()
+    const trackingUrl = `${baseUrl}/preview-pages/${preview_page_slug}.html?utm_source=email&utm_campaign=${campaign.id}`
 
     return NextResponse.json({
       campaign,

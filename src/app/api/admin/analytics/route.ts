@@ -9,9 +9,10 @@ import {
   getTopPerformingPages,
 } from '@/lib/supabase-queries'
 
-const ADMIN_KEY = (process.env.ADMIN_ACCESS_KEY || 'buffalo2026').trim()
+const ADMIN_KEY = process.env.ADMIN_ACCESS_KEY?.trim()
 
 function verifyAuth(req: NextRequest): boolean {
+  if (!ADMIN_KEY) return false
   const authHeader = req.headers.get('authorization')
   if (!authHeader) return false
   const token = authHeader.replace('Bearer ', '').trim()

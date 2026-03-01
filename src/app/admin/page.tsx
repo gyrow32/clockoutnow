@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense, useCallback, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Campaign } from '@/lib/supabase-queries'
 import SummaryCards from '@/components/admin/SummaryCards'
@@ -10,8 +10,6 @@ import AnalyticsChart from '@/components/admin/AnalyticsChart'
 import LeadsTable from '@/components/admin/LeadsTable'
 import PerformanceChart from '@/components/admin/PerformanceChart'
 import EngagementMetrics from '@/components/admin/EngagementMetrics'
-
-const ADMIN_KEY = 'buffalo2026'
 
 interface DashboardData {
   campaigns: Campaign[]
@@ -52,6 +50,7 @@ interface DashboardData {
 
 function AdminContent() {
   const [authorized, setAuthorized] = useState(false)
+  const [authKey, setAuthKey] = useState<string | null>(null)
   const [keyInput, setKeyInput] = useState('')
   const [error, setError] = useState(false)
   const [data, setData] = useState<DashboardData | null>(null)
@@ -63,13 +62,6 @@ function AdminContent() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    if (searchParams.get('key') === ADMIN_KEY) {
-      setAuthorized(true)
-      fetchDashboardData()
-    }
-  }, [searchParams])
-
-  useEffect(() => {
     // Fetch total preview pages count
     fetch('/api/preview-pages')
       .then((r) => r.json())
@@ -77,61 +69,95 @@ function AdminContent() {
       .catch(() => {})
   }, [])
 
-  async function fetchDashboardData() {
-    setLoading(true)
-    try {
-      const [campaignsRes, analyticsRes, leadsRes] = await Promise.all([
-        fetch('/api/admin/campaigns', {
-          headers: { Authorization: ADMIN_KEY },
-        }),
-        fetch('/api/admin/analytics', {
-          headers: { Authorization: ADMIN_KEY },
-        }),
-        fetch('/api/admin/leads', {
-          headers: { Authorization: ADMIN_KEY },
-        }),
-      ])
+  const fetchDashboardData = useCallback(
+    async (keyOverride?: string): Promise<boolean> => {
+      const key = (keyOverride ?? authKey)?.trim()
+      if (!key) return false
 
-      if (!campaignsRes.ok || !analyticsRes.ok || !leadsRes.ok) {
-        throw new Error('Failed to fetch data')
+      setLoading(true)
+      try {
+        const [campaignsRes, analyticsRes, leadsRes] = await Promise.all([
+          fetch('/api/admin/campaigns', {
+            headers: { Authorization: key },
+          }),
+          fetch('/api/admin/analytics', {
+            headers: { Authorization: key },
+          }),
+          fetch('/api/admin/leads', {
+            headers: { Authorization: key },
+          }),
+        ])
+
+        if (
+          campaignsRes.status === 401 ||
+          analyticsRes.status === 401 ||
+          leadsRes.status === 401
+        ) {
+          return false
+        }
+
+        const [campaignsData, analyticsData, leadsData] = await Promise.all([
+          campaignsRes.json(),
+          analyticsRes.json(),
+          leadsRes.json(),
+        ])
+
+        setData({
+          campaigns: campaignsData.campaigns,
+          summary: campaignsData.summary,
+          analytics: analyticsData,
+        })
+        setLeads(leadsData.leads || [])
+        return true
+      } catch (error) {
+        console.error('Error fetching dashboard data:', error)
+        return false
+      } finally {
+        setLoading(false)
       }
+    },
+    [authKey]
+  )
 
-      const [campaignsData, analyticsData, leadsData] = await Promise.all([
-        campaignsRes.json(),
-        analyticsRes.json(),
-        leadsRes.json(),
-      ])
+  const tryAuthorize = useCallback(
+    async (key: string) => {
+      const ok = await fetchDashboardData(key)
+      if (ok) {
+        setAuthKey(key.trim())
+        setAuthorized(true)
+        setError(false)
+      } else {
+        setAuthKey(null)
+        setAuthorized(false)
+        setError(true)
+      }
+    },
+    [fetchDashboardData]
+  )
 
-      setData({
-        campaigns: campaignsData.campaigns,
-        summary: campaignsData.summary,
-        analytics: analyticsData,
-      })
-      setLeads(leadsData.leads || [])
-    } catch (error) {
-      console.error('Error fetching dashboard data:', error)
-    } finally {
-      setLoading(false)
+  useEffect(() => {
+    const keyFromUrl = searchParams.get('key')
+    if (keyFromUrl) {
+      setKeyInput(keyFromUrl)
+      void tryAuthorize(keyFromUrl)
     }
-  }
+  }, [searchParams, tryAuthorize])
 
   function handleUnlock() {
-    if (keyInput.trim() === ADMIN_KEY) {
-      setAuthorized(true)
-      setError(false)
-      fetchDashboardData()
-    } else {
-      setError(true)
-    }
+    const key = keyInput.trim()
+    if (!key) return
+    void tryAuthorize(key)
   }
 
   async function handleAddCampaign(formData: any) {
+    if (!authKey) return null
+
     try {
       const res = await fetch('/api/admin/campaigns', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: ADMIN_KEY,
+          Authorization: authKey,
         },
         body: JSON.stringify(formData),
       })
@@ -139,7 +165,7 @@ function AdminContent() {
       if (!res.ok) throw new Error('Failed to create campaign')
 
       const { tracking_url } = await res.json()
-      await fetchDashboardData()
+      await fetchDashboardData(authKey)
       return tracking_url
     } catch (error) {
       console.error('Error creating campaign:', error)
@@ -148,12 +174,14 @@ function AdminContent() {
   }
 
   async function handleUpdateCampaign(id: string, status: Campaign['status']) {
+    if (!authKey) return
+
     try {
       const res = await fetch(`/api/admin/campaigns/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: ADMIN_KEY,
+          Authorization: authKey,
         },
         body: JSON.stringify({ status }),
       })
@@ -351,11 +379,11 @@ function AdminContent() {
             {activeTab === 'campaigns' ? (
               <>
                 {/* Campaign Table */}
-                <CampaignTable
-                  campaigns={data.campaigns}
-                  onUpdate={handleUpdateCampaign}
-                  onRefresh={fetchDashboardData}
-                />
+            <CampaignTable
+              campaigns={data.campaigns}
+              onUpdate={handleUpdateCampaign}
+              onRefresh={() => void fetchDashboardData(authKey || undefined)}
+            />
 
                 {/* Performance Over Time */}
                 <PerformanceChart
@@ -386,7 +414,7 @@ function AdminContent() {
           <div className="text-center py-20">
             <p className="text-charcoal-400">Failed to load dashboard data</p>
             <button
-              onClick={fetchDashboardData}
+              onClick={() => void fetchDashboardData()}
               className="mt-4 px-6 py-2 text-sm font-semibold rounded-lg bg-green-600 text-white hover:bg-green-700 transition-colors"
             >
               Retry

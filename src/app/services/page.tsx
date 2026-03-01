@@ -18,7 +18,8 @@ export default function ServicesPage() {
             </h1>
             <p className="section-subtitle mt-4 max-w-2xl text-charcoal-400">
               No fancy tech. Just AI chatbots, professional websites, and booking systems
-              that bring in leads while you&apos;re on the job.
+              that bring in leads while you&apos;re on the job. Built by a Lancaster, NY team
+              that knows Buffalo businesses.
             </p>
           </AnimatedSection>
         </div>
