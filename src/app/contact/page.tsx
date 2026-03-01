@@ -25,7 +25,7 @@ export default function ContactPage() {
         email: formData.phone,
         company: formData.business,
         service: 'General Inquiry',
-        message: formData.message,
+        message: `Phone: ${formData.phone}\n\n${formData.message}`,
       })
       setFormStatus('success')
       setFormData({ name: '', business: '', phone: '', message: '' })

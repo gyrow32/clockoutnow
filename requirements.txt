@@ -1,0 +1,19 @@
+# Lead Enrichment & Preview Site Generation
+supabase==2.3.0
+python-dotenv==1.0.0
+
+# Web Scraping & Data Extraction
+beautifulsoup4==4.12.3
+requests==2.31.0
+selenium==4.16.0
+
+# Image Generation (Gemini)
+google-generativeai==0.3.2
+google-cloud-aiplatform==1.38.1
+
+# DNS / Email Verification
+dnspython==2.4.2
+
+# Data Processing
+pandas==2.1.4
+openpyxl==3.1.2
