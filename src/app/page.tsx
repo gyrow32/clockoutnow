@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 import AnimatedSection from '@/components/AnimatedSection'
 import LancasterSkyline from '@/components/LancasterSkyline'
 import { scenarios } from '@/data/testimonials'
@@ -130,60 +129,43 @@ export default function HomePage() {
         <div className="container-custom pt-28 pb-16 md:pt-36 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
+              <AnimatedSection>
                 <span className="section-label">
                   AI Automation for Contractors &amp; Service Businesses
                 </span>
-              </motion.div>
+              </AnimatedSection>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-charcoal-800 leading-[1.15] mt-6"
-              >
-                Stop Losing Jobs to{' '}
-                <span className="text-green-600">Missed Calls.</span>
-              </motion.h1>
+              <AnimatedSection delay={0.1}>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-charcoal-800 leading-[1.15] mt-6">
+                  Stop Losing Jobs to{' '}
+                  <span className="text-green-600">Missed Calls.</span>
+                </h1>
+              </AnimatedSection>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg md:text-xl text-charcoal-400 mt-6 max-w-lg leading-relaxed"
-              >
-                You&apos;re great at your trade. We build AI tools that answer your
-                calls, book your jobs, and make you look professional online &mdash;
-                so you can focus on the work.
-              </motion.p>
+              <AnimatedSection delay={0.2}>
+                <p className="text-lg md:text-xl text-charcoal-400 mt-6 max-w-lg leading-relaxed">
+                  You&apos;re great at your trade. We build AI tools that answer your
+                  calls, book your jobs, and make you look professional online &mdash;
+                  so you can focus on the work.
+                </p>
+              </AnimatedSection>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex flex-wrap gap-4 mt-10"
-              >
-                <a href="#contact" className="btn-coral text-base px-8 py-4">
-                  Get a Free Consultation
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-                  </svg>
-                </a>
-                <a href="#how-it-works" className="btn-secondary text-base px-8 py-4">
-                  See How It Works
-                </a>
-              </motion.div>
+              <AnimatedSection delay={0.3}>
+                <div className="flex flex-wrap gap-4 mt-10">
+                  <a href="#contact" className="btn-coral text-base px-8 py-4">
+                    Get a Free Consultation
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </a>
+                  <a href="#how-it-works" className="btn-secondary text-base px-8 py-4">
+                    See How It Works
+                  </a>
+                </div>
+              </AnimatedSection>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="mt-8 bg-green-600/10 border border-green-600/20 rounded-xl p-5"
-              >
+              <AnimatedSection delay={0.4}>
+                <div className="mt-8 bg-green-600/10 border border-green-600/20 rounded-xl p-5">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center">
                     <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -198,24 +180,17 @@ export default function HomePage() {
                 <a href="tel:+16072253400" className="inline-flex items-center gap-2 text-green-600 font-bold text-lg hover:text-green-700 transition-colors">
                   (607) 225-3400
                 </a>
-              </motion.div>
+                </div>
+              </AnimatedSection>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="text-charcoal-400 text-sm mt-6"
-              >
-                Based in Lancaster, NY &middot; Serving Buffalo &amp; All of Western NY &middot; Free consultation
-              </motion.p>
+              <AnimatedSection delay={0.5}>
+                <p className="text-charcoal-400 text-sm mt-6">
+                  Based in Lancaster, NY &middot; Serving Buffalo &amp; All of Western NY &middot; Free consultation
+                </p>
+              </AnimatedSection>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative"
-            >
+            <AnimatedSection delay={0.3}>
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
                 <Image
                   src="/hero-contractor.jpg"
@@ -239,7 +214,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
