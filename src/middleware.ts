@@ -43,6 +43,16 @@ export function middleware(request: NextRequest) {
     })
   }
 
+  // --- Let static assets pass through ---
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/favicon') ||
+    pathname.startsWith('/preview-images') ||
+    pathname.includes('.')
+  ) {
+    return NextResponse.next()
+  }
+
   // --- Block internal paths on client domains ---
   if (
     pathname.startsWith('/admin') ||
@@ -57,15 +67,6 @@ export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone()
     url.pathname = '/'
     return NextResponse.redirect(url, 302)
-  }
-
-  // --- Let static assets pass through ---
-  if (
-    pathname.startsWith('/_next') ||
-    pathname.startsWith('/favicon') ||
-    pathname.includes('.')
-  ) {
-    return NextResponse.next()
   }
 
   // --- Root path: rewrite to client-site route handler ---
