@@ -218,8 +218,8 @@ export default function HomePage() {
             >
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
                 <Image
-                  src="/hero-lancaster.jpg"
-                  alt="Como Lake Park castle in Lancaster, NY — home of ClockOutNow"
+                  src="/hero-contractor.jpg"
+                  alt="Contractor checking job leads on her phone at a residential construction site"
                   fill
                   className="object-cover"
                   priority
@@ -229,12 +229,12 @@ export default function HomePage() {
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-green-600/10 flex items-center justify-center">
                       <svg className="w-5 h-5 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" />
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
                       </svg>
                     </div>
                     <div>
-                      <div className="text-charcoal-800 text-sm font-bold">Lancaster, NY</div>
-                      <div className="text-charcoal-400 text-xs">Proudly local since day one</div>
+                      <div className="text-charcoal-800 text-sm font-bold">Every Lead Captured</div>
+                      <div className="text-charcoal-400 text-xs">AI answers while you work</div>
                     </div>
                   </div>
                 </div>
@@ -251,8 +251,8 @@ export default function HomePage() {
             <AnimatedSection>
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg">
                 <Image
-                  src="/buffalo-neighborhood.jpg"
-                  alt="Cayuga Creek and water tower in Lancaster, NY"
+                  src="/contractor-missed-call.jpg"
+                  alt="HVAC contractor checking a missed call on his phone while working on an AC unit"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
