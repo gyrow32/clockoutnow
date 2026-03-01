@@ -252,7 +252,7 @@ export default function HomePage() {
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-lg">
                 <Image
                   src="/contractor-missed-call.jpg"
-                  alt="HVAC contractor checking a missed call on his phone while working on an AC unit"
+                  alt="House painter on a ladder painting trim at golden hour in a small town — too busy working to check his phone"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
