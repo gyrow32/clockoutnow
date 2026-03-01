@@ -219,7 +219,7 @@ export default function HomePage() {
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
                 <Image
                   src="/hero-contractor.jpg"
-                  alt="Contractor checking job leads on her phone at a residential construction site"
+                  alt="Female contractor marking a board with a speed square at a construction site during golden hour"
                   fill
                   className="object-cover"
                   priority
