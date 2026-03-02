@@ -41,3 +41,5 @@ tools/legacy/
 Thumbs.db
 .vscode/
 
+
+.vercel
