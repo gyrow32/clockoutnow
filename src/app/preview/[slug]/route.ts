@@ -13,7 +13,7 @@ export async function GET(
 
   // Fetch HTML from public CDN (fs.readFile doesn't work in Vercel serverless)
   const origin = request.nextUrl.origin
-  const res = await fetch(`${origin}/preview-pages/${slug}.html`)
+  const res = await fetch(`${origin}/preview-pages/${slug}.htm`)
   if (!res.ok) {
     return new NextResponse('Not Found', { status: 404 })
   }
