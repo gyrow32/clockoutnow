@@ -7,6 +7,11 @@ website/.env.local
 website/.env.*.local
 
 # Node / Next.js
+node_modules/
+.next/
+out/
+.vercel/
+.turbo/
 website/node_modules/
 website/.next/
 website/out/
