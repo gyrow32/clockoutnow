@@ -8,11 +8,6 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    outputFileTracingIncludes: {
-      '/preview/[slug]': ['./public/preview-pages/**/*'],
-    },
-  },
 }
 
 module.exports = nextConfig
