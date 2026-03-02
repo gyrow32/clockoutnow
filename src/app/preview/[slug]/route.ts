@@ -16,6 +16,14 @@ export async function GET(
   const filePath = path.join(process.cwd(), 'public', 'preview-pages', `${slug}.html`)
 
   if (!fs.existsSync(filePath)) {
+    // Debug: log what we see on Vercel
+    const cwd = process.cwd()
+    const publicDir = path.join(cwd, 'public', 'preview-pages')
+    let dirContents = 'dir does not exist'
+    try {
+      dirContents = fs.readdirSync(publicDir).slice(0, 5).join(', ')
+    } catch { /* ignore */ }
+    console.error(`[preview] 404 for slug="${slug}" cwd="${cwd}" publicDir="${publicDir}" contents="${dirContents}"`)
     return new NextResponse('Not Found', { status: 404 })
   }
 
