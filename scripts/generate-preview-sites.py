@@ -43,7 +43,7 @@ supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # Output directory
 # Served by Next.js via /preview/[slug]
-PREVIEW_DIR = repo_root / "website" / "public" / "preview-pages"
+PREVIEW_DIR = repo_root / "public" / "preview-pages"
 PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
 
 

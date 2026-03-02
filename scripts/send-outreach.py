@@ -27,9 +27,9 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 ROOT_DIR = SCRIPT_DIR.parent
 ENV_FILE = ROOT_DIR / ".env.local"
-WEBSITE_ENV_FILE = ROOT_DIR / "website" / ".env.local"
+WEBSITE_ENV_FILE = ROOT_DIR / ".env.local"  # website files are at repo root
 LEADS_FILE = ROOT_DIR / "data" / "leads-auto.json"
-PREVIEW_DIR = ROOT_DIR / "website" / "public" / "preview-pages"
+PREVIEW_DIR = ROOT_DIR / "public" / "preview-pages"
 
 
 def load_env(path: Path) -> dict:
@@ -103,18 +103,35 @@ def log_campaign(
 
 
 def build_email_body(name: str, business: str, preview_url: str) -> str:
-    """Plain text only. Reads like a real person typing in Gmail."""
-    return f"""\
-Hey {name},
+    """Plain text only. Reads like a real person typing in Gmail.
 
-I came across your ad and thought your work looked great. I actually put together a quick website mockup for {business} — no charge, just wanted to show you what it could look like:
+    Rules (from session skill):
+    - Always introduce Mike first — who we are, Lancaster
+    - Never mention how we found them (no "saw your ad", no "Craigslist")
+    - No pricing in early outreach — first users are free for social proof
+    - Include: preview link, clockoutnow.com link, voice agent CTA
+    - Sign as just "Mike"
+    """
+    greeting = f"Hey {name}," if name != "there" else "Hey there,"
+
+    return f"""\
+{greeting}
+
+My name's Mike, I run a small web and AI shop called ClockOutNow out of Lancaster. We build websites and AI tools for local service businesses in the Buffalo area.
+
+I put together a quick preview of what a professional site could look like for {business}:
 
 {preview_url}
 
-If you're interested shoot me a reply or give me a call at (607) 225-3400.
+Take a look — it's yours to keep either way. If you want to see what our AI can do, give us a ring at (607) 225-3400 — that's our AI assistant and it picks up 24/7.
 
-- Mike
-Lancaster, NY
+You can check out more of our work at https://clockoutnow.com
+
+Happy to jump on a quick call if you're interested.
+
+Mike
+ClockOutNow | Lancaster, NY
+(607) 225-3400
 
 ---
 To stop receiving these emails, reply "unsubscribe" and we'll remove you immediately."""
@@ -123,15 +140,16 @@ To stop receiving these emails, reply "unsubscribe" and we'll remove you immedia
 def send_email(
     gmail_user: str,
     gmail_password: str,
+    from_email: str,
     to_email: str,
     subject: str,
     body: str,
     dry_run: bool = False,
 ):
-    """Send plain text email from personal Gmail. No HTML, no branding."""
+    """Send plain text email via Gmail SMTP with Send As address."""
 
     msg = MIMEText(body, "plain")
-    msg["From"] = f"Mike <{gmail_user}>"
+    msg["From"] = f"Mike <{from_email}>"
     msg["To"] = to_email
     msg["Subject"] = subject
 
@@ -169,6 +187,7 @@ def main():
     env = load_env(ENV_FILE)
     gmail_user = env.get("GMAIL_USER")
     gmail_password = env.get("GMAIL_APP_PASSWORD")
+    from_email = gmail_user  # Personal Gmail for deliverability
 
     if not gmail_user or not gmail_password:
         print("ERROR: GMAIL_USER / GMAIL_APP_PASSWORD not found in .env.local")
@@ -199,7 +218,7 @@ def main():
         print(f"WARNING: Preview page not found: {preview_html}")
         print("  The email will still link to it — make sure it's deployed.")
 
-    subject = f"Quick question about {business_name}"
+    subject = f"Built something for {business_name}"
 
     # --- log campaign FIRST to get tracking URL ---
     website_env = load_env(WEBSITE_ENV_FILE)
@@ -227,6 +246,7 @@ def main():
     send_email(
         gmail_user=gmail_user,
         gmail_password=gmail_password,
+        from_email=from_email,
         to_email=args.email,
         subject=subject,
         body=body,
