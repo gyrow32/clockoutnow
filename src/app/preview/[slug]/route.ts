@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
 
 export async function GET(
   request: NextRequest,
@@ -13,16 +11,16 @@ export async function GET(
     return new NextResponse('Not Found', { status: 404 })
   }
 
-  const filePath = path.join(process.cwd(), 'public', 'preview-pages', `${slug}.html`)
-
-  if (!fs.existsSync(filePath)) {
+  // Fetch HTML from public CDN (fs.readFile doesn't work in Vercel serverless)
+  const origin = request.nextUrl.origin
+  const res = await fetch(`${origin}/preview-pages/${slug}.htm`)
+  if (!res.ok) {
     return new NextResponse('Not Found', { status: 404 })
   }
 
-  let html = fs.readFileSync(filePath, 'utf-8')
+  let html = await res.text()
 
   // Inject style override + ClockOutNow links into navbar
-  // Add gap to navbar and group phone + new links on the right
   const navStyle = `
     <style>
       .navbar { gap: 1rem !important; }
