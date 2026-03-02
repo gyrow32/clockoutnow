@@ -8,8 +8,10 @@ const nextConfig = {
       },
     ],
   },
-  outputFileTracingIncludes: {
-    '/preview/[slug]': ['./public/preview-pages/**/*'],
+  experimental: {
+    outputFileTracingIncludes: {
+      '/preview/[slug]': ['./public/preview-pages/**/*'],
+    },
   },
 }
 
