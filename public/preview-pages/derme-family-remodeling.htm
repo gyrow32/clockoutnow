@@ -535,9 +535,17 @@
   <section class="section" style="background: var(--gray-50);">
     <div class="section-inner">
       <span class="section-label">Our Work</span>
-      <h2 class="section-title">Recent Projects</h2>
-      <p class="section-sub">A sampling of our craftsmanship across carpentry, tile, and remodeling projects throughout Western New York.</p>
-      <div class="gallery-grid">
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+        <div>
+          <h2 class="section-title" style="margin-bottom:0.5rem;">Recent Projects</h2>
+          <p class="section-sub" style="margin-bottom:0;">A sampling of our craftsmanship across carpentry, tile, and remodeling projects throughout Western New York.</p>
+        </div>
+        <a href="#" class="btn-primary" onclick="openLightbox(0);return false;" style="background:var(--charcoal); white-space:nowrap; flex-shrink:0;">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          View Gallery (30)
+        </a>
+      </div>
+      <div class="gallery-grid" style="margin-top:2.5rem;">
         <div class="gallery-item tall" onclick="openLightbox(0)" style="cursor:pointer;">
           <img src="/preview-images/derme-family-remodeling/custom-cabinetry.jpg" alt="Custom built-in shelving and closet system">
         </div>
