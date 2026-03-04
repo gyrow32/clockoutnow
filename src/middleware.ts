@@ -53,6 +53,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
+  // --- Allow client API routes on client domains (image gallery, etc.) ---
+  if (pathname.startsWith('/api/client/')) {
+    return NextResponse.next()
+  }
+
   // --- Block internal paths on client domains ---
   if (
     pathname.startsWith('/admin') ||

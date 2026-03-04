@@ -662,7 +662,8 @@
   </div>
 
   <script>
-    var galleryImages = [
+    // Fallback images (used if API is unavailable)
+    var fallbackImages = [
       {src: '/preview-images/derme-family-remodeling/custom-cabinetry.jpg', alt: 'Custom built-in shelving and closet system'},
       {src: '/preview-images/derme-family-remodeling/bathroom-tile.jpg', alt: 'White wavy tile shower with mosaic floor and glass door'},
       {src: '/preview-images/derme-family-remodeling/crown-molding.jpg', alt: 'Detailed dark crown molding trim work'},
@@ -694,6 +695,7 @@
       {src: '/preview-images/derme-family-remodeling/icloud-14.png', alt: 'Portfolio work by Derme Family Remodeling'},
       {src: '/preview-images/derme-family-remodeling/icloud-15.png', alt: 'Portfolio work by Derme Family Remodeling'}
     ];
+    var galleryImages = fallbackImages;
     var currentIdx = 0;
     var lightboxEl = document.getElementById('lightbox');
     var lightboxImg = document.getElementById('lightbox-img');
@@ -738,6 +740,44 @@
         var diff = e.changedTouches[0].clientX - startX;
         if (Math.abs(diff) > 50) navLightbox(diff > 0 ? -1 : 1);
       });
+    })();
+
+    // Fetch gallery images from API, fall back to hardcoded
+    function rebuildGalleryGrid() {
+      var grid = document.querySelector('.gallery-grid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      var showCount = Math.min(galleryImages.length, 5);
+      for (var i = 0; i < showCount; i++) {
+        var item = document.createElement('div');
+        item.className = 'gallery-item' + (i === 0 ? ' tall' : '');
+        item.style.cursor = 'pointer';
+        item.setAttribute('onclick', 'openLightbox(' + i + ')');
+        var img = document.createElement('img');
+        img.src = galleryImages[i].src;
+        img.alt = galleryImages[i].alt;
+        item.appendChild(img);
+        grid.appendChild(item);
+      }
+      // Update gallery count button
+      var countBtn = document.querySelector('.gallery-grid + div .btn-primary');
+      if (countBtn) {
+        countBtn.innerHTML = countBtn.innerHTML.replace(/\(\d+\)/, '(' + galleryImages.length + ')');
+      }
+    }
+
+    (function loadGalleryFromAPI() {
+      fetch('/api/client/derme-family-remodeling/images')
+        .then(function(res) { return res.ok ? res.json() : Promise.reject(); })
+        .then(function(data) {
+          if (data.images && data.images.length > 0) {
+            galleryImages = data.images.map(function(img) {
+              return { src: img.url, alt: img.alt_text || '' };
+            });
+            rebuildGalleryGrid();
+          }
+        })
+        .catch(function() { /* keep fallback images */ });
     })();
   </script>
 
