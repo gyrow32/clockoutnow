@@ -74,7 +74,7 @@ export async function POST(req: NextRequest) {
 
     // Generate tracking URL
     const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL || 'https://clockoutnow.com').trim()
-    const trackingUrl = `${baseUrl}/preview-pages/${preview_page_slug}.html?utm_source=email&utm_campaign=${campaign.id}`
+    const trackingUrl = `${baseUrl}/preview/${preview_page_slug}?utm_source=email&utm_campaign=${campaign.id}`
 
     return NextResponse.json({
       campaign,
