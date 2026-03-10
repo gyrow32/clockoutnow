@@ -78,7 +78,7 @@
     }
     .lightbox-close:hover { background: rgba(255,255,255,0.15); }
     .lightbox-img-wrap {
-      width: 90vw; height: 85vh; display: flex; align-items: center; justify-content: center;
+      width: 90vw; height: 75vh; display: flex; align-items: center; justify-content: center;
     }
     .lightbox-img-wrap img {
       width: 100%; height: 100%; object-fit: contain; border-radius: 8px;
@@ -95,9 +95,76 @@
     .lightbox-prev { left: 1.5rem; }
     .lightbox-next { right: 1.5rem; }
     .lightbox-counter {
-      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      position: absolute; bottom: 7rem; left: 50%; transform: translateX(-50%);
       color: rgba(255,255,255,0.7); font-size: 0.9rem; font-weight: 500;
     }
+
+    /* Lightbox view toggle */
+    .lightbox-toolbar {
+      position: absolute; top: 1.2rem; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 0.25rem; background: rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 0.2rem; backdrop-filter: blur(8px); z-index: 10;
+    }
+    .lightbox-toolbar button {
+      background: none; border: none; color: rgba(255,255,255,0.6); cursor: pointer;
+      padding: 0.4rem 0.9rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600;
+      transition: all 0.2s; display: flex; align-items: center; gap: 0.35rem;
+    }
+    .lightbox-toolbar button.active { background: rgba(255,255,255,0.2); color: #fff; }
+    .lightbox-toolbar button:hover { color: #fff; }
+    .lightbox-toolbar button svg { width: 16px; height: 16px; }
+
+    /* Thumbnail strip */
+    .lightbox-thumbs {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      display: flex; gap: 0.4rem; padding: 0.8rem 1rem;
+      overflow-x: auto; justify-content: center;
+      background: linear-gradient(transparent, rgba(0,0,0,0.6));
+      scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent;
+    }
+    .lightbox-thumbs::-webkit-scrollbar { height: 4px; }
+    .lightbox-thumbs::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 2px; }
+    .lightbox-thumb {
+      flex-shrink: 0; width: 56px; height: 42px; border-radius: 6px;
+      overflow: hidden; cursor: pointer; border: 2px solid transparent;
+      opacity: 0.5; transition: all 0.2s;
+    }
+    .lightbox-thumb.active { border-color: #fff; opacity: 1; }
+    .lightbox-thumb:hover { opacity: 0.85; }
+    .lightbox-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Grid view inside lightbox */
+    .lightbox-grid {
+      display: none; width: 92vw; max-width: 1200px; max-height: 85vh; overflow-y: auto;
+      padding: 1rem; gap: 0.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent;
+    }
+    .lightbox-grid::-webkit-scrollbar { width: 6px; }
+    .lightbox-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 3px; }
+    .lightbox-grid.active { display: grid; }
+    .lightbox-grid-item {
+      border-radius: 8px; overflow: hidden; cursor: pointer;
+      aspect-ratio: 1; transition: transform 0.2s;
+    }
+    .lightbox-grid-item:hover { transform: scale(1.04); }
+    .lightbox-grid-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Masonry view inside lightbox */
+    .lightbox-masonry {
+      display: none; width: 92vw; max-width: 1200px; max-height: 85vh; overflow-y: auto;
+      padding: 1rem; column-count: 3; column-gap: 0.5rem;
+      scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent;
+    }
+    .lightbox-masonry::-webkit-scrollbar { width: 6px; }
+    .lightbox-masonry::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 3px; }
+    .lightbox-masonry.active { display: block; }
+    .lightbox-masonry-item {
+      break-inside: avoid; margin-bottom: 0.5rem; border-radius: 8px;
+      overflow: hidden; cursor: pointer; transition: transform 0.2s;
+    }
+    .lightbox-masonry-item:hover { transform: scale(1.03); }
+    .lightbox-masonry-item img { width: 100%; display: block; }
 
     /* === HERO === */
     .hero {
@@ -367,12 +434,18 @@
       .cta-banner h2 { font-size: 1.8rem; }
       .cta-phone-big { font-size: 1.2rem; padding: 1rem 2rem; }
       /* Lightbox mobile */
-      .lightbox-img-wrap { width: 100vw; height: 90vh; }
+      .lightbox-img-wrap { width: 100vw; height: 65vh; }
       .lightbox-img-wrap img { border-radius: 0; }
       .lightbox-nav { width: 40px; height: 40px; font-size: 1.2rem; }
       .lightbox-prev { left: 0.5rem; }
       .lightbox-next { right: 0.5rem; }
       .lightbox-close { top: 0.5rem; right: 0.5rem; }
+      .lightbox-toolbar { top: 0.5rem; }
+      .lightbox-toolbar button { padding: 0.35rem 0.6rem; font-size: 0.72rem; }
+      .lightbox-thumb { width: 44px; height: 33px; }
+      .lightbox-counter { bottom: 5.5rem; }
+      .lightbox-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+      .lightbox-masonry { column-count: 2; }
     }
   </style>
 </head>
@@ -653,12 +726,39 @@
   <!-- LIGHTBOX OVERLAY -->
   <div class="lightbox-overlay" id="lightbox">
     <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&#10094;</button>
-    <div class="lightbox-img-wrap">
+
+    <!-- View toggle toolbar -->
+    <div class="lightbox-toolbar" id="lightbox-toolbar">
+      <button class="active" onclick="setLightboxView('single')" id="lb-btn-single">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+        Single
+      </button>
+      <button onclick="setLightboxView('grid')" id="lb-btn-grid">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Grid
+      </button>
+      <button onclick="setLightboxView('masonry')" id="lb-btn-masonry">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="11" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="17" width="7" height="4" rx="1"/><rect x="14" y="13" width="7" height="8" rx="1"/></svg>
+        Masonry
+      </button>
+    </div>
+
+    <!-- Single image view -->
+    <button class="lightbox-nav lightbox-prev" id="lb-prev" onclick="navLightbox(-1)">&#10094;</button>
+    <div class="lightbox-img-wrap" id="lb-single">
       <img id="lightbox-img" src="" alt="Gallery photo">
     </div>
-    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&#10095;</button>
+    <button class="lightbox-nav lightbox-next" id="lb-next" onclick="navLightbox(1)">&#10095;</button>
     <div class="lightbox-counter" id="lightbox-counter"></div>
+
+    <!-- Grid view -->
+    <div class="lightbox-grid" id="lb-grid"></div>
+
+    <!-- Masonry view -->
+    <div class="lightbox-masonry" id="lb-masonry"></div>
+
+    <!-- Thumbnail strip (shown in single view) -->
+    <div class="lightbox-thumbs" id="lightbox-thumbs"></div>
   </div>
 
   <script>
@@ -697,13 +797,24 @@
     ];
     var galleryImages = fallbackImages;
     var currentIdx = 0;
+    var currentView = 'single';
     var lightboxEl = document.getElementById('lightbox');
     var lightboxImg = document.getElementById('lightbox-img');
     var lightboxCounter = document.getElementById('lightbox-counter');
+    var thumbsContainer = document.getElementById('lightbox-thumbs');
+    var lbSingle = document.getElementById('lb-single');
+    var lbGrid = document.getElementById('lb-grid');
+    var lbMasonry = document.getElementById('lb-masonry');
+    var lbPrev = document.getElementById('lb-prev');
+    var lbNext = document.getElementById('lb-next');
 
     function openLightbox(idx) {
       currentIdx = idx;
+      buildThumbs();
+      buildGrid();
+      buildMasonry();
       updateLightbox();
+      setLightboxView(currentView);
       lightboxEl.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -720,23 +831,105 @@
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt;
       lightboxCounter.textContent = (currentIdx + 1) + ' / ' + galleryImages.length;
+      // Update active thumb
+      var thumbs = thumbsContainer.querySelectorAll('.lightbox-thumb');
+      for (var i = 0; i < thumbs.length; i++) {
+        thumbs[i].classList.toggle('active', i === currentIdx);
+      }
+      // Scroll active thumb into view
+      if (thumbs[currentIdx]) {
+        thumbs[currentIdx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
     }
+
+    function buildThumbs() {
+      thumbsContainer.innerHTML = '';
+      for (var i = 0; i < galleryImages.length; i++) {
+        var thumb = document.createElement('div');
+        thumb.className = 'lightbox-thumb' + (i === currentIdx ? ' active' : '');
+        thumb.setAttribute('data-idx', i);
+        var img = document.createElement('img');
+        img.src = galleryImages[i].src;
+        img.alt = '';
+        img.loading = 'lazy';
+        thumb.appendChild(img);
+        thumb.addEventListener('click', (function(idx) {
+          return function() { currentIdx = idx; updateLightbox(); };
+        })(i));
+        thumbsContainer.appendChild(thumb);
+      }
+    }
+
+    function buildGrid() {
+      lbGrid.innerHTML = '';
+      for (var i = 0; i < galleryImages.length; i++) {
+        var item = document.createElement('div');
+        item.className = 'lightbox-grid-item';
+        var img = document.createElement('img');
+        img.src = galleryImages[i].src;
+        img.alt = galleryImages[i].alt;
+        img.loading = 'lazy';
+        item.appendChild(img);
+        item.addEventListener('click', (function(idx) {
+          return function() { currentIdx = idx; setLightboxView('single'); updateLightbox(); };
+        })(i));
+        lbGrid.appendChild(item);
+      }
+    }
+
+    function buildMasonry() {
+      lbMasonry.innerHTML = '';
+      for (var i = 0; i < galleryImages.length; i++) {
+        var item = document.createElement('div');
+        item.className = 'lightbox-masonry-item';
+        var img = document.createElement('img');
+        img.src = galleryImages[i].src;
+        img.alt = galleryImages[i].alt;
+        img.loading = 'lazy';
+        item.appendChild(img);
+        item.addEventListener('click', (function(idx) {
+          return function() { currentIdx = idx; setLightboxView('single'); updateLightbox(); };
+        })(i));
+        lbMasonry.appendChild(item);
+      }
+    }
+
+    function setLightboxView(view) {
+      currentView = view;
+      var isSingle = view === 'single';
+      // Toggle views
+      lbSingle.style.display = isSingle ? '' : 'none';
+      lbPrev.style.display = isSingle ? '' : 'none';
+      lbNext.style.display = isSingle ? '' : 'none';
+      lightboxCounter.style.display = isSingle ? '' : 'none';
+      thumbsContainer.style.display = isSingle ? '' : 'none';
+      lbGrid.classList.toggle('active', view === 'grid');
+      lbMasonry.classList.toggle('active', view === 'masonry');
+      // Toggle toolbar buttons
+      document.getElementById('lb-btn-single').classList.toggle('active', view === 'single');
+      document.getElementById('lb-btn-grid').classList.toggle('active', view === 'grid');
+      document.getElementById('lb-btn-masonry').classList.toggle('active', view === 'masonry');
+    }
+
     // Keyboard nav
     document.addEventListener('keydown', function(e) {
       if (!lightboxEl.classList.contains('active')) return;
       if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') navLightbox(-1);
-      if (e.key === 'ArrowRight') navLightbox(1);
+      if (currentView === 'single') {
+        if (e.key === 'ArrowLeft') navLightbox(-1);
+        if (e.key === 'ArrowRight') navLightbox(1);
+      }
     });
     // Click backdrop to close
     lightboxEl.addEventListener('click', function(e) {
       if (e.target === lightboxEl) closeLightbox();
     });
-    // Touch swipe support
+    // Touch swipe support (single view only)
     (function() {
       var startX = 0;
       lightboxEl.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; });
       lightboxEl.addEventListener('touchend', function(e) {
+        if (currentView !== 'single') return;
         var diff = e.changedTouches[0].clientX - startX;
         if (Math.abs(diff) > 50) navLightbox(diff > 0 ? -1 : 1);
       });
