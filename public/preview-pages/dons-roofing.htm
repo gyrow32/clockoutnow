@@ -1,111 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Don's Roofing - Professional Roofing Contractor — 25 Years Experience</title>
-    <meta name="description" content="Don's Roofing - Professional Roofing Contractor — 25 Years Experience. Serving Buffalo & WNY.">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .hero { background: linear-gradient(135deg, #0f172a 0%, #1f2937 60%, #111827 100%); color: white; text-align: center; padding: 120px 20px; }
-        .hero h1 { font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .hero p { font-size: 1.3rem; margin-bottom: 30px; opacity: 0.9; }
-        .cta-button { display: inline-block; background: #ff6b6b; color: white; padding: 15px 40px; text-decoration: none; border-radius: 50px; font-size: 1.1rem; font-weight: bold; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
-        .services-section { padding: 80px 20px; background: #f8f9fa; }
-        .services-section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 50px; color: #2c3e50; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .service-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; transition: transform 0.2s; }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
-        .service-icon { font-size: 2.5rem; color: #667eea; margin-bottom: 15px; }
-        .service-card h3 { font-size: 1.2rem; color: #2c3e50; }
-        .contact-section { padding: 80px 20px; background: white; text-align: center; }
-        .contact-section h2 { font-size: 2.5rem; margin-bottom: 40px; color: #2c3e50; }
-        .contact-info { max-width: 600px; margin: 0 auto 40px; }
-        .contact-item { display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin: 15px 0; color: #555; text-decoration: none; transition: color 0.2s; }
-        .contact-item:hover { color: #667eea; }
-        .contact-item .icon { margin-right: 10px; font-size: 1.5rem; }
-        footer { background: #2c3e50; color: white; text-align: center; padding: 30px 20px; }
-        footer p { margin: 5px 0; opacity: 0.8; }
-        @media (max-width: 768px) { .hero h1 { font-size: 2rem; } .hero p { font-size: 1.1rem; } .services-section h2, .contact-section h2 { font-size: 2rem; } }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Don&#x27;s Roofing | buffalo | Buffalo&#x27;s trusted roofing experts, providing quality and lasting protection.</title>
+  <meta name="description" content="Don&#x27;s Roofing has been serving Buffalo, NY for over 25 years, providing residential roofing services with unmatched expertise. We offer free estimates and ">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --dark: #1c1917;
+      --dark-light: #292524;
+      --accent: #f59e0b;
+      --accent-hover: #d97706;
+      --primary: #b45309;
+      --primary-rgb: 180,83,9;
+      --steel: #57534e;
+      --steel-light: #78716c;
+      --warm-white: #fafaf9;
+      --gray-50: #f5f5f4;
+      --gray-100: #e7e5e4;
+      --gray-600: #57534e;
+      --gray-800: #1c1917;
+      --green: #16a34a;
+      --green-light: #dcfce7;
+      --icon-bg-1: #fef3c7;
+      --icon-bg-2: #e7e5e4;
+      --icon-bg-3: #dcfce7;
+      --badge-bg: #fef3c7;
+      --badge-text: #92400e;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray-800); background: var(--warm-white); overflow-x: hidden; }
+
+    /* === NAVBAR === */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(180,83,9, 0.08); backdrop-filter: blur(12px);
+      background: rgba(28, 25, 23, 0.95); backdrop-filter: blur(10px);
+      padding: 0.8rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .navbar-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+      text-decoration: none; color: #fff;
+    }
+    .navbar-brand .icon {
+      width: 40px; height: 40px; background: var(--accent);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    }
+    .navbar-brand span { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.5px; }
+    .navbar-phone {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--accent); color: var(--dark);
+      padding: 0.6rem 1.2rem; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+    .navbar-phone:hover { background: var(--accent-hover); transform: scale(1.05); }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh; padding: 8rem 2rem 4rem;
+      background: linear-gradient(135deg, #1c1917 0%, #292524 50%, #44403c 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -50%; right: -20%;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(var(--primary-rgb), 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -10%; left: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(87,83,78,0.4) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-inner {
+      max-width: 1100px; width: 100%; position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: center;
+    }
+    .hero-text { color: #fff; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18);
+      padding: 0.4rem 1rem; border-radius: 50px;
+      font-size: 0.85rem; color: rgba(255,255,255,0.9);
+      margin-bottom: 1.5rem; backdrop-filter: blur(5px);
+    }
+    .hero-badge .dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem; font-weight: 800; line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 .highlight { color: var(--accent); }
+    .hero-sub {
+      font-size: 1.15rem; line-height: 1.7; color: rgba(255,255,255,0.8);
+      margin-bottom: 2rem; max-width: 500px;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent); color: var(--dark); border: none;
+      padding: 1rem 2rem; border-radius: 12px;
+      font-size: 1.05rem; font-weight: 700; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.3s; box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.4);
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 6px 25px rgba(var(--primary-rgb), 0.5); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1); color: #fff;
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 1rem 2rem; border-radius: 12px;
+      font-size: 1.05rem; font-weight: 600; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.3s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
+    .hero-image-wrapper {
+      position: relative; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .hero-image-wrapper img { width: 100%; height: 420px; object-fit: cover; display: block; }
+    .hero-image-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(28,25,23,0.95), transparent);
+      padding: 2rem 1.5rem 1.5rem;
+    }
+    .hero-overlay-stats { display: flex; flex-direction: column; gap: 0.5rem; }
+    .hero-stat {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.9rem; color: rgba(255,255,255,0.9);
+    }
+    .hero-stat .check {
+      width: 26px; height: 26px; background: rgba(22,163,74,0.25);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; flex-shrink: 0; color: #4ade80;
+    }
+
+    /* === TRUST BAR === */
+    .trust-bar {
+      background: var(--dark); padding: 1.5rem 2rem;
+      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      color: rgba(255,255,255,0.85); font-size: 0.9rem; font-weight: 500;
+    }
+    .trust-item svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+    /* === SECTIONS === */
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: inline-block; background: var(--badge-bg); color: var(--badge-text);
+      padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.8rem;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 800; color: var(--dark);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .section-sub { font-size: 1.1rem; color: var(--gray-600); line-height: 1.7; max-width: 600px; margin-bottom: 3rem; }
+
+    /* === WHY US === */
+    .why-section { background: var(--gray-50); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .why-card {
+      background: #fff; border-radius: 16px; padding: 2rem;
+      border: 1px solid var(--gray-100); transition: all 0.3s;
+    }
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .why-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .why-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--dark); }
+    .why-card p { font-size: 0.92rem; line-height: 1.6; color: var(--gray-600); }
+
+    /* === SERVICES === */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.2rem; }
+    .service-card {
+      background: #f5f5f4; border-radius: 14px; padding: 1.5rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: all 0.3s; border: 2px solid transparent;
+    }
+    .service-card:hover { border-color: var(--accent); background: #fff; }
+    .service-icon {
+      width: 44px; height: 44px; background: var(--dark); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .service-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--dark); margin-bottom: 0.3rem; }
+    .service-card p { font-size: 0.82rem; color: var(--gray-600); line-height: 1.5; }
+
+    /* === CTA BANNER === */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--dark) 0%, #44403c 100%);
+      padding: 4rem 2rem; text-align: center; color: #fff;
+    }
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem;
+    }
+    .cta-banner p { font-size: 1.1rem; color: rgba(255,255,255,0.8); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-phone-big {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      background: var(--accent); color: var(--dark);
+      padding: 1.2rem 2.5rem; border-radius: 16px;
+      font-size: 1.5rem; font-weight: 800;
+      text-decoration: none; transition: all 0.3s;
+      box-shadow: 0 4px 30px rgba(var(--primary-rgb), 0.4);
+    }
+    .cta-phone-big:hover { background: var(--accent-hover); transform: scale(1.05); }
+    .cta-sub { margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.6); }
+
+    /* === FOOTER === */
+    .footer {
+      background: var(--dark); color: rgba(255,255,255,0.7);
+      padding: 3rem 2rem; text-align: center;
+    }
+    .footer-brand { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    .footer-info { font-size: 0.9rem; line-height: 1.8; }
+    .footer-phone { color: var(--accent); text-decoration: none; font-weight: 700; }
+    .footer-bottom { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero h1 { font-size: 2.5rem; }
+      .why-grid { grid-template-columns: 1fr; }
+      .trust-bar { gap: 1.5rem; }
+      .navbar-brand span { display: none; }
+    }
+  </style>
 </head>
 <body>
-    <section class="hero">
-        <div class="container">
-            <h1>Don's Roofing</h1>
-            <p>Professional Roofing Contractor — 25 Years Experience</p>
-            <a href="#contact" class="cta-button">Get A Free Quote</a>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">
+      <div class="icon">
+        <svg width="22" height="22" fill="none" stroke="#1c1917" stroke-width="2" viewBox="0 0 24 24"><path d="M2 20h20M5 20V10l7-7 7 7v10M4 10l8-7 8 7"/><path d="M10 20v-6h4v6"/></svg>
+      </div>
+      <span>Don&#x27;s Roofing</span>
+    </a>
+    <a href="tel:7165146018" class="navbar-phone">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      (716) 514-6018
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Serving Buffalo &amp; Erie County
         </div>
-    </section>
-
-    <section id="services" class="services-section">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">&#10003;</div>
-                <h3>Roof Replacement</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">&#10003;</div>
-                <h3>Roof Repair</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">&#10003;</div>
-                <h3>Storm Damage</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">&#10003;</div>
-                <h3>Gutter Installation</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">&#10003;</div>
-                <h3>Roof Inspection</h3>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">&#10003;</div>
-                <h3>Shingle & Metal Roofing</h3>
-            </div>
-            </div>
+        <h1>Buffalo&#x27;s <span class="highlight">trusted</span> roofing experts, providing quality and lasting protection.</h1>
+        <p class="hero-sub">Don&#x27;s Roofing has been serving Buffalo, NY for over 25 years, providing residential roofing services with unmatched expertise. We offer free estimates and guarantee satisfaction on every job, big or small.</p>
+        <div class="hero-ctas">
+          <a href="tel:7165146018" class="btn-primary">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call Now - Free Estimate
+          </a>
+          <a href="#services" class="btn-secondary">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            View Services
+          </a>
         </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="contact-info">
-                <a href="tel:(716) 514-6018" class="contact-item phone"><span class="icon">&#128222;</span> (716) 514-6018</a>
-                <p class="contact-item location"><span class="icon">&#128205;</span> Serving Buffalo & WNY</p>
-            </div>
-            <a href='tel:(716) 514-6018' class='cta-button'>Call Now</a>
+      </div>
+      <div class="hero-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=600&amp;h=500&amp;fit=crop" alt="Don&#x27;s Roofing - Roofing">
+        <div class="hero-image-overlay">
+          <div class="hero-overlay-stats">
+            <div class="hero-stat"><span class="check">&#10003;</span> Licensed &amp; Insured</div>
+            <div class="hero-stat"><span class="check">&#10003;</span> 25+ Years Experience</div>
+            <div class="hero-stat"><span class="check">&#10003;</span> Free Estimates</div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2026 Don's Roofing. All rights reserved.</p>
-        <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.6;">
-            This preview site was generated with AI to show Don's Roofing what their online presence could look like.
-        </p>
-    </footer>
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <svg width="22" height="22" fill="var(--accent)" stroke="none" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+      Licensed &amp; Insured
+    </div>
+    <div class="trust-item">
+      <svg width="22" height="22" fill="var(--accent)" stroke="none" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      25+ Years Experience
+    </div>
+    <div class="trust-item">
+      <svg width="22" height="22" fill="var(--accent)" stroke="none" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Free Estimates
+    </div>
+    <div class="trust-item">
+      <svg width="22" height="22" fill="var(--accent)" stroke="none" stroke-width="2" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+      Locally Owned &amp; Operated
+    </div>
+  </div>
 
-    <script>
-        (function() {
-            const params = new URLSearchParams(window.location.search);
-            fetch('/api/track-view', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    page: window.location.pathname.split('/').pop(),
-                    utm_source: params.get('utm_source'),
-                    utm_campaign: params.get('utm_campaign'),
-                    referrer: document.referrer,
-                    timestamp: new Date().toISOString()
-                })
-            }).catch(() => {});
-        })();
-    </script>
+  <!-- WHY CHOOSE US -->
+  <section class="section why-section">
+    <div class="section-inner">
+      <span class="section-label">Why Choose Don&#x27;s Roofing</span>
+      <h2 class="section-title">Why buffalo Trusts Don&#x27;s Roofing</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon" style="background: var(--icon_bg_1);">
+            <svg width="28" height="28" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3>Unwavering Protection</h3>
+          <p>We use only the highest quality materials to ensure your roof withstands Buffalo&#x27;s harsh weather.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon" style="background: var(--icon_bg_2);">
+            <svg width="28" height="28" fill="none" stroke="var(--steel)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3>Fast &amp; Reliable Service</h3>
+          <p>We understand your time is valuable; we complete projects efficiently and on schedule.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon" style="background: var(--icon_bg_3);">
+            <svg width="28" height="28" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+          </div>
+          <h3>Top-Rated Craftsmanship</h3>
+          <p>Our experienced team delivers superior workmanship, ensuring a beautiful and durable roof for years to come.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="section-inner">
+      <span class="section-label">Our Services</span>
+      <h2 class="section-title">Roofing Services</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 2.5rem;">
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=400&amp;h=200&amp;fit=crop" alt="Don&#x27;s Roofing work" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=400&amp;h=200&amp;fit=crop" alt="Don&#x27;s Roofing work" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <div style="border-radius: 14px; overflow: hidden; height: 180px;"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&amp;h=200&amp;fit=crop" alt="Don&#x27;s Roofing work" style="width: 100%; height: 100%; object-fit: cover;"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div>
+            <h4>Roof Repairs</h4>
+            <p>From minor leaks to storm damage, we&#x27;ll quickly assess and repair your roof.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M2 20h20M5 20V10l7-7 7 7v10M4 10l8-7 8 7"/><path d="M10 20v-6h4v6"/></svg>
+          </div>
+          <div>
+            <h4>Residential Roofing</h4>
+            <p>We specialize in complete roof replacements and new roof installations for homes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <h2>Protect Your Home with a Free Roofing Estimate!</h2>
+    <p>Contact Don&#x27;s Roofing today for a no-obligation quote. Let us show you why we&#x27;re Buffalo&#x27;s preferred roofing contractor.</p>
+    <a href="tel:7165146018" class="cta-phone-big">
+      <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      (716) 514-6018
+    </a>
+    <p class="cta-sub">Serving Buffalo &amp; Erie County</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">Don&#x27;s Roofing</div>
+    <div class="footer-info">
+      Serving Buffalo &amp; Erie County<br>
+      <a href="tel:7165146018" class="footer-phone">(716) 514-6018</a><br>
+      Roofing &bull; buffalo
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Don&#x27;s Roofing. All rights reserved.<br>
+      <span style="color: rgba(255,255,255,0.4); font-size: 0.75rem;">Landing page designed by ClockOutNow.com</span>
+    </div>
+  </footer>
+
+  <!-- Analytics Tracking -->
+  <script>
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      fetch('/api/track-view', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          page: window.location.pathname.split('/').pop(),
+          utm_source: params.get('utm_source'),
+          utm_campaign: params.get('utm_campaign'),
+          referrer: document.referrer,
+          timestamp: new Date().toISOString()
+        })
+      }).catch(function() {});
+    })();
+  </script>
 </body>
 </html>

@@ -1,24 +1,21 @@
-# Agent Notes (ClockOutNow)
+# AGENTS.md — Agent Guidance
 
-## Mission
-Generate **preview websites** for cold outbound, send **tracked links**, and measure **clicks + replies** in an admin dashboard.
+Read `CLAUDE.md` first. This file covers agent-specific rules.
 
-## Canonical components
-- **Next.js app:** `website/`
-- **Automation scripts:** `scripts/`
-- **Supabase schema:** `website/supabase/migrations/`
-- **Preview page files:** `website/public/preview-pages/*.html`
+## Key Principle
+The preview website IS the product. Everything in the pipeline exists to produce a stunning preview site and get it in front of the right person's inbox. If any step is broken, the whole thing is worthless.
 
-## Source of truth (avoid duplicates)
-- Leads/campaigns/analytics live in **Supabase** (`leads`, `campaigns`, `page_views`).
-- Treat `docs/ops/leads.md`, `data/*`, and `tools/legacy/*` as **legacy or local-only** unless explicitly re-adopted.
+## Pipeline Status Flow
+`NEW` → `RESEARCHING` → `READY` → `SITE_GENERATED` → `IMAGE_GENERATED` → `CONTACTED` → `REPLIED` → `CLOSED`
 
-## Security rules
-- Never add real API keys/passwords to code or docs.
-- Env files must be local-only: `.env.local`, `website/.env.local`.
-- If you find secrets in repo history/files, redact + instruct rotation.
+## Source of Truth
+- All lead/campaign/analytics data lives in **Supabase** (leads, campaigns, page_views tables)
+- Preview pages live in `public/preview-pages/*.htm`
+- Scripts live in `scripts/`
 
-## Local run
-- Website: `cd website && npm run dev`
-- Scripts: `pip install -r requirements.txt` then run scripts in `scripts/`
-
+## Site Generation Rules
+- Reference quality: `derme-family-remodeling.htm`, `stalczynski-contracting.htm`
+- Minimum 400+ lines of HTML — anything shorter is a generic template and must be regenerated
+- Must include: Google Fonts, CSS variables, hover effects, responsive design, real business data
+- If no photos found online, generate with Gemini API — never leave image placeholders empty
+- Every site should feel unique to that business, not cookie-cutter
